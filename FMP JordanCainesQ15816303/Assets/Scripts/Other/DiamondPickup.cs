@@ -81,8 +81,26 @@ public class DiamondPickup : MonoBehaviour
             }
 
         }
+        else if (Diamond3)
+        {
+            if (MissionSelector.Collected3 == false)
+            {
+                Collected3 = true;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                MissionSelector.Collected3 = true;
+            }
 
+        }
+        else if (Diamond4)
+        {
+            if (MissionSelector.Collected4 == false)
+            {
+                Collected4 = true;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                MissionSelector.Collected4 = true;
+            }
 
+        }
 
         SceneManager.LoadScene(1);
 

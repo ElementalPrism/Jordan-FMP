@@ -52,7 +52,19 @@ public class MissionSelector : MonoBehaviour
         {
             Button2.color = new Color(0.23f, 0.92f, 0.78f);
             Mission3Button.SetActive(true);
-        } 
+        }
+
+        if (Collected3)
+        {
+            Button3.color = new Color(0.23f, 0.92f, 0.78f);
+            Mission4Button.SetActive(true);
+        }
+
+        if (Collected4)
+        {
+            Button4.color = new Color(0.23f, 0.92f, 0.78f);
+            Mission5Button.SetActive(true);
+        }
     }
 
     public void Mission1()

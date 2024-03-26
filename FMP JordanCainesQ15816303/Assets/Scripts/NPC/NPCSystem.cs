@@ -13,6 +13,8 @@ public class NPCSystem : MonoBehaviour
     [SerializeField] GameObject TextBackground;
     [SerializeField] GameObject NPCText;
 
+    public int WeedCounter;
+    [SerializeField] GameObject Diamond4;
 
     // Start is called before the first frame update
     void Start()
@@ -43,5 +45,12 @@ public class NPCSystem : MonoBehaviour
 
 
         }
+
+
+        if (WeedCounter <= 0)
+        {
+            Diamond4.SetActive(true);
+        }
+
     }
 }
