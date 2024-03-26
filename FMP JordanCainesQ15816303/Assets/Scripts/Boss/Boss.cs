@@ -35,6 +35,7 @@ public class Boss : MonoBehaviour
     GameObject ReflectAttack;
     GameObject NormalAttack1;
 
+    public GameObject DiamondDrop;
 
     // Start is called before the first frame update
     void Start()
@@ -165,6 +166,7 @@ public class Boss : MonoBehaviour
         if (Health == -1)
         {
             BossAnimator.SetBool("IsDead", true);
+            DiamondDrop.SetActive(true);
             Destroy(ShotSpawner);
             //Destroy(ThisObject);
         }

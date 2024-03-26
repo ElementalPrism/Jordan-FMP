@@ -1,10 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class MissionSelector : MonoBehaviour
 {
+    public static bool Collected1;
+    public static bool Collected2;
+    public static bool Collected3;
+    public static bool Collected4;
+    public static bool Collected5;
+    public static bool Collected6;
+    public static bool Collected7;
+    public static bool Collected8;
+
+    [SerializeField] UnityEngine.UI.Image Button1;
+    [SerializeField] UnityEngine.UI.Image Button2;
+    [SerializeField] UnityEngine.UI.Image Button3;
+    [SerializeField] UnityEngine.UI.Image Button4;
+    [SerializeField] UnityEngine.UI.Image Button5;
+    [SerializeField] UnityEngine.UI.Image Button6;
+    [SerializeField] UnityEngine.UI.Image Button7;
+    [SerializeField] UnityEngine.UI.Image Button8;
+
+    [SerializeField] GameObject Mission2Button;
+    [SerializeField] GameObject Mission3Button;
+    [SerializeField] GameObject Mission4Button;
+    [SerializeField] GameObject Mission5Button;
+    [SerializeField] GameObject Mission6Button;
+    [SerializeField] GameObject Mission7Button;
+    [SerializeField] GameObject Mission8Button;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +42,17 @@ public class MissionSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Collected1)
+        {
+            Button1.color = new Color(0.23f,0.92f, 0.78f);
+            Mission2Button.SetActive(true);
+        }
+
+        if (Collected2) 
+        {
+            Button2.color = new Color(0.23f, 0.92f, 0.78f);
+            Mission3Button.SetActive(true);
+        } 
     }
 
     public void Mission1()
