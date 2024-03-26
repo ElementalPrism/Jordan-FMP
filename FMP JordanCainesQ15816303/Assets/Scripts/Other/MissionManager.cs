@@ -31,14 +31,18 @@ public class MissionManager : MonoBehaviour
     public GameObject Weed19;
     public GameObject Weed20;
     public GameObject Weed21;
+    public GameObject Diamond2;
+    public GameObject Diamond5;
 
     // Start is called before the first frame update
     void Start()
     {
         if (Level1Manager.CurrentMission == 1)
         {
+            //These are commented as these objects havent been added to the level yet,
+            //uncomment them once they have been filled in the inspector.
 
-            //WindmillObject.SetActive(false);
+            WindmillObject.SetActive(false);
             //Bucket.SetActive(false);
             //Flower.SetActive(true);
             //WellBlockade.SetActive(true);
@@ -65,36 +69,40 @@ public class MissionManager : MonoBehaviour
             //Weed20.SetActive(false);
             //Weed21.SetActive(false);
             BossObject.SetActive(true);
+            Diamond2.SetActive(false);
+            //Diamond5.SetActive(false);
         }
         else if (Level1Manager.CurrentMission == 2)
         {
             BossObject.SetActive(false);
             WindmillObject.SetActive(true);
-            WellBlockade.SetActive(true);
-            Bucket.SetActive(false);
-            Flower.SetActive(true);
-            Sunflower.SetActive(false);
-            Weed1.SetActive(false);
-            Weed2.SetActive(false);
-            Weed3.SetActive(false);
-            Weed4.SetActive(false);
-            Weed5.SetActive(false);
-            Weed6.SetActive(false);
-            Weed7.SetActive(false);
-            Weed8.SetActive(false);
-            Weed9.SetActive(false);
-            Weed10.SetActive(false);
-            Weed11.SetActive(false);
-            Weed12.SetActive(false);
-            Weed13.SetActive(false);
-            Weed14.SetActive(false);
-            Weed15.SetActive(false);
-            Weed16.SetActive(false);
-            Weed17.SetActive(false);
-            Weed18.SetActive(false);
-            Weed19.SetActive(false);
-            Weed20.SetActive(false);
-            Weed21.SetActive(false);
+            //WellBlockade.SetActive(true);
+            //Bucket.SetActive(false);
+            //Flower.SetActive(true);
+            //Sunflower.SetActive(false);
+            //Weed1.SetActive(false);
+            //Weed2.SetActive(false);
+            //Weed3.SetActive(false);
+            //Weed4.SetActive(false);
+            //Weed5.SetActive(false);
+            //Weed6.SetActive(false);
+            //Weed7.SetActive(false);
+            //Weed8.SetActive(false);
+            //Weed9.SetActive(false);
+            //Weed10.SetActive(false);
+            //Weed11.SetActive(false);
+            //Weed12.SetActive(false);
+            //Weed13.SetActive(false);
+            //Weed14.SetActive(false);
+            //Weed15.SetActive(false);
+            //Weed16.SetActive(false);
+            //Weed17.SetActive(false);
+            //Weed18.SetActive(false);
+            //Weed19.SetActive(false);
+            //Weed20.SetActive(false);
+            //Weed21.SetActive(false);
+            Diamond2.SetActive(true);
+            //Diamond5.SetActive(false);
         }
         else if (Level1Manager.CurrentMission == 3)
         {
@@ -125,6 +133,8 @@ public class MissionManager : MonoBehaviour
             Weed19.SetActive(false);
             Weed20.SetActive(false);
             Weed21.SetActive(false);
+            Diamond2.SetActive(true);
+            Diamond5.SetActive(false);
         }
         else if (Level1Manager.CurrentMission == 4)
         {
@@ -155,6 +165,8 @@ public class MissionManager : MonoBehaviour
             Weed19.SetActive(true);
             Weed20.SetActive(true);
             Weed21.SetActive(true);
+            Diamond2.SetActive(true);
+            Diamond5.SetActive(true);
         }
         else if (Level1Manager.CurrentMission >= 5)
         {
@@ -185,6 +197,8 @@ public class MissionManager : MonoBehaviour
             Weed19.SetActive(false);
             Weed20.SetActive(false);
             Weed21.SetActive(false);
+            Diamond2.SetActive(true);
+            Diamond5.SetActive(true);
         }
 
     }

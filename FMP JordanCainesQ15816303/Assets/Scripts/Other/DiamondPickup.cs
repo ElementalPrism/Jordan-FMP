@@ -25,13 +25,32 @@ public class DiamondPickup : MonoBehaviour
     public bool Collected7;
     public bool Collected8;
 
+    [SerializeField] GameObject ThisGameObject;
+    [SerializeField] Material Faded;
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Diamond1)
+        {
+            if (MissionSelector.Collected1 == true)
+            {
+                ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+            }
+        }
+        else if (Diamond2)
+        {
+            if (Diamond2)
+            {
+                if (MissionSelector.Collected2 == true)
+                {
+                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                }
+            }
+        }
     }
 
     // Update is called once per frame
@@ -52,8 +71,7 @@ public class DiamondPickup : MonoBehaviour
             }
 
         }
-
-        if (Diamond2)
+        else if (Diamond2)
         {
             if (MissionSelector.Collected2 == false)
             {
