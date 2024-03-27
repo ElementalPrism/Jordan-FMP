@@ -46,7 +46,7 @@ public class MissionManager : MonoBehaviour
             Bucket.SetActive(false);
             Flower.SetActive(true);
             WellBlockade.SetActive(true);
-            //Sunflower.SetActive(false);
+            Sunflower.SetActive(false);
             Weed1.SetActive(false);
             Weed2.SetActive(false);
             Weed3.SetActive(false);
@@ -70,7 +70,7 @@ public class MissionManager : MonoBehaviour
             Weed21.SetActive(false);
             BossObject.SetActive(true);
             Diamond2.SetActive(false);
-            //Diamond5.SetActive(false);
+            Diamond5.SetActive(false);
         }
         else if (Level1Manager.CurrentMission == 2)
         {
@@ -79,7 +79,7 @@ public class MissionManager : MonoBehaviour
             WellBlockade.SetActive(true);
             Bucket.SetActive(false);
             Flower.SetActive(true);
-            //Sunflower.SetActive(false);
+            Sunflower.SetActive(false);
             Weed1.SetActive(false);
             Weed2.SetActive(false);
             Weed3.SetActive(false);
@@ -102,7 +102,7 @@ public class MissionManager : MonoBehaviour
             Weed20.SetActive(false);
             Weed21.SetActive(false);
             Diamond2.SetActive(true);
-            //Diamond5.SetActive(false);
+            Diamond5.SetActive(false);
         }
         else if (Level1Manager.CurrentMission == 3)
         {
@@ -111,7 +111,7 @@ public class MissionManager : MonoBehaviour
             WellBlockade.SetActive(true);
             Bucket.SetActive(true);
             Flower.SetActive(true);
-            //Sunflower.SetActive(false);
+            Sunflower.SetActive(false);
             Weed1.SetActive(false);
             Weed2.SetActive(false);
             Weed3.SetActive(false);
@@ -134,16 +134,16 @@ public class MissionManager : MonoBehaviour
             Weed20.SetActive(false);
             Weed21.SetActive(false);
             Diamond2.SetActive(true);
-            //Diamond5.SetActive(false);
+            Diamond5.SetActive(false);
         }
         else if (Level1Manager.CurrentMission == 4)
         {
             BossObject.SetActive(false);
             WindmillObject.SetActive(true);
-            //WellBlockade.SetActive(false);
-            //Bucket.SetActive(false);
-            //Flower.SetActive(false);
-            //Sunflower.SetActive(true);
+            WellBlockade.SetActive(false);
+            Bucket.SetActive(false);
+            Flower.SetActive(false);
+            Sunflower.SetActive(true);
             Weed1.SetActive(true);
             Weed2.SetActive(true);
             Weed3.SetActive(true);
@@ -166,7 +166,7 @@ public class MissionManager : MonoBehaviour
             Weed20.SetActive(true);
             Weed21.SetActive(true);
             Diamond2.SetActive(true);
-            //Diamond5.SetActive(true);
+            Diamond5.SetActive(true);
         }
         else if (Level1Manager.CurrentMission >= 5)
         {
@@ -175,7 +175,7 @@ public class MissionManager : MonoBehaviour
             WellBlockade.SetActive(false);
             Bucket.SetActive(false);
             Flower.SetActive(false);
-            //Sunflower.SetActive(true);
+            Sunflower.SetActive(true);
             Weed1.SetActive(false);
             Weed2.SetActive(false);
             Weed3.SetActive(false);
@@ -198,7 +198,7 @@ public class MissionManager : MonoBehaviour
             Weed20.SetActive(false);
             Weed21.SetActive(false);
             Diamond2.SetActive(true);
-           // Diamond5.SetActive(true);
+            Diamond5.SetActive(true);
         }
 
     }

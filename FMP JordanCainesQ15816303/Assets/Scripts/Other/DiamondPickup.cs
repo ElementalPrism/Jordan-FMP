@@ -27,6 +27,7 @@ public class DiamondPickup : MonoBehaviour
 
     [SerializeField] GameObject ThisGameObject;
     [SerializeField] Material Faded;
+    public TreasureManager TreasureM;
 
 
 
@@ -76,6 +77,36 @@ public class DiamondPickup : MonoBehaviour
             if (Diamond5)
             {
                 if (MissionSelector.Collected5 == true)
+                {
+                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                }
+            }
+        }
+        else if (Diamond6)
+        {
+            if (Diamond6)
+            {
+                if (MissionSelector.Collected6 == true)
+                {
+                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                }
+            }
+        }
+        else if (Diamond7)
+        {
+            if (Diamond7)
+            {
+                if (MissionSelector.Collected7 == true)
+                {
+                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                }
+            }
+        }
+        else if (Diamond8)
+        {
+            if (Diamond8)
+            {
+                if (MissionSelector.Collected8 == true)
                 {
                     ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
                 }
@@ -138,6 +169,45 @@ public class DiamondPickup : MonoBehaviour
                 Collected5 = true;
                 DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
                 MissionSelector.Collected5 = true;
+            }
+        }
+        else if (Diamond6)
+        {
+            if (MissionSelector.Collected6 == false)
+            {
+                Collected6 = true;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                MissionSelector.Collected6 = true;
+                if (TreasureM)
+                {
+                    TreasureM.TreasureNumber = 6;
+                }
+            }
+        }
+        else if (Diamond7)
+        {
+            if (MissionSelector.Collected7 == false)
+            {
+                Collected7 = true;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                MissionSelector.Collected7 = true;
+                if (TreasureM)
+                {
+                    TreasureM.TreasureNumber = 6;
+                }
+            }
+        }
+        else if (Diamond8)
+        {
+            if (MissionSelector.Collected5 == false)
+            {
+                Collected8 = true;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                MissionSelector.Collected8= true;
+                if (TreasureM)
+                {
+                    TreasureM.TreasureNumber = 6;
+                }
             }
         }
 
