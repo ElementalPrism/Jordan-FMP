@@ -51,6 +51,36 @@ public class DiamondPickup : MonoBehaviour
                 }
             }
         }
+        else if (Diamond3)
+        {
+            if (Diamond3)
+            {
+                if (MissionSelector.Collected3 == true)
+                {
+                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                }
+            }
+        }
+        else if (Diamond4)
+        {
+            if (Diamond4)
+            {
+                if (MissionSelector.Collected4 == true)
+                {
+                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                }
+            }
+        }
+        else if (Diamond5)
+        {
+            if (Diamond5)
+            {
+                if (MissionSelector.Collected5 == true)
+                {
+                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                }
+            }
+        }
     }
 
     // Update is called once per frame
@@ -100,6 +130,15 @@ public class DiamondPickup : MonoBehaviour
                 MissionSelector.Collected4 = true;
             }
 
+        }
+        else if (Diamond5)
+        {
+            if (MissionSelector.Collected5 == false)
+            {
+                Collected5 = true;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                MissionSelector.Collected5 = true;
+            }
         }
 
         SceneManager.LoadScene(1);
