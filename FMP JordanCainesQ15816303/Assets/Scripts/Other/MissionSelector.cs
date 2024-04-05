@@ -47,6 +47,24 @@ public class MissionSelector : MonoBehaviour
             Button1.color = new Color(0.23f,0.92f, 0.78f);
             Mission2Button.SetActive(true);
         }
+        else if (!Collected1)
+        {
+            Button1.color = new Color(1f, 1f, 1f);
+            Button2.color = new Color(1f, 1f, 1f);
+            Button3.color = new Color(1f, 1f, 1f);
+            Button4.color = new Color(1f, 1f, 1f);
+            Button5.color = new Color(1f, 1f, 1f);
+            Button6.color = new Color(1f, 1f, 1f);
+            Button7.color = new Color(1f, 1f, 1f);
+            Button8.color = new Color(1f, 1f, 1f);
+            Mission2Button.SetActive(false);
+            Mission3Button.SetActive(false);
+            Mission4Button.SetActive(false);
+            Mission5Button.SetActive(false);
+            Mission6Button.SetActive(false);
+            Mission7Button.SetActive(false);
+            Mission8Button.SetActive(false);
+        }
 
         if (Collected2) 
         {
@@ -95,6 +113,14 @@ public class MissionSelector : MonoBehaviour
             Button8.color = new Color(0.23f, 0.92f, 0.78f);
             Mission8Button.SetActive(true);
         }
+
+
+
+
+
+        
+
+
     }
 
     public void Mission1()

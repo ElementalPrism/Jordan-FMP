@@ -8,6 +8,8 @@ public class Coin : MonoBehaviour
     public Text CoinText;
     public float SpinSpeed;
     public GameObject ThisCoin;
+
+    public Player PlayerChar;
     //public int CoinCounter;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +26,15 @@ public class Coin : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         CoinCounter.CoinAmount = CoinCounter.CoinAmount + 1;
+        CoinCounter.CollectedAmount = CoinCounter.CollectedAmount + 1;
+
+        if((PlayerChar.Health < 8) && (PlayerChar.IsDead == false))
+        {
+            PlayerChar.Health = PlayerChar.Health + 1;
+        }
+
+
+
         ThisCoin.SetActive(false);
     }
 }

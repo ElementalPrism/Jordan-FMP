@@ -211,6 +211,7 @@ public class DiamondPickup : MonoBehaviour
             }
         }
 
+        CoinCounter.CoinAmount = 0;
         SceneManager.LoadScene(1);
 
     }

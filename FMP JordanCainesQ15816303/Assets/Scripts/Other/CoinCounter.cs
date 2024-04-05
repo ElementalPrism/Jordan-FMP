@@ -8,6 +8,7 @@ public class CoinCounter : MonoBehaviour
 
     public GameObject CoinInfo;
     public static int CoinAmount;
+    public static int CollectedAmount;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +19,11 @@ public class CoinCounter : MonoBehaviour
     void Update()
     {
         CoinInfo.GetComponent<Text>().text = "x " + CoinAmount;
+
+        if (CollectedAmount == 50)
+        {
+            LivesManager.LivesAmount = LivesManager.LivesAmount + 1;
+            CollectedAmount = 0;
+        }
     }
 }

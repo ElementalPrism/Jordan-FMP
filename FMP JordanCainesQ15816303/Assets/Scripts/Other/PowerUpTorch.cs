@@ -6,6 +6,7 @@ public class PowerUpTorch : MonoBehaviour
 {
     public GameObject ThisObject;
     public GameObject ParticleEffect;
+    public bool IsActivated;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,20 +19,23 @@ public class PowerUpTorch : MonoBehaviour
         //    ThisObject.SetActive(true);
         //}
 
-        if (DiamondManager.DiamondAmount < 5)
-        {
-            ParticleEffect.SetActive(false);
-        }
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (DiamondManager.DiamondAmount >= 5)
+    {        
+        if (!IsActivated)
+        {
+            ParticleEffect.SetActive(false);
+            PowerUpManager.GravityPotionUnlocked = false;
+        }
+        else if (IsActivated)
         {
             ParticleEffect.SetActive(true);
             PowerUpManager.GravityPotionUnlocked = true;
         }
+
+
 
     }
 }

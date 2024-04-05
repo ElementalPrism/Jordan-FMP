@@ -216,6 +216,11 @@ public class Player : MonoBehaviour
         IsHurt = false;
     }
 
+    public void RemoveLife()
+    {
+        LivesManager.LivesAmount = LivesManager.LivesAmount - 1;
+    }
+
 
     void Jump()
     {
