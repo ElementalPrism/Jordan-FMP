@@ -18,6 +18,15 @@ public class PowerUpTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PowerUpManager.GravityPotionUnlocked == true)
+        {
+            Unlocked = true;
+        }
+
+
+
+
+
         if (Unlocked == true)
         {
             ThisPowerUp.GetComponent<MeshRenderer>().material = UnlockedMaterial;
