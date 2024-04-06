@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Skeleton : MonoBehaviour
 {
     [SerializeField] NavMeshAgent SkeletonAgent;
-    [SerializeField] Transform PlayerTransform;
+    [SerializeField] Transform PlayerTransform; 
     [SerializeField] JumpKillable JumpHitDetection;
     [SerializeField] GameObject ThisSkeleton;
     Vector3 TargetPosition;
@@ -91,8 +91,12 @@ public class Skeleton : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player>())
         {
-            collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 2;
-            collision.gameObject.GetComponent<Player>().IsHurt = true;
+            if (collision.gameObject.GetComponent<Player>().IsHurt == false)
+            {
+                collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 2;
+                collision.gameObject.GetComponent<Player>().IsHurt = true;
+            }
+
         }
         else
         {

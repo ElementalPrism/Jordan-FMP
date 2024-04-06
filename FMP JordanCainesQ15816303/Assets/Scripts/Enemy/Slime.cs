@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Slime : MonoBehaviour
 {
     [SerializeField] NavMeshAgent SlimeAgent;
+    [SerializeField] Player TargetPlayer;
     [SerializeField] Transform PlayerTransform;
     [SerializeField] JumpKillable JumpHitDetection;
     [SerializeField] GameObject ThisSlime;
@@ -26,7 +27,7 @@ public class Slime : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Vector3.Distance(transform.position, PlayerTransform.position) < ChaseDistance)
+        if ((Vector3.Distance(transform.position, PlayerTransform.position) < ChaseDistance) && (TargetPlayer.IsHurt == false))
         {
             Movement();
         }
@@ -44,21 +45,27 @@ public class Slime : MonoBehaviour
         {
             Destroy(ThisSlime);
         }
+
+        SlimeAnimator.SetFloat("MovementSpeed", SlimeAgent.velocity.magnitude);
     }
 
 
     void Movement()
     {
         SlimeAgent.SetDestination (PlayerTransform.position);
-        SlimeAnimator.SetBool("IsMoving", true);
+        //SlimeAnimator.SetBool("IsMoving", true);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Player>())
         {
-            collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 1;
-            collision.gameObject.GetComponent<Player>().IsHurt = true;
+            if(collision.gameObject.GetComponent<Player>().IsHurt == false)
+            {
+                collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 1;
+                collision.gameObject.GetComponent<Player>().IsHurt = true;
+            }
+
         }
         else
         {

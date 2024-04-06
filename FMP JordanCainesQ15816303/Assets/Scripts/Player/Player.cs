@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] float MovementSpeed;
@@ -219,6 +219,11 @@ public class Player : MonoBehaviour
     public void RemoveLife()
     {
         LivesManager.LivesAmount = LivesManager.LivesAmount - 1;
+
+        if (LivesManager.LivesAmount > 0)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
 
@@ -248,14 +253,17 @@ public class Player : MonoBehaviour
             //PlayerMovement.Normalize();
 
 
-            //transform.position = transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)));
             PlayerOrient = Camera.PlayerOrientation;
             PlayerMovement = (PlayerOrient.forward * Vert) + (PlayerOrient.right * Horizon);
             PlayerMovement.Normalize();
             PlayerAnimator.SetFloat("MovementSpeed", Mathf.Clamp01(PlayerMovement.magnitude));
             transform.position = transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)));
- 
 
+            //PlayerOrient = Camera.PlayerOrientation;
+            //PlayerMovement = (PlayerOrient.forward * Vert) + (PlayerOrient.right * Horizon);
+            //PlayerMovement.Normalize();
+            //PlayerAnimator.SetFloat("MovementSpeed", Mathf.Clamp01(PlayerMovement.magnitude));
+            ////PlayerRigid.MovePosition(transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed))));
 
             if (PlayerMovement != Vector3.zero)
             {

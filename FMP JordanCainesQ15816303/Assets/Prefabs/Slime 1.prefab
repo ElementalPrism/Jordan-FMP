@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6954284072156349151}
   - component: {fileID: 1704555988262210154}
   - component: {fileID: 1220691960906998693}
-  - component: {fileID: 6873173713519709071}
   - component: {fileID: 4586349256910873667}
   m_Layer: 7
   m_Name: Slime 1
@@ -147,25 +146,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlimeAgent: {fileID: 1704555988262210154}
+  TargetPlayer: {fileID: 0}
   PlayerTransform: {fileID: 0}
-  JumpHitDetection: {fileID: 6873173713519709071}
+  JumpHitDetection: {fileID: 6108958673693305360}
   ThisSlime: {fileID: 5849054798625305592}
   ChaseDistance: 5
   IsDead: 0
   SlimeAnimator: {fileID: 1036095689861602222}
---- !u!114 &6873173713519709071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5849054798625305592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b9f51009e19ef469b7657933a63b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TakenHit: 0
 --- !u!54 &4586349256910873667
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -305,6 +292,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: c103497383c8c7e429dd141cdedac9ed, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 1096060c912ea9e439ce6e24d7376392, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7095695048174874824, guid: 1096060c912ea9e439ce6e24d7376392, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 1.2907966e-10
@@ -327,6 +318,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1096060c912ea9e439ce6e24d7376392, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6112168377678461055}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1096060c912ea9e439ce6e24d7376392, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6108958673693305360}
   m_SourcePrefab: {fileID: 100100000, guid: 1096060c912ea9e439ce6e24d7376392, type: 3}
 --- !u!95 &1036095689861602222 stripped
 Animator:
@@ -373,6 +367,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlimeObject: {fileID: 1220691960906998693}
   SkeletonObject: {fileID: 0}
+--- !u!114 &6108958673693305360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037937258622753646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b9f51009e19ef469b7657933a63b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TakenHit: 0
 --- !u!4 &6377342670917747156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1096060c912ea9e439ce6e24d7376392, type: 3}

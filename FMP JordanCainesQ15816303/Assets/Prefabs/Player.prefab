@@ -149,8 +149,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1801203732514528654}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14148039, y: 0.000000044388955, z: -0.00000000634398, w: 0.98994106}
-  m_LocalPosition: {x: 0, y: 1.5278642, z: -5.2360687}
+  m_LocalRotation: {x: 0.14148045, y: -0.000000036178655, z: 0.0000000051705826, w: 0.98994106}
+  m_LocalPosition: {x: 0, y: 1.5278635, z: -5.2360754}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1204,6 +1204,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f3bae65b397f254e99c0e56a2cc94fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5234686043642202060}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8f3bae65b397f254e99c0e56a2cc94fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2552799027361771920}
   m_SourcePrefab: {fileID: 100100000, guid: 8f3bae65b397f254e99c0e56a2cc94fc, type: 3}
 --- !u!95 &2959162297487279320 stripped
 Animator:
@@ -1243,6 +1246,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerChar: {fileID: 5280187266871093784}
   BossChar: {fileID: 0}
+--- !u!114 &2552799027361771920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411301432413176856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756ae1a80fa45a04fbe0d1f8eee5707f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerChar: {fileID: 5280187266871093784}
 --- !u!4 &9219188098272370338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8f3bae65b397f254e99c0e56a2cc94fc, type: 3}
