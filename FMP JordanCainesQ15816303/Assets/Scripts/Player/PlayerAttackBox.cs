@@ -28,12 +28,17 @@ public class PlayerAttackBox : MonoBehaviour
             }
             
         }
+        else if (other.gameObject.GetComponent<Weed>())
+        {
+                other.gameObject.GetComponent<Weed>().WeedDestruction();
+        }
         else
         {
             if(other.gameObject.layer != 9)
             {
                 other.gameObject.GetComponent<Animator>().SetBool("IsDead", true);
             }
+
             
         }
         

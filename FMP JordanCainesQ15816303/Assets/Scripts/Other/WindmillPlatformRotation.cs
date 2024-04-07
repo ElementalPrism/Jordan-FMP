@@ -15,7 +15,7 @@ public class WindmillPlatformRotation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.eulerAngles = new Vector3(RotationX, RotationY, RotationZ);
     }

@@ -8,9 +8,11 @@ public class Flower : MonoBehaviour
     [SerializeField] Transform PlayerTransform;
     [SerializeField] float TriggerDistance;
     [SerializeField] GameObject ThisGameObject;
+    [SerializeField] GameObject PlantPot;
     [SerializeField] GameObject NewFlower;
     [SerializeField] GameObject Bucket;
     [SerializeField] GameObject Diamond3;
+    [SerializeField] GameObject InteractIcon;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +22,25 @@ public class Flower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Vector3.Distance(transform.position, PlayerTransform.position) < TriggerDistance) && (BucketCheck.IsHolding == true))
+        if ((Vector3.Distance(PlantPot.transform.position, PlayerTransform.position) < TriggerDistance) && (BucketCheck.IsHolding == true))
         {
-            Bucket.SetActive(false);
-            NewFlower.SetActive(true);
-            Diamond3.SetActive(true);
-            ThisGameObject.SetActive(false);
+            InteractIcon.SetActive(true);
+
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                BucketCheck.IsHolding = false;
+                Bucket.SetActive(false);
+                NewFlower.SetActive(true);
+                Diamond3.SetActive(true);
+                ThisGameObject.SetActive(false);
 
 
+            }
 
+        }
+        else
+        {
+            InteractIcon.SetActive(false);
         }
     }
 }

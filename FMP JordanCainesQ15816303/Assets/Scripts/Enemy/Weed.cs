@@ -6,7 +6,7 @@ public class Weed : MonoBehaviour
 {
     [SerializeField] NPCSystem NPCChecker;
     public GameObject ThisObject;
-    public JumpKillable JumpDetect;
+    //public JumpKillable JumpDetect;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +16,11 @@ public class Weed : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (JumpDetect.TakenHit)
-        {
-            NPCChecker.WeedCounter = NPCChecker.WeedCounter - 1;
-            Destroy(ThisObject);
-        }
+        //if (JumpDetect.TakenHit)
+        //{
+        //    NPCChecker.WeedCounter = NPCChecker.WeedCounter - 1;
+        //    Destroy(ThisObject);
+        //}
     }
 
     public void WeedDestruction()

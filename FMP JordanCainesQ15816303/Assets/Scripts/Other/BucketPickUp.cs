@@ -8,6 +8,8 @@ public class BucketPickUp : MonoBehaviour
     [SerializeField] GameObject CarryLocation;
     [SerializeField] Transform PlayerTransform;
     [SerializeField] float TriggerDistance;
+    [SerializeField] GameObject InteractIcon;
+
     public bool IsHolding;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,18 @@ public class BucketPickUp : MonoBehaviour
     {
         if((Vector3.Distance(transform.position, PlayerTransform.position) < TriggerDistance) && (IsHolding == false))
         {
-            IsHolding = true;
+            InteractIcon.SetActive(true);
+           // IsHolding = true;
+
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                IsHolding = true;
+            }
+
+        }
+        else
+        {
+            InteractIcon.SetActive(false);
         }
 
 
