@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnOrbs : MonoBehaviour
 {
     public Boss BossScript;
+    public GameObject BossObject;
     public Transform AttackSpawnLocation;
 
     public GameObject ReflectOrb;
@@ -60,6 +61,8 @@ public class SpawnOrbs : MonoBehaviour
         {
             ReflectAttack = Instantiate(ReflectOrb, AttackSpawnLocation);
             ReflectAttack.GetComponent<ReflectableAttack>().TargetTransform = BossScript.HomingTargetTransform;
+            ReflectAttack.GetComponent<ReflectableAttack>().BossTransform = BossObject.transform;
+            Boss.ReflectOrbCount = 1;
             BossScript.CanFire = false;
         }
 
@@ -69,6 +72,7 @@ public class SpawnOrbs : MonoBehaviour
             {
                 NormalAttack = Instantiate(NormalOrb, AttackSpawnLocation);
                 NormalAttack.GetComponent<OrbAttack>().PlayerTarget = BossScript.StandardTargetTransform;
+                NormalAttack.GetComponent<OrbAttack>().BossTransform = BossObject.transform;
                 BossScript.ShotCounter = BossScript.ShotCounter + 1;
             }
 
@@ -76,7 +80,9 @@ public class SpawnOrbs : MonoBehaviour
             {
                 ReflectAttack = Instantiate(ReflectOrb, AttackSpawnLocation);
                 ReflectAttack.GetComponent<ReflectableAttack>().TargetTransform = BossScript.HomingTargetTransform;
+                ReflectAttack.GetComponent<ReflectableAttack>().BossTransform = BossObject.transform;
                 BossScript.ShotCounter = 0;
+                Boss.ReflectOrbCount = 1;
                 BossScript.CanFire = false;
             }
 

@@ -10,6 +10,8 @@ public class ReflectableAttack : MonoBehaviour
     public Transform TargetTransform;
     public GameObject ThisObject;
     public bool CanDamage;
+    public Transform BossTransform;
+    float Distance = 12;
     //[SerializeField] Transform PractiseTarget;
 
     // Start is called before the first frame update
@@ -21,7 +23,11 @@ public class ReflectableAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Vector3.Distance(transform.position, BossTransform.position) > Distance)
+        {
+            Boss.ReflectOrbCount = 0;
+            Destroy(ThisObject);
+        }
     }
 
     private void FixedUpdate()
@@ -41,6 +47,10 @@ public class ReflectableAttack : MonoBehaviour
         {
             other.gameObject.GetComponent<Player>().Health = other.gameObject.GetComponent<Player>().Health - 1;
             other.gameObject.GetComponent<Player>().IsHurt = true;
+            Boss.ReflectOrbCount = 0;
+            CanDamage = false;
+            Destroy(ThisObject);
+
         }
 
 
@@ -75,7 +85,7 @@ public class ReflectableAttack : MonoBehaviour
                     other.gameObject.GetComponent<Boss>().Health = other.gameObject.GetComponent<Boss>().Health - 1;
                     other.gameObject.GetComponent<Boss>().IsHurt = true;
                     other.gameObject.GetComponent<Boss>().CurrentPhase = other.gameObject.GetComponent<Boss>().CurrentPhase + 1;            
-                    other.gameObject.GetComponent<Boss>().CanFire = true;
+                    //other.gameObject.GetComponent<Boss>().CanFire = true;
                     CanDamage = false;
                     Destroy(ThisObject);
                 }

@@ -35,6 +35,8 @@ public class Boss : MonoBehaviour
     GameObject ReflectAttack;
     GameObject NormalAttack1;
 
+    public static int ReflectOrbCount;
+
     public GameObject DiamondDrop;
 
     // Start is called before the first frame update
@@ -49,8 +51,6 @@ public class Boss : MonoBehaviour
         if (Vector3.Distance(transform.position, PlayerTransform.position) < AggroDistance)
         {
 
-           // if (CurrentPhase == 1)
-           // {
                 if (CanFire == true)
                 {
                     BossAnimator.SetBool("IsAttacking", true); 
@@ -61,63 +61,7 @@ public class Boss : MonoBehaviour
                     BossAnimator.SetBool("IsAttacking", false);
                 }
                 
-            //}
-
-            //if (CurrentPhase == 2)
-            ////{
-            //    if (CanFire == true) 
-            //    { 
-            //        //if((Waiting == false) && (ShotCounter < 3))
-            //        //{
-            //        //    NormalAttack1 = Instantiate(StandardAttack, AttackSpawnLocation);
-            //        //    NormalAttack1.GetComponent<OrbAttack>().PlayerTarget = StandardTargetTransform;
-            //        //    ShotCounter = ShotCounter + 1;
-            //        //    Waiting = true;
-            //        //    StartCoroutine(StartWait());
-            //        //}
-
-
-
-            //        if (ShotCounter == 3)
-            //        {
-            //            Waiting = true;
-            //            StartCoroutine(StartWait());
-            //            ReflectAttack = Instantiate(ReflectableAttack, AttackSpawnLocation);
-            //            ReflectAttack.GetComponent<ReflectableAttack>().TargetTransform = HomingTargetTransform;
-            //            ShotCounter = 0;
-            //            CanFire = false;
-            //        }
-            //    }
-
-            //}
-
-            //if (CurrentPhase == 3)
-            //{
-            //    if (CanFire == true)
-            //    {
-            //        if ((Waiting == false) && (ShotCounter < 3))
-            //        {
-            //            NormalAttack1 = Instantiate(StandardAttack, AttackSpawnLocation);
-            //            NormalAttack1.GetComponent<OrbAttack>().PlayerTarget = StandardTargetTransform;
-            //            ShotCounter = ShotCounter + 1;
-            //            Waiting = true;
-            //            StartCoroutine(StartWait());
-            //        }
-
-
-
-            //        if (ShotCounter == 3)
-            //        {
-            //            Waiting = true;
-            //            StartCoroutine(StartWait());
-            //            ReflectAttack = Instantiate(ReflectableAttack, AttackSpawnLocation);
-            //            ReflectAttack.GetComponent<ReflectableAttack>().TargetTransform = HomingTargetTransform;
-            //            ShotCounter = 0;
-            //            CanFire = false;
-            //        }
-
-            //    }
-            //}
+     
 
             BossAnimator.SetBool("IsInBattle", true);
         }
@@ -125,6 +69,8 @@ public class Boss : MonoBehaviour
         if (Vector3.Distance(transform.position, PlayerTransform.position) > AggroDistance)
         {
             BossAnimator.SetBool("IsInBattle", false);
+            BossAnimator.SetBool("IsAttacking", false);
+            //CanFire = false;
         }
 
         if (IsHurt == true)
@@ -143,7 +89,28 @@ public class Boss : MonoBehaviour
         }
 
 
+
         HealthSystem();
+
+        if ((ReflectOrbCount == 0) && (Vector3.Distance(transform.position, PlayerTransform.position) < AggroDistance))
+        {
+            CanFire = true;
+        }
+
+
+        if (CurrentPhase == 3)
+        {
+            if (ReflectOrbCount == 0)
+            {
+                Health = 1;
+                Reflected = false;
+            }
+        }
+
+
+
+
+
     }
 
     void HealthSystem()
@@ -176,6 +143,7 @@ public class Boss : MonoBehaviour
     {
         IsHurt = false;
         BossAnimator.SetBool("IsHurt", false);
+        CanFire = true;
     }
 
     public void StopBlock()

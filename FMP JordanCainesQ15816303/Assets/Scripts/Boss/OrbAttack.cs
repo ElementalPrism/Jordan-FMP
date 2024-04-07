@@ -10,6 +10,8 @@ public class OrbAttack : MonoBehaviour
     [SerializeField] float TargetDistance;
     [SerializeField] float Speed;
     public GameObject ThisObject;
+    float Distance = 12;
+    public Transform BossTransform;
     Vector3 TargetPosition;
 
     // Start is called before the first frame update
