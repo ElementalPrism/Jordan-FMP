@@ -185,6 +185,11 @@ public class Player : MonoBehaviour
  
         }
 
+        if(CanMove == false)
+        {
+            PlayerAnimator.SetFloat("MovementSpeed", 0);
+        }
+
     }
 
     private void FixedUpdate()

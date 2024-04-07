@@ -14,8 +14,7 @@ public class NPCSystem : MonoBehaviour
     [SerializeField] GameObject TextBackground;
     [SerializeField] GameObject NPCText;
     public string NPCSpeech1;
-    public string NPCSpeech2;
-    public string NPCSpeech3;
+
     [SerializeField] GameObject InteractIcon;
 
     [SerializeField] bool IsTorch;
@@ -41,9 +40,6 @@ public class NPCSystem : MonoBehaviour
         {
             InteractIcon.SetActive(true);
 
-
-
-
             if (Input.GetKeyDown(KeyCode.F) && (IsTalking == false))
             {
                 IsTalking = true;
@@ -51,6 +47,60 @@ public class NPCSystem : MonoBehaviour
                 TargetPlayer.CanMove = false;
                 TextBackground.SetActive(true);
                 NPCText.SetActive(true);
+
+                if (Level1Manager.CurrentMission == 1)
+                {
+                    NPCText.GetComponent<Text>().text = "An evil skeleton has set up camp at the top of the mountain. Maybe your sword can give it a taste of it's own medicine!";
+                }
+                else if (Level1Manager.CurrentMission == 2)
+                {
+                    NPCText.GetComponent<Text>().text = "After you defeated that menace, I built a Windmill! I see something shiny up there...";
+                }
+                else if (Level1Manager.CurrentMission == 3)
+                {
+                    NPCText.GetComponent<Text>().text = "I've noticed a dying flower in the forest. Maybe some water from the well will help it.";
+                }
+                else if (Level1Manager.CurrentMission == 4)
+                {
+                    if (WeedCounter > 0)
+                    {
+                        NPCText.GetComponent<Text>().text = "This place has been overrun with weeds! You have " + WeedCounter + "to kill";
+                    }
+                    else if (WeedCounter == 0)
+                    {
+                        NPCText.GetComponent<Text>().text = "You killed all the weeds! Take this shiny thing I found as a thank you present.";
+                    }
+
+                }
+                else if (Level1Manager.CurrentMission == 5)
+                {
+                    NPCText.GetComponent<Text>().text = "That flower became a giant sunflower! I think I see something shiny on it's petals.";
+                }
+                else if (Level1Manager.CurrentMission == 6)
+                {
+                    NPCText.GetComponent<Text>().text = "I heard some sounds coming from inside the well but I am too scared to investigate.";
+                }
+                else if (Level1Manager.CurrentMission == 7)
+                {
+                    NPCText.GetComponent<Text>().text = "There is a legend about some treasure being left at the bottom of this well. I don't know if this is true as I am scared to enter the well.";
+                }
+                else if (Level1Manager.CurrentMission == 8)
+                {
+                    NPCText.GetComponent<Text>().text = "I noticed a torch during my trek up another mountain. Maybe that torch is linked to the mysteries of the well!";
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 if (IsTorch)
                 {
