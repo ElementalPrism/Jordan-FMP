@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using Cinemachine;
+
 public class Player : MonoBehaviour
 {
     [SerializeField] float MovementSpeed;
@@ -12,10 +14,13 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask Layer;
     [SerializeField] GameObject PlayerAttackBox;
     [SerializeField] CameraPositioning Camera;
+    [SerializeField] CinemachineFreeLook CameraFree;
+    CameraState cameraState;
     Transform PlayerOrient;
     float Horizon;
     float Vert;
     Vector3 PlayerMovement;
+    Transform PlayerTransformSave;
     bool IsGrounded;
     bool IsAttacking;
     public bool IsHurt;
@@ -26,6 +31,7 @@ public class Player : MonoBehaviour
     public bool PowerUp;
     bool GravityFlipped;
     bool DoubleJumped;
+    bool FlippedOnce;
     bool Flipped;
     public bool CanMove;
 
@@ -53,6 +59,7 @@ public class Player : MonoBehaviour
         {
             IsGrounded = true;
             PlayerAnimator.SetBool("IsGrounded", true);
+            FlippedOnce = false;
         }
         else
         {
@@ -67,6 +74,7 @@ public class Player : MonoBehaviour
             {
                  IsGrounded = true;
                  PlayerAnimator.SetBool("IsGrounded", true);
+                 FlippedOnce = false;
             }
 
         }
@@ -122,18 +130,32 @@ public class Player : MonoBehaviour
                 {
                     if (GravityFlipped == false)
                     {
-                        ThisPlayer.GetComponent<Rigidbody>().useGravity = false;
-                        ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
-                        Flipped = true;
-                        GravityFlipped = true;
+                        if(FlippedOnce == false)
+                        {
+                            ThisPlayer.GetComponent<Rigidbody>().useGravity = false;
+                            //ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
+                            Flipped = true;
+                            FlippedOnce = true;
+                            CameraFree.m_Lens.Dutch = 180;
+                            CameraFree.m_XAxis.m_InvertInput = true;
+                            GravityFlipped = true;
+                        }
+
                     }
                     else if (GravityFlipped == true)
                     {
-                        ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
-                        ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, -5f, 0f);
-                        Flipped = false;
-                        ThisPlayer.transform.Rotate(0, 0, 180);
-                        GravityFlipped = false;
+                        if (FlippedOnce == false) 
+                        {
+                            ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
+                            ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, -5f, 0f);
+                            Flipped = false;
+                            FlippedOnce = true;
+                            ThisPlayer.transform.Rotate(0, 0, 180);
+                            CameraFree.m_Lens.Dutch = 0;
+                            CameraFree.m_XAxis.m_InvertInput = false;
+                            GravityFlipped = false;
+
+                        }
                     }
 
                 }
@@ -149,10 +171,16 @@ public class Player : MonoBehaviour
             }
         }
 
+
         if (Flipped == true)
         {
-            ThisPlayer.transform.rotation = Quaternion.Euler(0, 0, 180);
+            var PlayerRotation = ThisPlayer.transform.eulerAngles;
+            ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
+            ThisPlayer.transform.rotation = Quaternion.Euler(PlayerRotation.x, PlayerRotation.y, 180);
+            
         }
+
+
 
         //if (Input.GetKeyDown(KeyCode.Mouse1))
         //{
@@ -190,6 +218,7 @@ public class Player : MonoBehaviour
             PlayerAnimator.SetFloat("MovementSpeed", 0);
         }
 
+        PlayerTransformSave = ThisPlayer.transform;
     }
 
     private void FixedUpdate()
@@ -234,7 +263,15 @@ public class Player : MonoBehaviour
 
     void Jump()
     {
-        PlayerRigid.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+        if (GravityFlipped == false)
+        {
+           PlayerRigid.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+        }
+        else if (GravityFlipped == true)
+        {
+           PlayerRigid.AddForce(Vector3.down * JumpForce, ForceMode.Impulse);
+        }
+        //PlayerRigid.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
     }
 
     IEnumerator PowerUpTimer()
@@ -243,6 +280,8 @@ public class Player : MonoBehaviour
         PowerUp = false;
         ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
         ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 0f, 0f);
+        CameraFree.m_Lens.Dutch = 0;
+        CameraFree.m_XAxis.m_InvertInput = false;
         GravityFlipped = false;
 
     }
@@ -251,13 +290,21 @@ public class Player : MonoBehaviour
     {
         if ((!IsAttacking) && (IsHurt == false) && (CanMove == true))
         {
-            Horizon = Input.GetAxis("Horizontal");
+            if (Flipped == false)
+            {
+                Horizon = Input.GetAxis("Horizontal");
+
+            }
+            else if (Flipped == true)
+            {
+                Horizon = -Input.GetAxis("Horizontal");
+            }
+
             Vert = Input.GetAxis("Vertical");
 
             //PlayerMovement = new Vector3(Horizon, 0, Vert);
             //PlayerMovement.Normalize();
-
-
+            
             PlayerOrient = Camera.PlayerOrientation;
             PlayerMovement = (PlayerOrient.forward * Vert) + (PlayerOrient.right * Horizon);
             PlayerMovement.Normalize();

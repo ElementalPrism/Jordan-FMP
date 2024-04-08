@@ -14,10 +14,12 @@ public class NPCSystem : MonoBehaviour
     [SerializeField] GameObject TextBackground;
     [SerializeField] GameObject NPCText;
     public string NPCSpeech1;
+    public string NPCSpeech2;
 
     [SerializeField] GameObject InteractIcon;
 
     [SerializeField] bool IsTorch;
+    [SerializeField] bool IsPowerUpSign;
     int TorchDiamondRequirement = 5;
     int TorchDiamondNumber;
     public bool GravityTorchActivated;
@@ -92,7 +94,18 @@ public class NPCSystem : MonoBehaviour
 
 
 
+                if (IsPowerUpSign)
+                {
+                    if (PowerUpManager.GravityPotionUnlocked == false)
+                    {
+                       NPCText.GetComponent<Text>().text = NPCSpeech1;
+                    }
+                    else if (PowerUpManager.GravityPotionUnlocked == true)
+                    {
+                       NPCText.GetComponent<Text>().text = NPCSpeech2;
+                    }
 
+                }
 
 
 
