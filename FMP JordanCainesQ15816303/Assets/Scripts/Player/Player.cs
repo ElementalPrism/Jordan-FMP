@@ -15,6 +15,11 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject PlayerAttackBox;
     [SerializeField] CameraPositioning Camera;
     [SerializeField] CinemachineFreeLook CameraFree;
+
+    [SerializeField] GameObject LevelMusic;
+    [SerializeField] GameObject PowerUpMusic;
+    //These are GameObjects not audio sources because there is a bug where after switching audio sources, the player instantly dies. 
+
     CameraState cameraState;
     Transform PlayerOrient;
     float Horizon;
@@ -208,7 +213,7 @@ public class Player : MonoBehaviour
         {
             if (CanMove == true)
             {
-                 StartCoroutine(PowerUpTimer());
+                StartCoroutine(PowerUpTimer());
             }
  
         }
@@ -279,7 +284,18 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(PowerUpTime);
         PowerUp = false;
         ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
+
         ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 0f, 0f);
+
+        if (Flipped == true)
+        {
+            ThisPlayer.transform.Rotate(0, 0, 180);
+            Flipped = false;
+        }
+
+        //LevelMusic.SetActive(true);
+        //PowerUpMusic.SetActive(false);
+
         CameraFree.m_Lens.Dutch = 0;
         CameraFree.m_XAxis.m_InvertInput = false;
         GravityFlipped = false;

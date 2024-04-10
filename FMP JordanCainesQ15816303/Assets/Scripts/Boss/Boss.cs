@@ -13,6 +13,10 @@ public class Boss : MonoBehaviour
     [SerializeField] Transform AttackSpawnLocation;
     [SerializeField] float TimeBetweenShots;
 
+    [SerializeField] AudioSource LevelMusic;
+    [SerializeField] AudioSource BossMusic;
+
+
     public GameObject Target;
     public GameObject ReflectableAttack;
     public GameObject StandardAttack;
@@ -64,12 +68,17 @@ public class Boss : MonoBehaviour
      
 
             BossAnimator.SetBool("IsInBattle", true);
+            LevelMusic.enabled= false;
+            BossMusic.enabled = true;
         }
         
         if (Vector3.Distance(transform.position, PlayerTransform.position) > AggroDistance)
         {
             BossAnimator.SetBool("IsInBattle", false);
             BossAnimator.SetBool("IsAttacking", false);
+
+            LevelMusic.enabled = true;
+            BossMusic.enabled = false;
             //CanFire = false;
         }
 
@@ -81,6 +90,8 @@ public class Boss : MonoBehaviour
         if (IsDead == true)
         {
             BossAnimator.SetBool("IsDead", true);
+            LevelMusic.enabled = true;
+            BossMusic.enabled = false;
         }
 
         if (IsBlocking == true)
