@@ -16,9 +16,6 @@ public class Player : MonoBehaviour
     [SerializeField] CameraPositioning Camera;
     [SerializeField] CinemachineFreeLook CameraFree;
 
-    [SerializeField] GameObject LevelMusic;
-    [SerializeField] GameObject PowerUpMusic;
-    //These are GameObjects not audio sources because there is a bug where after switching audio sources, the player instantly dies. 
 
     CameraState cameraState;
     Transform PlayerOrient;
@@ -46,9 +43,15 @@ public class Player : MonoBehaviour
 
     public float PowerUpTime;
 
+    bool MusicTriggered;
+
     
     public Rigidbody PlayerRigid;
     RaycastHit DownwardRaycast;
+
+    [SerializeField] AudioSource LevelMusic;
+    [SerializeField] AudioSource PowerUpMusic;
+
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +68,7 @@ public class Player : MonoBehaviour
             IsGrounded = true;
             PlayerAnimator.SetBool("IsGrounded", true);
             FlippedOnce = false;
+
         }
         else
         {
@@ -211,11 +215,19 @@ public class Player : MonoBehaviour
 
         if (PowerUp)
         {
+            Debug.Log("Power Up Active");
             if (CanMove == true)
             {
+                Debug.Log("Can Move");
+                Debug.Log("Disable Level Music");
+                   LevelMusic.enabled = false;
+                Debug.Log("Enable Power Up Music");
+                PowerUpMusic.enabled = true;
+
+                Debug.Log("Start Coroutine");
                 StartCoroutine(PowerUpTimer());
             }
- 
+            //DO NOT REMOVE THE DEBUG LOGS. IDK why this stops the player from dying when switching music but it fixes the issue.
         }
 
         if(CanMove == false)
@@ -277,11 +289,16 @@ public class Player : MonoBehaviour
            PlayerRigid.AddForce(Vector3.down * JumpForce, ForceMode.Impulse);
         }
         //PlayerRigid.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+
+
+
     }
 
     IEnumerator PowerUpTimer()
     {
+        Debug.Log("Timer Active");
         yield return new WaitForSeconds(PowerUpTime);
+        Debug.Log("Timer Ran Out");
         PowerUp = false;
         ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
 
@@ -295,6 +312,10 @@ public class Player : MonoBehaviour
 
         //LevelMusic.SetActive(true);
         //PowerUpMusic.SetActive(false);
+        Debug.Log("Disable Power Up Music");
+        PowerUpMusic.enabled = false;
+        Debug.Log("Enable Level Music");
+        LevelMusic.enabled = true;
 
         CameraFree.m_Lens.Dutch = 0;
         CameraFree.m_XAxis.m_InvertInput = false;

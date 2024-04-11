@@ -10,6 +10,7 @@ public class Coin : MonoBehaviour
     public GameObject ThisCoin;
 
     public Player PlayerChar;
+    [SerializeField] AudioSource CoinCollectSFX;
     //public int CoinCounter;
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class Coin : MonoBehaviour
         }
 
 
-
+        CoinCollectSFX.Play();
         ThisCoin.SetActive(false);
     }
 }

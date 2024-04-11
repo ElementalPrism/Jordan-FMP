@@ -6,6 +6,7 @@ public class TreasurePickUp : MonoBehaviour
 {
     public TreasureManager TreasureM;
     public GameObject ThisObject;
+    [SerializeField] AudioSource CollectedSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class TreasurePickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        CollectedSFX.Play();
         TreasureM.TreasureNumber = TreasureM.TreasureNumber - 1;
         Destroy(ThisObject);
     }
