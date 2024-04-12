@@ -6,6 +6,7 @@ public class BossSFX : MonoBehaviour
 {
     [SerializeField] AudioSource SpawnAttackSFX;
     [SerializeField] AudioSource BlockAttackSFX;
+    [SerializeField] AudioSource HitSFX;
     [SerializeField] AudioSource DeathSFX;
     // Start is called before the first frame update
     void Start()
@@ -32,5 +33,10 @@ public class BossSFX : MonoBehaviour
     public void PlayDeath()
     {
         DeathSFX.Play();
+    }
+
+    public void PlayHit()
+    {
+        HitSFX.Play();
     }
 }

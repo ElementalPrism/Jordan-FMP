@@ -776,6 +776,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.330292
@@ -2676,6 +2680,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 70.37662
@@ -3100,6 +3108,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.706818
@@ -4775,6 +4787,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 62.06955
@@ -4905,6 +4921,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1127231247}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &223023584
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -49.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.160099
+      objectReference: {fileID: 0}
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 530109967726733232, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066500815402981486, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+      propertyPath: m_Name
+      value: CoinSFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+--- !u!82 &223023585 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2835246725044548722, guid: 7ca2b8ecd77d75247863d1d64c90fac4, type: 3}
+  m_PrefabInstance: {fileID: 223023584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &226454803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5827,6 +5905,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.46814
@@ -8163,6 +8245,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.566833
@@ -8328,6 +8414,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.78836
@@ -8529,6 +8619,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.359985
@@ -9086,6 +9180,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3821411
@@ -9373,6 +9471,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.071899414
@@ -9984,6 +10086,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.014678955
@@ -10269,6 +10375,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 61.434387
@@ -10451,6 +10561,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.848724
@@ -10662,6 +10776,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.285126
@@ -12001,6 +12119,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.55249
@@ -12151,6 +12273,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.46872
@@ -12899,6 +13025,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.43579
@@ -13000,6 +13130,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 35.26001
@@ -13512,6 +13646,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 61.40915
@@ -13591,6 +13729,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.754425
@@ -13692,6 +13834,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 94.46359
@@ -14178,6 +14324,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 67.28726
@@ -14813,6 +14963,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.528717
@@ -15286,6 +15440,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.558716
@@ -16656,6 +16814,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 58.50952
@@ -16730,6 +16892,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 41.700745
@@ -17431,6 +17597,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 56.430756
@@ -19258,6 +19428,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.284363
@@ -19847,7 +20021,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 4730f4351f37a08469df251c1fdc5c9f, type: 3}
   m_Resource: {fileID: 8300000, guid: 4730f4351f37a08469df251c1fdc5c9f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -20310,6 +20484,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 66.15451
@@ -20715,6 +20893,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.26226807
@@ -21589,6 +21771,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5102234
@@ -21932,6 +22118,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.457703
@@ -22143,6 +22333,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 51.400574
@@ -22212,6 +22406,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1593628
@@ -22639,6 +22837,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.298584
@@ -22832,6 +23034,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 74.8201
@@ -23090,6 +23296,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.129669
@@ -24069,6 +24279,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7426147
@@ -24714,6 +24928,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 98.781525
@@ -24788,6 +25006,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.563568
@@ -24862,6 +25084,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.30304
@@ -25816,6 +26042,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 69.65881
@@ -26334,6 +26564,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 67.54706
@@ -27298,6 +27532,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.89871216
@@ -27367,6 +27605,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.312836
@@ -27549,6 +27791,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 38.494965
@@ -27772,6 +28018,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 97.81836
@@ -28053,6 +28303,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 98.48154
@@ -29010,6 +29264,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 57.47928
@@ -29764,6 +30022,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.0183716
@@ -31339,6 +31601,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.3259583
@@ -31413,6 +31679,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65.68533
@@ -31487,6 +31757,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.1605225
@@ -31773,11 +32047,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1674441943091682036, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000021422316
+      value: 0.00000002142232
       objectReference: {fileID: 0}
     - target: {fileID: 1674441943091682036, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000019176511
+      value: -0.0000000019176516
       objectReference: {fileID: 0}
     - target: {fileID: 2108133701918579907, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: BossChar
@@ -31809,11 +32083,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3190783626485120920, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000004550005
+      value: -0.000000045500055
       objectReference: {fileID: 0}
     - target: {fileID: 3190783626485120920, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000006502774
+      value: 0.0000000065027743
       objectReference: {fileID: 0}
     - target: {fileID: 3628235002691742593, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalPosition.x
@@ -31905,11 +32179,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7175550972576756249, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000054227815
+      value: -0.000000054227815
       objectReference: {fileID: 0}
     - target: {fileID: 7175550972576756249, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000077501285
+      value: 0.0000000077501285
       objectReference: {fileID: 0}
     - target: {fileID: 7323668032113124083, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_Constraints
@@ -33073,6 +33347,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 98.96393
@@ -33537,6 +33815,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.4492798
@@ -33761,6 +34043,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 59.701843
@@ -35559,6 +35845,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 65.82904
@@ -35883,6 +36173,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.82379
@@ -36071,6 +36365,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.5185547
@@ -36199,6 +36497,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.336823
@@ -37142,6 +37444,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 58.59381
@@ -39323,6 +39629,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 96.81708
@@ -40895,6 +41205,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.60132
@@ -41644,6 +41958,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.53769
@@ -43598,6 +43916,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.389404
@@ -44218,6 +44540,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5162048
@@ -44582,6 +44908,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.396118
@@ -45061,6 +45391,10 @@ PrefabInstance:
       propertyPath: PlayerChar
       value: 
       objectReference: {fileID: 1496366080}
+    - target: {fileID: 5067908440133082581, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
+      propertyPath: CoinCollectSFX
+      value: 
+      objectReference: {fileID: 223023585}
     - target: {fileID: 5654922205098156965, guid: d69a9b94df40ef94fbffecf763548f41, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.95047
@@ -45434,3 +45768,4 @@ SceneRoots:
   - {fileID: 3084559754704345338}
   - {fileID: 928200359}
   - {fileID: 139140646}
+  - {fileID: 223023584}

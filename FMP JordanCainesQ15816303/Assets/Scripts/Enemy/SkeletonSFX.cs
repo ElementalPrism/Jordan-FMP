@@ -7,6 +7,7 @@ public class SkeletonSFX : MonoBehaviour
 
     [SerializeField] AudioSource SkeletonCharge;
     [SerializeField] AudioSource SkeletonDeath;
+    bool StartedCharge = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +22,21 @@ public class SkeletonSFX : MonoBehaviour
 
     public void PlayCharge()
     {
-        SkeletonCharge.Play();
+        if (StartedCharge == false)
+        {
+            SkeletonCharge.Play();
+            StartedCharge = true;
+        }
+        //SkeletonCharge.Play();
     }
 
     public void PlayDeath()
     {
         SkeletonDeath.Play();
+    }
+
+    public void StopCharge()
+    {
+        StartedCharge = false;
     }
 }

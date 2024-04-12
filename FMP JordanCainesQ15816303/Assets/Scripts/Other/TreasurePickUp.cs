@@ -21,8 +21,14 @@ public class TreasurePickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        StartCoroutine(PlaySound());
+    }
+
+    IEnumerator PlaySound()
+    {
         CollectedSFX.Play();
+        yield return new WaitForSeconds(1f);
         TreasureM.TreasureNumber = TreasureM.TreasureNumber - 1;
-        Destroy(ThisObject);
+        ThisObject.SetActive(false);
     }
 }

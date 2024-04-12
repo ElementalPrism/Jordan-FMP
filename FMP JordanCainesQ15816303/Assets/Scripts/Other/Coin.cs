@@ -26,6 +26,7 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        CoinCollectSFX.Play();
         CoinCounter.CoinAmount = CoinCounter.CoinAmount + 1;
         CoinCounter.CollectedAmount = CoinCounter.CollectedAmount + 1;
 
@@ -35,7 +36,7 @@ public class Coin : MonoBehaviour
         }
 
 
-        CoinCollectSFX.Play();
+        
         ThisCoin.SetActive(false);
     }
 }
