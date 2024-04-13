@@ -13,6 +13,10 @@ public class Flower : MonoBehaviour
     [SerializeField] GameObject Bucket;
     [SerializeField] GameObject Diamond3;
     [SerializeField] GameObject InteractIcon;
+
+    [SerializeField] float DiamondAppearTime;
+    [SerializeField] GameObject DiamondCamera;
+    [SerializeField] AudioSource DiamondAppearSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,7 @@ public class Flower : MonoBehaviour
                 NewFlower.SetActive(true);
                 Diamond3.SetActive(true);
                 ThisGameObject.SetActive(false);
+                StartCoroutine(DiamondDisableCamera());
 
 
             }
@@ -42,5 +47,16 @@ public class Flower : MonoBehaviour
         {
             InteractIcon.SetActive(false);
         }
+
+    }
+
+
+    IEnumerator DiamondDisableCamera()
+    {
+        Time.timeScale = 0;
+        DiamondAppearSFX.Play();
+        yield return new WaitForSecondsRealtime(DiamondAppearTime);
+        DiamondCamera.SetActive(false);
+        Time.timeScale = 1;
     }
 }

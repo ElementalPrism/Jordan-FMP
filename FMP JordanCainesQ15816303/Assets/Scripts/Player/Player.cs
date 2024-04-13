@@ -128,56 +128,64 @@ public class Player : MonoBehaviour
 
         if ((Input.GetKeyDown(KeyCode.Space)) && (IsHurt == false) && (CanMove == true)) 
         {
-            if (IsGrounded) 
-            { 
-                Jump();
-            }
-            else if (!IsGrounded)
+            if (Pause.IsPaused == false)
             {
-
-                if ((PowerUp == true))
+                if (IsGrounded) 
+                { 
+                    Jump();
+                }
+                else if (!IsGrounded)
                 {
-                    if (GravityFlipped == false)
+
+                    if ((PowerUp == true))
                     {
-                        if(FlippedOnce == false)
+                        if (GravityFlipped == false)
                         {
-                            ThisPlayer.GetComponent<Rigidbody>().useGravity = false;
-                            //ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
-                            Flipped = true;
-                            FlippedOnce = true;
-                            CameraFree.m_Lens.Dutch = 180;
-                            CameraFree.m_XAxis.m_InvertInput = true;
-                            GravityFlipped = true;
+                            if(FlippedOnce == false)
+                            {
+                                ThisPlayer.GetComponent<Rigidbody>().useGravity = false;
+                                //ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
+                                Flipped = true;
+                                FlippedOnce = true;
+                                CameraFree.m_Lens.Dutch = 180;
+                                CameraFree.m_XAxis.m_InvertInput = true;
+                                GravityFlipped = true;
+                            }
+
+                        }
+                        else if (GravityFlipped == true)
+                        {
+                            if (FlippedOnce == false) 
+                            {
+                                ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
+                                ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, -5f, 0f);
+                                Flipped = false;
+                                FlippedOnce = true;
+                                ThisPlayer.transform.Rotate(0, 0, 180);
+                                CameraFree.m_Lens.Dutch = 0;
+                                CameraFree.m_XAxis.m_InvertInput = false;
+                                GravityFlipped = false;
+
+                            }
                         }
 
                     }
-                    else if (GravityFlipped == true)
-                    {
-                        if (FlippedOnce == false) 
-                        {
-                            ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
-                            ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, -5f, 0f);
-                            Flipped = false;
-                            FlippedOnce = true;
-                            ThisPlayer.transform.Rotate(0, 0, 180);
-                            CameraFree.m_Lens.Dutch = 0;
-                            CameraFree.m_XAxis.m_InvertInput = false;
-                            GravityFlipped = false;
-
-                        }
-                    }
-
                 }
             }
+            
 
         }
 
         if ((Input.GetKeyDown(KeyCode.Mouse0)) && (IsHurt == false) && (CanMove == true))
         {
-            if (IsGrounded) 
+            if (Pause.IsPaused == false)
             {
-                Attack();
+              if (IsGrounded) 
+              {
+                 Attack();
+              }
             }
+
         }
 
 

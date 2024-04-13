@@ -6,6 +6,11 @@ public class TreasureManager : MonoBehaviour
 {
     public int TreasureNumber;
     public GameObject Diamond7;
+
+
+    [SerializeField] float DiamondAppearTime;
+    [SerializeField] GameObject DiamondCamera;
+    [SerializeField] AudioSource DiamondAppearSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +23,16 @@ public class TreasureManager : MonoBehaviour
         if (TreasureNumber <= 0)
         {
             Diamond7.SetActive(true);
+            StartCoroutine(DiamondDisableCamera());
         }
+    }
+
+    IEnumerator DiamondDisableCamera()
+    {
+        Time.timeScale = 0;
+        DiamondAppearSFX.Play();
+        yield return new WaitForSecondsRealtime(DiamondAppearTime);
+        DiamondCamera.SetActive(false);
+        Time.timeScale = 1;
     }
 }

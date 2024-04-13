@@ -117,7 +117,7 @@ public class DiamondPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, SpinSpeed * Time.deltaTime, 0);
+        transform.Rotate(0, SpinSpeed * Time.unscaledDeltaTime, 0);
     }
 
     private void OnTriggerEnter(Collider other)

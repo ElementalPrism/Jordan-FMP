@@ -27,6 +27,9 @@ public class NPCSystem : MonoBehaviour
 
     public int WeedCounter;
     [SerializeField] GameObject Diamond4;
+    [SerializeField] float DiamondAppearTime;
+    [SerializeField] GameObject DiamondCamera;
+    [SerializeField] AudioSource DiamondAppearSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -161,7 +164,18 @@ public class NPCSystem : MonoBehaviour
         if (WeedCounter <= 0)
         {
             Diamond4.SetActive(true);
+            StartCoroutine(DiamondDisableCamera());
         }
 
     }
+
+    IEnumerator DiamondDisableCamera()
+    {
+        Time.timeScale = 0;
+        DiamondAppearSFX.Play();
+        yield return new WaitForSecondsRealtime(DiamondAppearTime);
+        DiamondCamera.SetActive(false);
+        Time.timeScale = 1;
+    }
+
 }

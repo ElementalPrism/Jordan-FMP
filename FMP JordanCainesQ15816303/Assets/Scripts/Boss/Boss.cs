@@ -42,6 +42,9 @@ public class Boss : MonoBehaviour
     public static int ReflectOrbCount;
 
     public GameObject DiamondDrop;
+    [SerializeField] float DiamondAppearTime;
+    [SerializeField] GameObject DiamondCamera;
+    [SerializeField] AudioSource DiamondAppearSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -144,8 +147,11 @@ public class Boss : MonoBehaviour
         if (Health == -1)
         {
             BossAnimator.SetBool("IsDead", true);
-            DiamondDrop.SetActive(true);
             Destroy(ShotSpawner);
+            DiamondDrop.SetActive(true);
+            StartCoroutine(DiamondCameraDisable());
+
+            
             //Destroy(ThisObject);
         }
     }
@@ -167,6 +173,15 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(TimeBetweenShots);
         Waiting = false;
+    }
+
+    IEnumerator DiamondCameraDisable()
+    {
+        Time.timeScale = 0;
+        DiamondAppearSFX.Play();
+        yield return new WaitForSecondsRealtime(DiamondAppearTime);
+        DiamondCamera.SetActive(false);
+        Time.timeScale = 1;
     }
 
 
