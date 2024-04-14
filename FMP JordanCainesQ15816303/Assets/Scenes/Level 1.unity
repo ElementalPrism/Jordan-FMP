@@ -3868,6 +3868,10 @@ PrefabInstance:
       propertyPath: Diamond5
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1305007834506062363, guid: 908ff54017f610c49923b293d498f211, type: 3}
+      propertyPath: PlayerObject
+      value: 
+      objectReference: {fileID: 1496366080}
     - target: {fileID: 2553561157091690432, guid: 908ff54017f610c49923b293d498f211, type: 3}
       propertyPath: m_Name
       value: Diamond 5
@@ -23025,7 +23029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1047687979}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 413.972, y: 1.822, z: 193.068}
   m_LocalScale: {x: 2.5, y: 0.5, z: 2.5}
   m_ConstrainProportionsScale: 0
@@ -23979,6 +23983,10 @@ PrefabInstance:
       propertyPath: Diamond2
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1305007834506062363, guid: 908ff54017f610c49923b293d498f211, type: 3}
+      propertyPath: PlayerObject
+      value: 
+      objectReference: {fileID: 1496366080}
     - target: {fileID: 2553561157091690432, guid: 908ff54017f610c49923b293d498f211, type: 3}
       propertyPath: m_Name
       value: Diamond 2
@@ -26873,7 +26881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d864a5c1e496e974dbd9ba1d5c38adfd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -30825,6 +30833,10 @@ PrefabInstance:
       propertyPath: Diamond3
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1305007834506062363, guid: 908ff54017f610c49923b293d498f211, type: 3}
+      propertyPath: PlayerObject
+      value: 
+      objectReference: {fileID: 1496366080}
     - target: {fileID: 2553561157091690432, guid: 908ff54017f610c49923b293d498f211, type: 3}
       propertyPath: m_Name
       value: Diamond 3
@@ -32493,16 +32505,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1674441943091682036, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000021422316
+      value: 0.00000002142232
       objectReference: {fileID: 0}
     - target: {fileID: 1674441943091682036, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000019176511
+      value: -0.0000000019176516
       objectReference: {fileID: 0}
     - target: {fileID: 2108133701918579907, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: BossChar
       value: 
       objectReference: {fileID: 1397462641}
+    - target: {fileID: 2310923472975275188, guid: d938e9622f963254583975ee8c3e5924, type: 3}
+      propertyPath: LevelMusic
+      value: 
+      objectReference: {fileID: 928200358}
     - target: {fileID: 2420437698397184241, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: HealthUI
       value: 
@@ -32529,11 +32545,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3190783626485120920, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000045500055
+      value: 0.00000004550005
       objectReference: {fileID: 0}
     - target: {fileID: 3190783626485120920, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000065027743
+      value: -0.000000006502774
       objectReference: {fileID: 0}
     - target: {fileID: 3628235002691742593, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32599,6 +32615,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -6.6
       objectReference: {fileID: 0}
+    - target: {fileID: 5446627131240753852, guid: d938e9622f963254583975ee8c3e5924, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0025634775
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446627131240753852, guid: d938e9622f963254583975ee8c3e5924, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0034790032
+      objectReference: {fileID: 0}
     - target: {fileID: 5704980019023045734, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: BossChar
       value: 
@@ -32625,11 +32649,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7175550972576756249, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000054227815
+      value: 0.000000054227815
       objectReference: {fileID: 0}
     - target: {fileID: 7175550972576756249, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000077501285
+      value: -0.0000000077501285
       objectReference: {fileID: 0}
     - target: {fileID: 7323668032113124083, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_Constraints
@@ -44907,6 +44931,10 @@ PrefabInstance:
       propertyPath: Diamond4
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1305007834506062363, guid: 908ff54017f610c49923b293d498f211, type: 3}
+      propertyPath: PlayerObject
+      value: 
+      objectReference: {fileID: 1496366080}
     - target: {fileID: 2553561157091690432, guid: 908ff54017f610c49923b293d498f211, type: 3}
       propertyPath: m_Name
       value: Diamond 4
@@ -46200,6 +46228,10 @@ PrefabInstance:
       propertyPath: Diamond1
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1305007834506062363, guid: 908ff54017f610c49923b293d498f211, type: 3}
+      propertyPath: PlayerObject
+      value: 
+      objectReference: {fileID: 1496366080}
     - target: {fileID: 2553561157091690432, guid: 908ff54017f610c49923b293d498f211, type: 3}
       propertyPath: m_Name
       value: Diamond 1
@@ -46276,10 +46308,10 @@ SceneRoots:
   - {fileID: 1233213799}
   - {fileID: 1168245208}
   - {fileID: 321116551}
-  - {fileID: 1047687983}
   - {fileID: 1127231247}
   - {fileID: 3084559754704345338}
   - {fileID: 928200359}
   - {fileID: 139140646}
   - {fileID: 223023584}
   - {fileID: 109197088}
+  - {fileID: 1047687983}

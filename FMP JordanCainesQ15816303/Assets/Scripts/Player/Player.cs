@@ -43,14 +43,15 @@ public class Player : MonoBehaviour
 
     public float PowerUpTime;
 
-    bool MusicTriggered;
-
+    //bool MusicTriggered;
+    public bool VictoryTime;
     
     public Rigidbody PlayerRigid;
     RaycastHit DownwardRaycast;
 
     [SerializeField] AudioSource LevelMusic;
     [SerializeField] AudioSource PowerUpMusic;
+
 
 
     // Start is called before the first frame update
@@ -90,33 +91,6 @@ public class Player : MonoBehaviour
 
 
 
-        //if (Input.GetKeyDown(KeyCode.Mouse1))
-        //{
-        //    if(IsHurt == false)
-        //    {
-
-        //        if ((PowerUp == true))
-        //        {
-        //            if (GravityFlipped == false)
-        //            {
-        //                ThisPlayer.GetComponent<Rigidbody>().useGravity = false;
-        //                ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
-        //                GravityFlipped = true;
-        //            }
-        //            else if (GravityFlipped == true)
-        //            {
-        //                ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
-        //                ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, -5f, 0f);
-        //                GravityFlipped = false;
-        //            }
-
-
-        //        }
-
-        //    }
-
-        //}
-
 
 
         if (IsGrounded)
@@ -130,47 +104,51 @@ public class Player : MonoBehaviour
         {
             if (Pause.IsPaused == false)
             {
-                if (IsGrounded) 
-                { 
-                    Jump();
-                }
-                else if (!IsGrounded)
+                if (!VictoryTime)
                 {
-
-                    if ((PowerUp == true))
+                    if (IsGrounded) 
+                    { 
+                        Jump();
+                    }
+                    else if (!IsGrounded)
                     {
-                        if (GravityFlipped == false)
+
+                        if ((PowerUp == true))
                         {
-                            if(FlippedOnce == false)
+                            if (GravityFlipped == false)
                             {
-                                ThisPlayer.GetComponent<Rigidbody>().useGravity = false;
-                                //ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
-                                Flipped = true;
-                                FlippedOnce = true;
-                                CameraFree.m_Lens.Dutch = 180;
-                                CameraFree.m_XAxis.m_InvertInput = true;
-                                GravityFlipped = true;
+                                if(FlippedOnce == false)
+                                {
+                                    ThisPlayer.GetComponent<Rigidbody>().useGravity = false;
+                                    //ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
+                                    Flipped = true;
+                                    FlippedOnce = true;
+                                    CameraFree.m_Lens.Dutch = 180;
+                                    CameraFree.m_XAxis.m_InvertInput = true;
+                                    GravityFlipped = true;
+                                }
+
+                            }
+                            else if (GravityFlipped == true)
+                            {
+                                if (FlippedOnce == false) 
+                                {
+                                    ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
+                                    ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, -5f, 0f);
+                                    Flipped = false;
+                                    FlippedOnce = true;
+                                    ThisPlayer.transform.Rotate(0, 0, 180);
+                                    CameraFree.m_Lens.Dutch = 0;
+                                    CameraFree.m_XAxis.m_InvertInput = false;
+                                    GravityFlipped = false;
+
+                                }
                             }
 
                         }
-                        else if (GravityFlipped == true)
-                        {
-                            if (FlippedOnce == false) 
-                            {
-                                ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
-                                ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, -5f, 0f);
-                                Flipped = false;
-                                FlippedOnce = true;
-                                ThisPlayer.transform.Rotate(0, 0, 180);
-                                CameraFree.m_Lens.Dutch = 0;
-                                CameraFree.m_XAxis.m_InvertInput = false;
-                                GravityFlipped = false;
-
-                            }
-                        }
-
                     }
                 }
+                
             }
             
 
@@ -182,7 +160,11 @@ public class Player : MonoBehaviour
             {
               if (IsGrounded) 
               {
-                 Attack();
+                if(!VictoryTime)
+                {
+                        Attack();
+                }
+               
               }
             }
 
@@ -244,11 +226,27 @@ public class Player : MonoBehaviour
         }
 
         PlayerTransformSave = ThisPlayer.transform;
+
+
+
+
+        if (VictoryTime)
+        {
+            PlayerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
+            PlayerAnimator.SetBool("Victory", true);
+            Time.timeScale = 0;
+        }
+
+
     }
 
     private void FixedUpdate()
     {
-        Movement();
+        if (!VictoryTime)
+        {
+            Movement();
+        }
+
     }
 
     void Attack()
@@ -260,6 +258,16 @@ public class Player : MonoBehaviour
             PlayerAttackBox.SetActive(true);
 
         }
+    }
+
+    public void StopVictory()
+    {
+        Time.timeScale = 1;
+        PlayerAnimator.SetBool("Victory", false);
+        VictoryTime = false;
+        Pause.IsPaused = false;
+        PlayerAnimator.updateMode = AnimatorUpdateMode.Normal;
+        SceneManager.LoadScene(1);
     }
 
     public void StopAttack()

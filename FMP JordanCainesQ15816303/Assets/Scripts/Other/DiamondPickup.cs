@@ -28,6 +28,7 @@ public class DiamondPickup : MonoBehaviour
     [SerializeField] GameObject ThisGameObject;
     [SerializeField] Material Faded;
     public TreasureManager TreasureM;
+    [SerializeField] Player PlayerObject;
 
 
 
@@ -212,7 +213,8 @@ public class DiamondPickup : MonoBehaviour
         }
 
         CoinCounter.CoinAmount = 0;
-        SceneManager.LoadScene(1);
+        PlayerObject.VictoryTime = true;
+        //SceneManager.LoadScene(1);
 
     }
 
