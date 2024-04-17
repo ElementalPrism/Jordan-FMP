@@ -57,7 +57,8 @@ public class Boss : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, PlayerTransform.position) < AggroDistance)
         {
-
+            if(!IsDead)
+            {
                 if (CanFire == true)
                 {
                     BossAnimator.SetBool("IsAttacking", true); 
@@ -70,18 +71,24 @@ public class Boss : MonoBehaviour
                 
      
 
-            BossAnimator.SetBool("IsInBattle", true);
-            LevelMusic.enabled= false;
-            BossMusic.enabled = true;
+                BossAnimator.SetBool("IsInBattle", true);
+                LevelMusic.enabled= false;
+                BossMusic.enabled = true;
+            }
+
         }
         
         if (Vector3.Distance(transform.position, PlayerTransform.position) > AggroDistance)
         {
-            BossAnimator.SetBool("IsInBattle", false);
-            BossAnimator.SetBool("IsAttacking", false);
+            if (!IsDead)
+            {
+                BossAnimator.SetBool("IsInBattle", false);
+                BossAnimator.SetBool("IsAttacking", false);
 
-            LevelMusic.enabled = true;
-            BossMusic.enabled = false;
+                LevelMusic.enabled = true;
+                BossMusic.enabled = false;
+            }
+
             //CanFire = false;
         }
 
@@ -92,9 +99,10 @@ public class Boss : MonoBehaviour
 
         if (IsDead == true)
         {
-            BossAnimator.SetBool("IsDead", true);
+            
             LevelMusic.enabled = true;
             BossMusic.enabled = false;
+            BossAnimator.SetBool("IsDead", true);
         }
 
         if (IsBlocking == true)
@@ -146,7 +154,8 @@ public class Boss : MonoBehaviour
 
         if (Health == -1)
         {
-            BossAnimator.SetBool("IsDead", true);
+            //BossAnimator.SetBool("IsDead", true);
+            IsDead = true;
             Destroy(ShotSpawner);
             DiamondDrop.SetActive(true);
             StartCoroutine(DiamondCameraDisable());

@@ -26,6 +26,7 @@ public class DiamondPickup : MonoBehaviour
     public bool Collected8;
 
     [SerializeField] GameObject ThisGameObject;
+    [SerializeField] MeshRenderer ThisMeshRenderer;
     [SerializeField] Material Faded;
     public TreasureManager TreasureM;
     [SerializeField] Player PlayerObject;
@@ -40,7 +41,7 @@ public class DiamondPickup : MonoBehaviour
         {
             if (MissionSelector.Collected1 == true)
             {
-                ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                ThisMeshRenderer.material = Faded;
             }
         }
         else if (Diamond2)
@@ -49,7 +50,7 @@ public class DiamondPickup : MonoBehaviour
             {
                 if (MissionSelector.Collected2 == true)
                 {
-                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                    ThisMeshRenderer.material = Faded;
                 }
             }
         }
@@ -59,7 +60,7 @@ public class DiamondPickup : MonoBehaviour
             {
                 if (MissionSelector.Collected3 == true)
                 {
-                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                    ThisMeshRenderer.material = Faded;
                 }
             }
         }
@@ -69,7 +70,7 @@ public class DiamondPickup : MonoBehaviour
             {
                 if (MissionSelector.Collected4 == true)
                 {
-                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                    ThisMeshRenderer.material = Faded;
                 }
             }
         }
@@ -79,7 +80,7 @@ public class DiamondPickup : MonoBehaviour
             {
                 if (MissionSelector.Collected5 == true)
                 {
-                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                    ThisMeshRenderer.material = Faded;
                 }
             }
         }
@@ -89,7 +90,7 @@ public class DiamondPickup : MonoBehaviour
             {
                 if (MissionSelector.Collected6 == true)
                 {
-                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                    ThisMeshRenderer.material = Faded;
                 }
             }
         }
@@ -99,7 +100,7 @@ public class DiamondPickup : MonoBehaviour
             {
                 if (MissionSelector.Collected7 == true)
                 {
-                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                    ThisMeshRenderer.material = Faded;
                 }
             }
         }
@@ -109,7 +110,7 @@ public class DiamondPickup : MonoBehaviour
             {
                 if (MissionSelector.Collected8 == true)
                 {
-                    ThisGameObject.GetComponent<MeshRenderer>().material = Faded;
+                    ThisMeshRenderer.material = Faded;
                 }
             }
         }
@@ -200,11 +201,11 @@ public class DiamondPickup : MonoBehaviour
         }
         else if (Diamond8)
         {
-            if (MissionSelector.Collected5 == false)
+            if (MissionSelector.Collected8 == false)
             {
                 Collected8 = true;
                 DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
-                MissionSelector.Collected8= true;
+                MissionSelector.Collected8 = true;
                 if (TreasureM)
                 {
                     TreasureM.TreasureNumber = 6;
@@ -213,6 +214,7 @@ public class DiamondPickup : MonoBehaviour
         }
 
         CoinCounter.CoinAmount = 0;
+        CoinCounter.CollectedAmount = 0;
         PlayerObject.VictoryTime = true;
         //SceneManager.LoadScene(1);
 

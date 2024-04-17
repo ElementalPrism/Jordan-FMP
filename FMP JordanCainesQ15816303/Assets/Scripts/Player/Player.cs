@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject PlayerAttackBox;
     [SerializeField] CameraPositioning Camera;
     [SerializeField] CinemachineFreeLook CameraFree;
+    [SerializeField] GameObject PowerUpObject;
 
 
     CameraState cameraState;
@@ -162,7 +163,7 @@ public class Player : MonoBehaviour
               {
                 if(!VictoryTime)
                 {
-                        Attack();
+                   Attack();
                 }
                
               }
@@ -196,6 +197,11 @@ public class Player : MonoBehaviour
         if (IsHurt == true)
         {
             PlayerAnimator.SetBool("IsHurt", true);
+
+            if(IsAttacking)
+            {
+                StopAttack();
+            }
         }
 
         if (IsDead == true)
@@ -336,6 +342,7 @@ public class Player : MonoBehaviour
         CameraFree.m_Lens.Dutch = 0;
         CameraFree.m_XAxis.m_InvertInput = false;
         GravityFlipped = false;
+        PowerUpObject.SetActive(true);
 
     }
 

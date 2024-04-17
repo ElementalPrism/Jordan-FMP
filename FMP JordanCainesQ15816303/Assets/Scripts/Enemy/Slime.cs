@@ -12,6 +12,7 @@ public class Slime : MonoBehaviour
     [SerializeField] JumpKillable JumpHitDetection;
     [SerializeField] GameObject ThisSlime;
     [SerializeField] float ChaseDistance;
+    Vector3 TargetLocator;
     //JumpKillable KillCheck;
     bool CanAttack;
     public bool IsDead;
@@ -52,7 +53,9 @@ public class Slime : MonoBehaviour
 
     void Movement()
     {
+        
         SlimeAgent.SetDestination (PlayerTransform.position);
+
         //SlimeAnimator.SetBool("IsMoving", true);
     }
 
@@ -62,8 +65,12 @@ public class Slime : MonoBehaviour
         {
             if(collision.gameObject.GetComponent<Player>().IsHurt == false)
             {
-                collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 1;
-                collision.gameObject.GetComponent<Player>().IsHurt = true;
+                if(SlimeAnimator.GetBool("IsDead") == false)
+                {
+                    collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 1;
+                    collision.gameObject.GetComponent<Player>().IsHurt = true;
+                }
+
             }
 
         }

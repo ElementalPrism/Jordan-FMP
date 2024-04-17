@@ -20,6 +20,7 @@ public class NPCSystem : MonoBehaviour
 
     [SerializeField] bool IsTorch;
     [SerializeField] bool IsPowerUpSign;
+    [SerializeField] bool IsSign;
     int TorchDiamondRequirement = 5;
     int TorchDiamondNumber;
     public bool GravityTorchActivated;
@@ -124,6 +125,7 @@ public class NPCSystem : MonoBehaviour
                     {
                         PowerUpTorchObject.IsActivated = true;
                         GravityTorchActivated = true;
+                        PowerUpManager.GravityPotionUnlocked = true;
                         NPCText.GetComponent<Text>().text = NPCSpeech1;
                     }
                     else if (GravityTorchActivated) 
@@ -163,8 +165,12 @@ public class NPCSystem : MonoBehaviour
 
         if (WeedCounter <= 0)
         {
-            Diamond4.SetActive(true);
-            StartCoroutine(DiamondDisableCamera());
+            if ((!IsPowerUpSign) && (!IsSign))
+            {
+              Diamond4.SetActive(true);
+              StartCoroutine(DiamondDisableCamera());
+            }
+
         }
 
     }

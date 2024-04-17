@@ -93,8 +93,12 @@ public class Skeleton : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<Player>().IsHurt == false)
             {
-                collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 2;
-                collision.gameObject.GetComponent<Player>().IsHurt = true;
+                if (SkeletonAnimator.GetBool("IsDead") == false)
+                {
+                    collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 2;
+                    collision.gameObject.GetComponent<Player>().IsHurt = true;
+                }
+
             }
 
         }

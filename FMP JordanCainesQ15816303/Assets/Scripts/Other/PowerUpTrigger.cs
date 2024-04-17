@@ -40,7 +40,8 @@ public class PowerUpTrigger : MonoBehaviour
             if (Unlocked == true)
             {
                  other.gameObject.GetComponent<Player>().PowerUp = true;
-                 Destroy(ThisPowerUp);
+                 ThisPowerUp.SetActive(false);
+                 //Destroy(ThisPowerUp);
             }
 
         }

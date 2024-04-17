@@ -25,6 +25,8 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToLobby()
     {
         Pause.IsPaused = false;
+        CoinCounter.CoinAmount = 0;
+        CoinCounter.CollectedAmount = 0;
         SceneManager.LoadScene(1);
 
     }
@@ -32,6 +34,8 @@ public class PauseMenu : MonoBehaviour
     public void QuitToMainMenu()
     {
         Pause.IsPaused = false;
+        CoinCounter.CoinAmount = 0;
+        CoinCounter.CollectedAmount = 0;
         SceneManager.LoadScene(0);
     }
 }

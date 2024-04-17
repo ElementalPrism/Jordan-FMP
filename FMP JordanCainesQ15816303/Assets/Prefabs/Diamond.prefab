@@ -109,7 +109,10 @@ MonoBehaviour:
   Collected7: 0
   Collected8: 0
   ThisGameObject: {fileID: 2553561157091690432}
+  ThisMeshRenderer: {fileID: 4159465358569501180}
   Faded: {fileID: 2100000, guid: 2be2881faef620048bee6d165ceb8c8e, type: 2}
+  TreasureM: {fileID: 0}
+  PlayerObject: {fileID: 0}
 --- !u!54 &7002733477940918305
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -158,3 +161,8 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &4159465358569501180 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7635826562936255635, guid: 949a58f477fecc2468283d7a81c141a9, type: 3}
+  m_PrefabInstance: {fileID: 3436663806999313041}
+  m_PrefabAsset: {fileID: 0}
