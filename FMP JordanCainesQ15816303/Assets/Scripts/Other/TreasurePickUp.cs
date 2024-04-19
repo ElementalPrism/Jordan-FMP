@@ -7,6 +7,7 @@ public class TreasurePickUp : MonoBehaviour
     public TreasureManager TreasureM;
     public GameObject ThisObject;
     [SerializeField] AudioSource CollectedSFX;
+    bool IsCollected;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,12 @@ public class TreasurePickUp : MonoBehaviour
 
     IEnumerator PlaySound()
     {
-        CollectedSFX.Play();
+        if (!IsCollected)
+        {
+            CollectedSFX.Play();
+            IsCollected = true;
+        }
+        
         yield return new WaitForSeconds(1f);
         TreasureM.TreasureNumber = TreasureM.TreasureNumber - 1;
         ThisObject.SetActive(false);

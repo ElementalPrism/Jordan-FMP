@@ -21,6 +21,7 @@ public class WindmillPlatformMagnet : MonoBehaviour
     {
         PlayerSize = other.transform.localScale;
         other.transform.SetParent(transform);
+        //other.transform.position.Set(transform.position.x, transform.position.y, transform.position.z);
     }
 
   

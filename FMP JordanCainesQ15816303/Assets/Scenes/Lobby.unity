@@ -945,11 +945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1331411284535110298, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000059603224
+      value: -0.000000059603224
       objectReference: {fileID: 0}
     - target: {fileID: 1331411284535110298, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.3906748e-10
+      value: 4.3906748e-10
       objectReference: {fileID: 0}
     - target: {fileID: 1674441943091682036, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalPosition.y
@@ -969,11 +969,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1674441943091682036, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000002142232
+      value: 0.00000002142232
       objectReference: {fileID: 0}
     - target: {fileID: 1674441943091682036, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000019176516
+      value: -0.0000000019176516
       objectReference: {fileID: 0}
     - target: {fileID: 3190783626485120920, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1062,6 +1062,10 @@ PrefabInstance:
     - target: {fileID: 7175550972576756249, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.0000000077501285
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323668032113124083, guid: d938e9622f963254583975ee8c3e5924, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7826819830380732481, guid: d938e9622f963254583975ee8c3e5924, type: 3}
       propertyPath: m_Name
@@ -11919,7 +11923,6 @@ MonoBehaviour:
   IsTorch: 1
   IsPowerUpSign: 0
   IsSign: 0
-  TorchDiamondRequirement: 0
   GravityTorchActivated: 0
   PowerUpTorchObject: {fileID: 1875261728}
   WeedCounter: 0
@@ -11927,6 +11930,7 @@ MonoBehaviour:
   DiamondAppearTime: 0
   DiamondCamera: {fileID: 0}
   DiamondAppearSFX: {fileID: 0}
+  LevelMusic: {fileID: 0}
 --- !u!1 &1885188843
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,9 +9,11 @@ public class Slime : MonoBehaviour
     [SerializeField] NavMeshAgent SlimeAgent;
     [SerializeField] Player TargetPlayer;
     [SerializeField] Transform PlayerTransform;
+    Vector3 TargetPosition;
     [SerializeField] JumpKillable JumpHitDetection;
     [SerializeField] GameObject ThisSlime;
     [SerializeField] float ChaseDistance;
+    [SerializeField] float ChaseTime;
     Vector3 TargetLocator;
     //JumpKillable KillCheck;
     bool CanAttack;
@@ -31,6 +33,7 @@ public class Slime : MonoBehaviour
         if ((Vector3.Distance(transform.position, PlayerTransform.position) < ChaseDistance) && (TargetPlayer.IsHurt == false))
         {
             Movement();
+            StartCoroutine(ChaseTimer());
         }
         else
         {
@@ -53,8 +56,10 @@ public class Slime : MonoBehaviour
 
     void Movement()
     {
-        
-        SlimeAgent.SetDestination (PlayerTransform.position);
+        SlimeAgent.isStopped = false;
+        TargetPosition = PlayerTransform.position;
+        TargetPosition.y = transform.position.y;
+        SlimeAgent.SetDestination (TargetPosition);
 
         //SlimeAnimator.SetBool("IsMoving", true);
     }
@@ -79,4 +84,11 @@ public class Slime : MonoBehaviour
             //do NOTHING
         }
     }
+
+    IEnumerator ChaseTimer()
+    {
+        yield return new WaitForSeconds(ChaseTime);
+        SlimeAgent.isStopped = true;
+    }
+
 }

@@ -248,6 +248,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //PlayerRigid.velocity = PlayerRigid.transform.TransformVector(PlayerRigid.velocity);
         if (!VictoryTime)
         {
             Movement();
@@ -364,18 +365,24 @@ public class Player : MonoBehaviour
 
             //PlayerMovement = new Vector3(Horizon, 0, Vert);
             //PlayerMovement.Normalize();
-            
+
             PlayerOrient = Camera.PlayerOrientation;
             PlayerMovement = (PlayerOrient.forward * Vert) + (PlayerOrient.right * Horizon);
             PlayerMovement.Normalize();
             PlayerAnimator.SetFloat("MovementSpeed", Mathf.Clamp01(PlayerMovement.magnitude));
             transform.position = transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)));
 
+            //PlayerRigid.AddForce((PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)) - PlayerRigid.velocity), ForceMode.VelocityChange);
+            
+            //transform.Translate(PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)),Space.World);
+           
+            
             //PlayerOrient = Camera.PlayerOrientation;
             //PlayerMovement = (PlayerOrient.forward * Vert) + (PlayerOrient.right * Horizon);
             //PlayerMovement.Normalize();
             //PlayerAnimator.SetFloat("MovementSpeed", Mathf.Clamp01(PlayerMovement.magnitude));
-            ////PlayerRigid.MovePosition(transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed))));
+            //PlayerRigid.MovePosition(transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed))));
+
 
             if (PlayerMovement != Vector3.zero)
             {

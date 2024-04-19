@@ -31,6 +31,7 @@ public class NPCSystem : MonoBehaviour
     [SerializeField] float DiamondAppearTime;
     [SerializeField] GameObject DiamondCamera;
     [SerializeField] AudioSource DiamondAppearSFX;
+    [SerializeField] AudioSource LevelMusic;
 
     // Start is called before the first frame update
     void Start()
@@ -178,10 +179,12 @@ public class NPCSystem : MonoBehaviour
     IEnumerator DiamondDisableCamera()
     {
         Time.timeScale = 0;
+        LevelMusic.Stop();
         DiamondAppearSFX.Play();
         yield return new WaitForSecondsRealtime(DiamondAppearTime);
         DiamondCamera.SetActive(false);
         Time.timeScale = 1;
+        LevelMusic.Play();
     }
 
 }

@@ -187,10 +187,12 @@ public class Boss : MonoBehaviour
     IEnumerator DiamondCameraDisable()
     {
         Time.timeScale = 0;
+        LevelMusic.Stop();
         DiamondAppearSFX.Play();
         yield return new WaitForSecondsRealtime(DiamondAppearTime);
         DiamondCamera.SetActive(false);
         Time.timeScale = 1;
+        LevelMusic.Play();
     }
 
 
