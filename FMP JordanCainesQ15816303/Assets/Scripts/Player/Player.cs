@@ -370,13 +370,16 @@ public class Player : MonoBehaviour
             PlayerMovement = (PlayerOrient.forward * Vert) + (PlayerOrient.right * Horizon);
             PlayerMovement.Normalize();
             PlayerAnimator.SetFloat("MovementSpeed", Mathf.Clamp01(PlayerMovement.magnitude));
-            transform.position = transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)));
-
-            //PlayerRigid.AddForce((PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)) - PlayerRigid.velocity), ForceMode.VelocityChange);
-            
-            //transform.Translate(PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)),Space.World);
+            //transform.position = transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)));
+            PlayerRigid.velocity = ((PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude)) * (Time.deltaTime * MovementSpeed) + new Vector3(0.0f, PlayerRigid.velocity.y, 0.0f)));
            
             
+            
+            //PlayerRigid.AddForce((PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)) - PlayerRigid.velocity), ForceMode.VelocityChange);
+
+            //transform.Translate(PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)),Space.World);
+
+
             //PlayerOrient = Camera.PlayerOrientation;
             //PlayerMovement = (PlayerOrient.forward * Vert) + (PlayerOrient.right * Horizon);
             //PlayerMovement.Normalize();
