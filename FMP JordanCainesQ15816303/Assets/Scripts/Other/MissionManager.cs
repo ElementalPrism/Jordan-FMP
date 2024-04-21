@@ -5,6 +5,7 @@ using UnityEngine;
 public class MissionManager : MonoBehaviour
 {
     public GameObject BossObject;
+    public GameObject BossSign;
     public GameObject WindmillObject;
     public GameObject Bucket;
     public GameObject Flower;
@@ -41,7 +42,8 @@ public class MissionManager : MonoBehaviour
         {
             //These are commented as these objects havent been added to the level yet,
             //uncomment them once they have been filled in the inspector.
-
+            BossObject.SetActive(true);
+            BossSign.SetActive(true);
             WindmillObject.SetActive(false);
             Bucket.SetActive(false);
             Flower.SetActive(true);
@@ -75,6 +77,7 @@ public class MissionManager : MonoBehaviour
         else if (Level1Manager.CurrentMission == 2)
         {
             BossObject.SetActive(false);
+            BossSign.SetActive(false);
             WindmillObject.SetActive(true);
             WellBlockade.SetActive(true);
             Bucket.SetActive(false);
@@ -107,6 +110,7 @@ public class MissionManager : MonoBehaviour
         else if (Level1Manager.CurrentMission == 3)
         {
             BossObject.SetActive(false);
+            BossSign.SetActive(false);
             WindmillObject.SetActive(true);
             WellBlockade.SetActive(true);
             Bucket.SetActive(true);
@@ -139,6 +143,7 @@ public class MissionManager : MonoBehaviour
         else if (Level1Manager.CurrentMission == 4)
         {
             BossObject.SetActive(false);
+            BossSign.SetActive(false);
             WindmillObject.SetActive(true);
             WellBlockade.SetActive(false);
             Bucket.SetActive(false);
@@ -171,6 +176,7 @@ public class MissionManager : MonoBehaviour
         else if (Level1Manager.CurrentMission >= 5)
         {
             BossObject.SetActive(false);
+            BossSign.SetActive(false);
             WindmillObject.SetActive(true);
             WellBlockade.SetActive(false);
             Bucket.SetActive(false);

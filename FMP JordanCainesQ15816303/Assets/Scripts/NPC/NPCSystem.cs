@@ -112,6 +112,11 @@ public class NPCSystem : MonoBehaviour
 
                 }
 
+                if (IsSign)
+                {
+                    NPCText.GetComponent<Text>().text = NPCSpeech1;
+                }
+
 
 
 

@@ -61,10 +61,10 @@ public class Skeleton : MonoBehaviour
             
         }
 
-        if (JumpHitDetection.TakenHit)
-        {
-            ThisSkeleton.SetActive(false);
-        }
+        //if (JumpHitDetection.TakenHit)
+        //{
+        //    ThisSkeleton.SetActive(false);
+        //}
 
         if (IsDead == true)
         {

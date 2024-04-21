@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] GameObject MainMenuObjects;
+    [SerializeField] GameObject CreditsObjects;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,4 +42,15 @@ public class MainMenu : MonoBehaviour
         #endif
     }
 
+    public void OpenCredits()
+    {
+        MainMenuObjects.SetActive(false);
+        CreditsObjects.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        MainMenuObjects.SetActive(true);
+        CreditsObjects.SetActive(false);
+    }
 }

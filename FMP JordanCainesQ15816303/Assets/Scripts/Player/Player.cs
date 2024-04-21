@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] CameraPositioning Camera;
     [SerializeField] CinemachineFreeLook CameraFree;
     [SerializeField] GameObject PowerUpObject;
+    [SerializeField] GameObject PowerUpSparkles;
+    [SerializeField] GameObject WellDeathPlane;
 
 
     CameraState cameraState;
@@ -211,16 +213,18 @@ public class Player : MonoBehaviour
 
         if (PowerUp)
         {
-            Debug.Log("Power Up Active");
+            
+           // Debug.Log("Power Up Active");
             if (CanMove == true)
             {
-                Debug.Log("Can Move");
-                Debug.Log("Disable Level Music");
+                PowerUpSparkles.SetActive(true);
+               // Debug.Log("Can Move");
+               // Debug.Log("Disable Level Music");
                    LevelMusic.enabled = false;
-                Debug.Log("Enable Power Up Music");
+                //Debug.Log("Enable Power Up Music");
                 PowerUpMusic.enabled = true;
 
-                Debug.Log("Start Coroutine");
+                //Debug.Log("Start Coroutine");
                 StartCoroutine(PowerUpTimer());
             }
             //DO NOT REMOVE THE DEBUG LOGS. IDK why this stops the player from dying when switching music but it fixes the issue.
@@ -319,10 +323,11 @@ public class Player : MonoBehaviour
 
     IEnumerator PowerUpTimer()
     {
-        Debug.Log("Timer Active");
+        //Debug.Log("Timer Active");
         yield return new WaitForSeconds(PowerUpTime);
-        Debug.Log("Timer Ran Out");
+        //Debug.Log("Timer Ran Out");
         PowerUp = false;
+        PowerUpSparkles.SetActive(false);
         ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
 
         ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 0f, 0f);
@@ -333,11 +338,10 @@ public class Player : MonoBehaviour
             Flipped = false;
         }
 
-        //LevelMusic.SetActive(true);
-        //PowerUpMusic.SetActive(false);
-        Debug.Log("Disable Power Up Music");
+
+        //Debug.Log("Disable Power Up Music");
         PowerUpMusic.enabled = false;
-        Debug.Log("Enable Level Music");
+        //Debug.Log("Enable Level Music");
         LevelMusic.enabled = true;
 
         CameraFree.m_Lens.Dutch = 0;
@@ -354,11 +358,13 @@ public class Player : MonoBehaviour
             if (Flipped == false)
             {
                 Horizon = Input.GetAxis("Horizontal");
+                JumpForce = 14;
 
             }
             else if (Flipped == true)
             {
                 Horizon = -Input.GetAxis("Horizontal");
+                JumpForce = 7;
             }
 
             Vert = Input.GetAxis("Vertical");

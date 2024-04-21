@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8828507651291647895}
   - component: {fileID: 9144571101285549497}
   - component: {fileID: 2340765019476476109}
-  - component: {fileID: 2166030867289360300}
   - component: {fileID: 4748959929513875772}
   m_Layer: 7
   m_Name: Skeleton 1
@@ -149,27 +148,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SkeletonAgent: {fileID: 9144571101285549497}
   PlayerTransform: {fileID: 0}
-  JumpHitDetection: {fileID: 2166030867289360300}
+  JumpHitDetection: {fileID: 0}
   ThisSkeleton: {fileID: 2030287505126497606}
   TriggerDistance: 20
   TargetDistance: 0.5
   WaitTime: 3
-  ChaseTime: 2
   IsDead: 0
+  ChaseTime: 2
   SkeletonAnimator: {fileID: 6986072114697404905}
---- !u!114 &2166030867289360300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2030287505126497606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b9f51009e19ef469b7657933a63b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TakenHit: 0
 --- !u!54 &4748959929513875772
 Rigidbody:
   m_ObjectHideFlags: 0

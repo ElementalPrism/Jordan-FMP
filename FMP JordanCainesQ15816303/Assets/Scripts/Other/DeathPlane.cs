@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DeathPlane : MonoBehaviour
 {
     public Player PlayerChar;
+    bool Triggered;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,12 @@ public class DeathPlane : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerChar.RemoveLife();
-        SceneManager.LoadScene(1);
+        if (Triggered == false)
+        {
+         PlayerChar.RemoveLife();
+         SceneManager.LoadScene(1);
+         Triggered = true;
+        }
+
     }
 }

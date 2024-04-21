@@ -34,8 +34,12 @@ public class Slime : MonoBehaviour
         {
             if (!IsDead)
             {
-             Movement();
-             StartCoroutine(ChaseTimer());
+                 if(JumpHitDetection.TakenHit == false)
+                 {
+                     Movement();
+                     StartCoroutine(ChaseTimer());
+                 }
+
             }
 
         }
@@ -46,7 +50,11 @@ public class Slime : MonoBehaviour
 
         if(JumpHitDetection.TakenHit)
         {
-            Destroy(ThisSlime);
+            Vector3 SlimeScale = ThisSlime.transform.localScale;
+            SlimeScale.y = 0.02f;
+            ThisSlime.transform.localScale = SlimeScale;
+            SlimeAnimator.SetBool("IsDead", true);
+            //Destroy(ThisSlime);
         }
 
         if (IsDead == true)
@@ -76,8 +84,12 @@ public class Slime : MonoBehaviour
             {
                 if(SlimeAnimator.GetBool("IsDead") == false)
                 {
-                    collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 1;
-                    collision.gameObject.GetComponent<Player>().IsHurt = true;
+                    if(JumpHitDetection.TakenHit == false) 
+                    { 
+                        collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 1;
+                        collision.gameObject.GetComponent<Player>().IsHurt = true;
+                    }
+
                 }
 
             }
