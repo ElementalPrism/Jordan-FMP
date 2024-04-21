@@ -32,8 +32,12 @@ public class Slime : MonoBehaviour
     {
         if ((Vector3.Distance(transform.position, PlayerTransform.position) < ChaseDistance) && (TargetPlayer.IsHurt == false))
         {
-            Movement();
-            StartCoroutine(ChaseTimer());
+            if (!IsDead)
+            {
+             Movement();
+             StartCoroutine(ChaseTimer());
+            }
+
         }
         else
         {

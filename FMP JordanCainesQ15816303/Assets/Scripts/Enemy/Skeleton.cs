@@ -15,7 +15,8 @@ public class Skeleton : MonoBehaviour
     [SerializeField] float WaitTime;
     bool Charging;
     bool Waiting;
-    public bool IsDead;
+    public bool IsDead; 
+    [SerializeField] float ChaseTime;
 
     public Animator SkeletonAnimator;
 
@@ -28,18 +29,21 @@ public class Skeleton : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if ((Vector3.Distance(transform.position, PlayerTransform.position) < TriggerDistance) && Waiting == false) 
+        if ((Vector3.Distance(transform.position, PlayerTransform.position) <= TriggerDistance) && Waiting == false) 
         { 
             if(!Charging)
             {
-               // SkeletonAnimator.SetBool("IsMoving", true);
+                // SkeletonAnimator.SetBool("IsMoving", true);
+                SkeletonAgent.isStopped = false;
                 TargetPosition = PlayerTransform.position;
+                TargetPosition.y = transform.position.y;
                 transform.LookAt(TargetPosition);
+                StartCoroutine(ChaseTimer());
                 Charging = true;
             }
 
             SkeletonAnimator.SetBool("IsInCombat", true);
-
+            
         }
         
         if(Vector3.Distance(transform.position, PlayerTransform.position) > TriggerDistance)
@@ -69,7 +73,7 @@ public class Skeleton : MonoBehaviour
 
 
         Movement();
-
+        
     }
 
     void Movement()
@@ -78,6 +82,7 @@ public class Skeleton : MonoBehaviour
         {
             SkeletonAgent.SetDestination(TargetPosition);
             SkeletonAnimator.SetBool("IsMoving", true);
+            Debug.Log("Start Timer");  
         }
     }
 
@@ -106,5 +111,26 @@ public class Skeleton : MonoBehaviour
         {
             //do NOTHING
         }
+    }
+
+    IEnumerator ChaseTimer()
+    {
+        yield return new WaitForSeconds(ChaseTime);
+        SkeletonAgent.isStopped = true;
+        SkeletonAnimator.SetBool("IsMoving", false);
+        Charging = false;
+        Waiting = true;
+        StartCoroutine(StartWait());
+
+
+
+
+        //if ((SkeletonAnimator.GetBool("IsMoving")) && (!SkeletonAgent.hasPath) && (SkeletonAgent.pathStatus != NavMeshPathStatus.PathComplete))
+        //{
+        //    Debug.Log("Stuck");
+        //    SkeletonAgent.enabled = false;
+        //    SkeletonAgent.enabled = true;
+        //}
+        //SkeletonAgent.isStopped = true;
     }
 }

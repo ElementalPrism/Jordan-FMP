@@ -20,11 +20,17 @@ public class WindmillPlatformMagnet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PlayerSize = other.transform.localScale;
-        other.transform.SetParent(transform);
+        other.transform.parent = transform;
+        //other.transform.localScale = PlayerSize;
         //other.transform.position.Set(transform.position.x, transform.position.y, transform.position.z);
     }
 
-  
+    //private void OnTriggerStay(Collider other)
+    //{
+    //    other.transform.localScale = PlayerSize;
+    //}
+
+
 
     private void OnTriggerExit(Collider other)
     {
