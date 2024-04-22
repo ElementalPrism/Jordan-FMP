@@ -9,6 +9,7 @@ public class BucketPickUp : MonoBehaviour
     [SerializeField] Transform PlayerTransform;
     [SerializeField] float TriggerDistance;
     [SerializeField] GameObject InteractIcon;
+    [SerializeField] CapsuleCollider ThisCollider;
 
     public bool IsHolding;
     // Start is called before the first frame update
@@ -28,6 +29,7 @@ public class BucketPickUp : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.F))
             {
                 IsHolding = true;
+                ThisCollider.enabled = false;
             }
 
         }

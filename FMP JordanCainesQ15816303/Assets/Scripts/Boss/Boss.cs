@@ -45,6 +45,7 @@ public class Boss : MonoBehaviour
     [SerializeField] float DiamondAppearTime;
     [SerializeField] GameObject DiamondCamera;
     [SerializeField] AudioSource DiamondAppearSFX;
+    bool ReactivateMusic;
 
     // Start is called before the first frame update
     void Start()
@@ -100,8 +101,8 @@ public class Boss : MonoBehaviour
         if (IsDead == true)
         {
             
-            LevelMusic.enabled = true;
-            BossMusic.enabled = false;
+            //LevelMusic.enabled = false;
+            //BossMusic.enabled = false;
             BossAnimator.SetBool("IsDead", true);
         }
 
@@ -129,7 +130,10 @@ public class Boss : MonoBehaviour
             }
         }
 
-
+        if ((IsDead) &&(ReactivateMusic))
+        {
+            LevelMusic.enabled = true;
+        }
 
 
 
@@ -155,10 +159,11 @@ public class Boss : MonoBehaviour
         if (Health == -1)
         {
             //BossAnimator.SetBool("IsDead", true);
-            IsDead = true;
-            Destroy(ShotSpawner);
             DiamondDrop.SetActive(true);
             StartCoroutine(DiamondCameraDisable());
+            IsDead = true;
+            Destroy(ShotSpawner);
+
 
             
             //Destroy(ThisObject);
@@ -186,13 +191,12 @@ public class Boss : MonoBehaviour
 
     IEnumerator DiamondCameraDisable()
     {
+        BossMusic.enabled = false;
         Time.timeScale = 0;
-        LevelMusic.Stop();
-        DiamondAppearSFX.Play();
         yield return new WaitForSecondsRealtime(DiamondAppearTime);
         DiamondCamera.SetActive(false);
         Time.timeScale = 1;
-        LevelMusic.Play();
+        
     }
 
 

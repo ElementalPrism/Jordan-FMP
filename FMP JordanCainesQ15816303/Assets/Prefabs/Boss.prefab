@@ -45,7 +45,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 29e15c91da5fde440bed3061eab9d921, type: 3}
   m_Resource: {fileID: 8300000, guid: 29e15c91da5fde440bed3061eab9d921, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -174,7 +174,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 18cae6c72eda30c4e86799c92ea9e540, type: 3}
   m_Resource: {fileID: 8300000, guid: 18cae6c72eda30c4e86799c92ea9e540, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -410,7 +410,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 35c5dcdb459853243a15ba500088c8d8, type: 3}
   m_Resource: {fileID: 8300000, guid: 35c5dcdb459853243a15ba500088c8d8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -539,7 +539,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: d8eddef9c82fe324fa0bb1e5f985940d, type: 3}
   m_Resource: {fileID: 8300000, guid: d8eddef9c82fe324fa0bb1e5f985940d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -834,6 +834,9 @@ MonoBehaviour:
   IsDead: 0
   IsBlocking: 0
   DiamondDrop: {fileID: 0}
+  DiamondAppearTime: 0
+  DiamondCamera: {fileID: 0}
+  DiamondAppearSFX: {fileID: 0}
 --- !u!54 &6257426495206855063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -998,6 +1001,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 18c0d1f06f611dc4fa665d538f2f9af5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4657073991578135099}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 18c0d1f06f611dc4fa665d538f2f9af5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2226706727745907114}
   m_SourcePrefab: {fileID: 100100000, guid: 18c0d1f06f611dc4fa665d538f2f9af5, type: 3}
 --- !u!1 &2318647235084704234 stripped
 GameObject:
@@ -1065,6 +1071,19 @@ MonoBehaviour:
   BlockAttackSFX: {fileID: 8314219185310674103}
   HitSFX: {fileID: 484422005225910244}
   DeathSFX: {fileID: 3469541000521813255}
+--- !u!114 &2226706727745907114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318647235084704234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07354f7e3a156344a1142f99ffee558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossObject: {fileID: 4826443083418871997}
 --- !u!4 &3127378086096143184 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 18c0d1f06f611dc4fa665d538f2f9af5, type: 3}
