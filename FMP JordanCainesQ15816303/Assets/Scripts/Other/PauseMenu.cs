@@ -20,6 +20,7 @@ public class PauseMenu : MonoBehaviour
     public void UnPause()
     {
         Pause.IsPaused = false;
+        UnityEngine.Cursor.visible = false;
     }
 
     public void ReturnToLobby()

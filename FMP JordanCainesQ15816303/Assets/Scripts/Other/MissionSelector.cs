@@ -36,7 +36,7 @@ public class MissionSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UnityEngine.Cursor.visible = true;
     }
 
     // Update is called once per frame

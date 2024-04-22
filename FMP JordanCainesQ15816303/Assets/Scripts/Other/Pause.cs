@@ -20,10 +20,12 @@ public class Pause : MonoBehaviour
             if (!IsPaused)
             {
                 IsPaused = true;
+                UnityEngine.Cursor.visible = true;
             }
             else if (IsPaused)
             {
                 IsPaused = false;
+                UnityEngine.Cursor.visible = false;
             }
         }
 
