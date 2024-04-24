@@ -12,6 +12,7 @@ public class TreasureManager : MonoBehaviour
     [SerializeField] GameObject DiamondCamera;
     [SerializeField] AudioSource DiamondAppearSFX;
     [SerializeField] AudioSource LevelMusic;
+    bool DiamondSpawned;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,9 @@ public class TreasureManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TreasureNumber <= 0)
+        if ((TreasureNumber <= 0) && (!DiamondSpawned))
         {
+            DiamondSpawned = true;
             Diamond7.SetActive(true);
             StartCoroutine(DiamondDisableCamera());
         }

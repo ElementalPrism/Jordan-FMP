@@ -32,6 +32,7 @@ public class NPCSystem : MonoBehaviour
     [SerializeField] GameObject DiamondCamera;
     [SerializeField] AudioSource DiamondAppearSFX;
     [SerializeField] AudioSource LevelMusic;
+    bool DiamondSpawned;
 
     // Start is called before the first frame update
     void Start()
@@ -171,8 +172,9 @@ public class NPCSystem : MonoBehaviour
 
         if (WeedCounter <= 0)
         {
-            if ((!IsPowerUpSign) && (!IsSign))
+            if ((!IsPowerUpSign) && (!IsSign) && (!DiamondSpawned))
             {
+               DiamondSpawned = true;
               Diamond4.SetActive(true);
               StartCoroutine(DiamondDisableCamera());
             }
@@ -183,13 +185,13 @@ public class NPCSystem : MonoBehaviour
 
     IEnumerator DiamondDisableCamera()
     {
+        LevelMusic.enabled = false;
         Time.timeScale = 0;
-        LevelMusic.Stop();
         DiamondAppearSFX.Play();
         yield return new WaitForSecondsRealtime(DiamondAppearTime);
         DiamondCamera.SetActive(false);
         Time.timeScale = 1;
-        LevelMusic.Play();
+        LevelMusic.enabled = true;
     }
 
 }
