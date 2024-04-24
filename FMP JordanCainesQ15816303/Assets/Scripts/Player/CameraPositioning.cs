@@ -22,7 +22,7 @@ public class CameraPositioning : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
 
         SightDirection = PlayerTransform.position - new Vector3(transform.position.x, PlayerTransform.position.y, transform.position.z);
