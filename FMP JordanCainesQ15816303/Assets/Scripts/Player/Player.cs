@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource LevelMusic;
     [SerializeField] AudioSource PowerUpMusic;
 
+    [SerializeField] CinemachineBrain MachineBrain;
+
 
 
     // Start is called before the first frame update
@@ -246,6 +248,20 @@ public class Player : MonoBehaviour
             PlayerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
             PlayerAnimator.SetBool("Victory", true);
             Time.timeScale = 0;
+        }
+
+
+
+        if (!Flipped)
+        {
+            MachineBrain.m_UpdateMethod = CinemachineBrain.UpdateMethod.FixedUpdate;
+            MachineBrain.m_BlendUpdateMethod = CinemachineBrain.BrainUpdateMethod.FixedUpdate;
+        }
+
+        if (Flipped)
+        {
+            MachineBrain.m_UpdateMethod = CinemachineBrain.UpdateMethod.SmartUpdate;
+            MachineBrain.m_BlendUpdateMethod = CinemachineBrain.BrainUpdateMethod.LateUpdate;
         }
 
 

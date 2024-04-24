@@ -5744,7 +5744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6044478064513924333}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.33629248, y: -0.000000019159506, z: -0.0000000068416726, w: 0.9417576}
+  m_LocalRotation: {x: -0.33629248, y: 0.000000019159502, z: 0.0000000068416717, w: 0.9417576}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6534,7 +6534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8342786236810542552}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.23443855, y: 0.000000008363429, z: 0.0000000020169197, w: 0.97213095}
+  m_LocalRotation: {x: -0.2344386, y: -0.000000008363428, z: -0.0000000020169202, w: 0.97213095}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6598,6 +6598,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 257665608181023487, guid: 451529551e41e1346918b3d844072c25, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 257665608181023487, guid: 451529551e41e1346918b3d844072c25, type: 3}
+      propertyPath: m_UpdateMethod
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 257665608181023487, guid: 451529551e41e1346918b3d844072c25, type: 3}
+      propertyPath: m_BlendUpdateMethod
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 680523662266215668, guid: 451529551e41e1346918b3d844072c25, type: 3}
@@ -6700,6 +6708,10 @@ PrefabInstance:
       propertyPath: RaySizeRed
       value: 1.7
       objectReference: {fileID: 0}
+    - target: {fileID: 5280187266871093784, guid: 451529551e41e1346918b3d844072c25, type: 3}
+      propertyPath: MachineBrain
+      value: 
+      objectReference: {fileID: 6230632051878975984}
     - target: {fileID: 5280187266871093784, guid: 451529551e41e1346918b3d844072c25, type: 3}
       propertyPath: MovementSpeed
       value: 500
@@ -6849,3 +6861,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1304230586186095714, guid: 451529551e41e1346918b3d844072c25, type: 3}
   m_PrefabInstance: {fileID: 6189299757867850511}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6230632051878975984 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 257665608181023487, guid: 451529551e41e1346918b3d844072c25, type: 3}
+  m_PrefabInstance: {fileID: 6189299757867850511}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
