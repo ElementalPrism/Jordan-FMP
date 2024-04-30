@@ -8,6 +8,10 @@ public class TreasurePickUp : MonoBehaviour
     public GameObject ThisObject;
     [SerializeField] AudioSource CollectedSFX;
     bool IsCollected;
+
+    float Wait1 = 1f;
+    int TreasureDeduction = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,8 +37,8 @@ public class TreasurePickUp : MonoBehaviour
             IsCollected = true;
         }
         
-        yield return new WaitForSeconds(1f);
-        TreasureM.TreasureNumber = TreasureM.TreasureNumber - 1;
+        yield return new WaitForSeconds(Wait1);
+        TreasureM.TreasureNumber = TreasureM.TreasureNumber - TreasureDeduction;
         ThisObject.SetActive(false);
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class MillRotation : MonoBehaviour
 {
     public float SpinSpeed;
+
+    float ValueNull = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +17,6 @@ public class MillRotation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Rotate(0, 0, SpinSpeed * Time.deltaTime);
+        transform.Rotate(ValueNull, ValueNull, SpinSpeed * Time.deltaTime);
     }
 }

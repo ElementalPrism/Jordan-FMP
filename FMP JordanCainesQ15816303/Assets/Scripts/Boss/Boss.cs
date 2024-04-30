@@ -47,6 +47,19 @@ public class Boss : MonoBehaviour
     [SerializeField] AudioSource DiamondAppearSFX;
     bool ReactivateMusic;
 
+    int ReflectOrbReset = 0;
+    int Phase1 = 1;
+    int Phase2 = 2;
+    int Phase3 = 3;
+
+    int Phase1Health = 3;
+    int Phase2Health = 2;
+    int Phase3Health = 1;
+    int HealthCatch = -1;
+
+    int TimeStop = 0;
+    int TimeStart = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -115,17 +128,17 @@ public class Boss : MonoBehaviour
 
         HealthSystem();
 
-        if ((ReflectOrbCount == 0) && (Vector3.Distance(transform.position, PlayerTransform.position) < AggroDistance))
+        if ((ReflectOrbCount == ReflectOrbReset) && (Vector3.Distance(transform.position, PlayerTransform.position) < AggroDistance))
         {
             CanFire = true;
         }
 
 
-        if (CurrentPhase == 3)
+        if (CurrentPhase == Phase3)
         {
-            if (ReflectOrbCount == 0)
+            if (ReflectOrbCount == ReflectOrbReset)
             {
-                Health = 1;
+                Health = Phase3Health;
                 Reflected = false;
             }
         }
@@ -141,22 +154,22 @@ public class Boss : MonoBehaviour
 
     void HealthSystem()
     {
-        if (Health >= 3)
+        if (Health >= Phase1Health)
         {
-            CurrentPhase = 1;
+            CurrentPhase = Phase1;
         }
 
-        if (Health == 2)
+        if (Health == Phase2Health)
         {
-            CurrentPhase = 2;
+            CurrentPhase = Phase2;
         }
 
-        if (Health == 1)
+        if (Health == Phase3Health)
         {
-            CurrentPhase = 3;
+            CurrentPhase = Phase3;
         }
 
-        if (Health == -1)
+        if (Health == HealthCatch)
         {
             //BossAnimator.SetBool("IsDead", true);
             DiamondDrop.SetActive(true);
@@ -192,10 +205,10 @@ public class Boss : MonoBehaviour
     IEnumerator DiamondCameraDisable()
     {
         BossMusic.enabled = false;
-        Time.timeScale = 0;
+        Time.timeScale = TimeStop;
         yield return new WaitForSecondsRealtime(DiamondAppearTime);
         DiamondCamera.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = TimeStart;
         
     }
 

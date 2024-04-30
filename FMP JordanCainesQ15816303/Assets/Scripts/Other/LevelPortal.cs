@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 public class LevelPortal : MonoBehaviour
 {
     public float SpinSpeed;
+
+    float ValueNull = 0;
+    int MissionScreen = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +19,11 @@ public class LevelPortal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, SpinSpeed * Time.deltaTime, 0);
+        transform.Rotate(ValueNull, SpinSpeed * Time.deltaTime, ValueNull);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(MissionScreen);
     }
 }

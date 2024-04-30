@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+
+    int CoinReset = 0;
+    int Lobby = 1;
+    int MainMenuValue = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +31,17 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToLobby()
     {
         Pause.IsPaused = false;
-        CoinCounter.CoinAmount = 0;
-        CoinCounter.CollectedAmount = 0;
-        SceneManager.LoadScene(1);
+        CoinCounter.CoinAmount = CoinReset;
+        CoinCounter.CollectedAmount = CoinReset;
+        SceneManager.LoadScene(Lobby);
 
     }
 
     public void QuitToMainMenu()
     {
         Pause.IsPaused = false;
-        CoinCounter.CoinAmount = 0;
-        CoinCounter.CollectedAmount = 0;
-        SceneManager.LoadScene(0);
+        CoinCounter.CoinAmount = CoinReset;
+        CoinCounter.CollectedAmount = CoinReset;
+        SceneManager.LoadScene(MainMenuValue);
     }
 }

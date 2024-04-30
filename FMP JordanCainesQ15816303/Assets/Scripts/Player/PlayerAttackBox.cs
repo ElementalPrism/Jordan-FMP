@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerAttackBox : MonoBehaviour
 {
     [SerializeField] Transform BossTarget;
+
+    int LayerCheck = 9;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,7 @@ public class PlayerAttackBox : MonoBehaviour
         }
         else
         {
-            if(other.gameObject.layer != 9)
+            if(other.gameObject.layer != LayerCheck)
             {
                 other.gameObject.GetComponent<Animator>().SetBool("IsDead", true);
             }

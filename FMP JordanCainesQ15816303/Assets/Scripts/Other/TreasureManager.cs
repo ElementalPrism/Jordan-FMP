@@ -13,6 +13,11 @@ public class TreasureManager : MonoBehaviour
     [SerializeField] AudioSource DiamondAppearSFX;
     [SerializeField] AudioSource LevelMusic;
     bool DiamondSpawned;
+
+    int NoTreasure = 0;
+    int TimeStop = 0;
+    int TimeStart = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +27,7 @@ public class TreasureManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((TreasureNumber <= 0) && (!DiamondSpawned))
+        if ((TreasureNumber <= NoTreasure) && (!DiamondSpawned))
         {
             DiamondSpawned = true;
             Diamond7.SetActive(true);
@@ -32,12 +37,12 @@ public class TreasureManager : MonoBehaviour
 
     IEnumerator DiamondDisableCamera()
     {
-        Time.timeScale = 0;
+        Time.timeScale = TimeStop;
         LevelMusic.Stop();
         DiamondAppearSFX.Play();
         yield return new WaitForSecondsRealtime(DiamondAppearTime);
         DiamondCamera.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = TimeStart;
         LevelMusic.Play();
     }
 }

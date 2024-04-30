@@ -7,6 +7,8 @@ public class DeathPlane : MonoBehaviour
 {
     public Player PlayerChar;
     bool Triggered;
+
+    int LobbyScene = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class DeathPlane : MonoBehaviour
         if (Triggered == false)
         {
          PlayerChar.RemoveLife();
-         SceneManager.LoadScene(1);
+         SceneManager.LoadScene(LobbyScene);
          Triggered = true;
         }
 

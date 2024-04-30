@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class WellTeleport : MonoBehaviour
 {
+
+    int WellArea = 4;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,6 @@ public class WellTeleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(WellArea);
     }
 }

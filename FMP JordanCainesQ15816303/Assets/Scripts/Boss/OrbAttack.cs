@@ -14,6 +14,8 @@ public class OrbAttack : MonoBehaviour
     public Transform BossTransform;
     Vector3 TargetPosition;
 
+    int Damage = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +46,7 @@ public class OrbAttack : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Player>())
         {
-            other.gameObject.GetComponent<Player>().Health = other.gameObject.GetComponent<Player>().Health - 1;
+            other.gameObject.GetComponent<Player>().Health = other.gameObject.GetComponent<Player>().Health - Damage;
             other.gameObject.GetComponent<Player>().IsHurt = true;
             Destroy(ThisObject);
         }

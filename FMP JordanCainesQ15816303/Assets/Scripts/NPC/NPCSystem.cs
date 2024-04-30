@@ -34,6 +34,22 @@ public class NPCSystem : MonoBehaviour
     [SerializeField] AudioSource LevelMusic;
     bool DiamondSpawned;
 
+
+    int Mission1 = 1;
+    int Mission2 = 2;
+    int Mission3 = 3;
+    int Mission4 = 4;
+    int Mission5 = 5;
+    int Mission6 = 6;
+    int Mission7 = 7;
+    int Mission8 = 8;
+
+    int NoWeeds = 0;
+    int GotDiamonds = 0;
+
+    int TimeStop = 0;
+    int TimeStart = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,43 +72,43 @@ public class NPCSystem : MonoBehaviour
                 TextBackground.SetActive(true);
                 NPCText.SetActive(true);
 
-                if (Level1Manager.CurrentMission == 1)
+                if (Level1Manager.CurrentMission == Mission1)
                 {
                     NPCText.GetComponent<Text>().text = "An evil skeleton has set up camp at the top of the mountain. Maybe your sword can give it a taste of it's own medicine!";
                 }
-                else if (Level1Manager.CurrentMission == 2)
+                else if (Level1Manager.CurrentMission == Mission2)
                 {
                     NPCText.GetComponent<Text>().text = "After you defeated that menace, I built a Windmill! I see something shiny up there...";
                 }
-                else if (Level1Manager.CurrentMission == 3)
+                else if (Level1Manager.CurrentMission == Mission3)
                 {
                     NPCText.GetComponent<Text>().text = "I've noticed a dying flower in the forest. Maybe some water from the well will help it.";
                 }
-                else if (Level1Manager.CurrentMission == 4)
+                else if (Level1Manager.CurrentMission == Mission4)
                 {
-                    if (WeedCounter > 0)
+                    if (WeedCounter > NoWeeds)
                     {
                         NPCText.GetComponent<Text>().text = "This place has been overrun with weeds! You have " + WeedCounter + "to kill";
                     }
-                    else if (WeedCounter == 0)
+                    else if (WeedCounter == NoWeeds)
                     {
                         NPCText.GetComponent<Text>().text = "You killed all the weeds! Take this shiny thing I found as a thank you present.";
                     }
 
                 }
-                else if (Level1Manager.CurrentMission == 5)
+                else if (Level1Manager.CurrentMission == Mission5)
                 {
                     NPCText.GetComponent<Text>().text = "That flower became a giant sunflower! I think I see something shiny on it's petals.";
                 }
-                else if (Level1Manager.CurrentMission == 6)
+                else if (Level1Manager.CurrentMission == Mission6)
                 {
                     NPCText.GetComponent<Text>().text = "I heard some sounds coming from inside the well but I am too scared to investigate.";
                 }
-                else if (Level1Manager.CurrentMission == 7)
+                else if (Level1Manager.CurrentMission == Mission7)
                 {
                     NPCText.GetComponent<Text>().text = "There is a legend about some treasure being left at the bottom of this well. I don't know if this is true as I am scared to enter the well.";
                 }
-                else if (Level1Manager.CurrentMission == 8)
+                else if (Level1Manager.CurrentMission == Mission8)
                 {
                     NPCText.GetComponent<Text>().text = "I noticed a torch during my trek up another mountain. Maybe that torch is linked to the mysteries of the well!";
                 }
@@ -128,7 +144,7 @@ public class NPCSystem : MonoBehaviour
 
                 if (IsTorch)
                 {
-                    if ((TorchDiamondNumber <= 0) && (!GravityTorchActivated))
+                    if ((TorchDiamondNumber <= GotDiamonds) && (!GravityTorchActivated))
                     {
                         PowerUpTorchObject.IsActivated = true;
                         GravityTorchActivated = true;
@@ -139,7 +155,7 @@ public class NPCSystem : MonoBehaviour
                     {
                         NPCText.GetComponent<Text>().text = NPCSpeech1;
                     }
-                    else if (TorchDiamondNumber > 0)
+                    else if (TorchDiamondNumber > GotDiamonds)
                     {
                         NPCText.GetComponent<Text>().text = "You need " + TorchDiamondNumber + " more diamond(s) to light this torch.";
                     }
@@ -170,7 +186,7 @@ public class NPCSystem : MonoBehaviour
             TorchDiamondNumber = TorchDiamondRequirement - DiamondManager.DiamondAmount;
         }
 
-        if (WeedCounter <= 0)
+        if (WeedCounter <= NoWeeds)
         {
             if ((!IsPowerUpSign) && (!IsSign) && (!DiamondSpawned))
             {
@@ -186,11 +202,11 @@ public class NPCSystem : MonoBehaviour
     IEnumerator DiamondDisableCamera()
     {
         LevelMusic.enabled = false;
-        Time.timeScale = 0;
+        Time.timeScale = TimeStop;
         DiamondAppearSFX.Play();
         yield return new WaitForSecondsRealtime(DiamondAppearTime);
         DiamondCamera.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = TimeStart;
         LevelMusic.enabled = true;
     }
 

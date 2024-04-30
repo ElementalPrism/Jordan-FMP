@@ -20,6 +20,8 @@ public class Skeleton : MonoBehaviour
 
     public Animator SkeletonAnimator;
 
+    int Damage = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,7 +102,7 @@ public class Skeleton : MonoBehaviour
             {
                 if (SkeletonAnimator.GetBool("IsDead") == false)
                 {
-                    collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 2;
+                    collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - Damage;
                     collision.gameObject.GetComponent<Player>().IsHurt = true;
                 }
 

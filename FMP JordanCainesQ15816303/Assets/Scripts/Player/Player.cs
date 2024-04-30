@@ -57,7 +57,18 @@ public class Player : MonoBehaviour
 
     [SerializeField] CinemachineBrain MachineBrain;
 
-
+    int FlipValue = 180;
+    float FValueNull = 0f;
+    int ValueNull = 0;
+    float MGravityValue = -5f;
+    float GravityValue = 5f;
+    int TimeStop = 0;
+    int TimeStart = 1;
+    int LivesDeduction = 1;
+    int NoLives = 0;
+    int Lobby = 1;
+    int DefaultJumpForce = 14;
+    int FlippedJumpForce = 7;
 
     // Start is called before the first frame update
     void Start()
@@ -101,7 +112,7 @@ public class Player : MonoBehaviour
 
         if (IsGrounded)
         {
-            ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 0f, 0f);
+            ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(FValueNull, FValueNull, FValueNull);
         }
 
 
@@ -129,7 +140,7 @@ public class Player : MonoBehaviour
                                     //ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
                                     Flipped = true;
                                     FlippedOnce = true;
-                                    CameraFree.m_Lens.Dutch = 180;
+                                    CameraFree.m_Lens.Dutch = FlipValue;
                                     CameraFree.m_XAxis.m_InvertInput = true;
                                     GravityFlipped = true;
                                 }
@@ -140,11 +151,11 @@ public class Player : MonoBehaviour
                                 if (FlippedOnce == false) 
                                 {
                                     ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
-                                    ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, -5f, 0f);
+                                    ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(FValueNull, MGravityValue, FValueNull);
                                     Flipped = false;
                                     FlippedOnce = true;
-                                    ThisPlayer.transform.Rotate(0, 0, 180);
-                                    CameraFree.m_Lens.Dutch = 0;
+                                    ThisPlayer.transform.Rotate(ValueNull, ValueNull, FlipValue);
+                                    CameraFree.m_Lens.Dutch = ValueNull;
                                     CameraFree.m_XAxis.m_InvertInput = false;
                                     GravityFlipped = false;
 
@@ -180,8 +191,8 @@ public class Player : MonoBehaviour
         if (Flipped == true)
         {
             var PlayerRotation = ThisPlayer.transform.eulerAngles;
-            ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
-            ThisPlayer.transform.rotation = Quaternion.Euler(PlayerRotation.x, PlayerRotation.y, 180);
+            ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(FValueNull, GravityValue, FValueNull);
+            ThisPlayer.transform.rotation = Quaternion.Euler(PlayerRotation.x, PlayerRotation.y, FlipValue);
             
         }
 
@@ -235,7 +246,7 @@ public class Player : MonoBehaviour
 
         if(CanMove == false)
         {
-            PlayerAnimator.SetFloat("MovementSpeed", 0);
+            PlayerAnimator.SetFloat("MovementSpeed", ValueNull);
         }
 
         PlayerTransformSave = ThisPlayer.transform;
@@ -247,7 +258,7 @@ public class Player : MonoBehaviour
         {
             PlayerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
             PlayerAnimator.SetBool("Victory", true);
-            Time.timeScale = 0;
+            Time.timeScale = TimeStop;
         }
 
 
@@ -290,7 +301,7 @@ public class Player : MonoBehaviour
 
     public void StopVictory()
     {
-        Time.timeScale = 1;
+        Time.timeScale = TimeStart;
         PlayerAnimator.SetBool("Victory", false);
         VictoryTime = false;
         Pause.IsPaused = false;
@@ -313,11 +324,11 @@ public class Player : MonoBehaviour
 
     public void RemoveLife()
     {
-        LivesManager.LivesAmount = LivesManager.LivesAmount - 1;
+        LivesManager.LivesAmount = LivesManager.LivesAmount - LivesDeduction;
 
-        if (LivesManager.LivesAmount > 0)
+        if (LivesManager.LivesAmount > NoLives)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(Lobby);
         }
     }
 
@@ -347,11 +358,11 @@ public class Player : MonoBehaviour
         PowerUpSparkles.SetActive(false);
         ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
 
-        ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 0f, 0f);
+        ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(FValueNull, FValueNull, FValueNull);
 
         if (Flipped == true)
         {
-            ThisPlayer.transform.Rotate(0, 0, 180);
+            ThisPlayer.transform.Rotate(ValueNull, ValueNull, FlipValue);
             Flipped = false;
         }
 
@@ -361,7 +372,7 @@ public class Player : MonoBehaviour
         //Debug.Log("Enable Level Music");
         LevelMusic.enabled = true;
 
-        CameraFree.m_Lens.Dutch = 0;
+        CameraFree.m_Lens.Dutch = ValueNull;
         CameraFree.m_XAxis.m_InvertInput = false;
         GravityFlipped = false;
         PowerUpObject.SetActive(true);
@@ -375,13 +386,13 @@ public class Player : MonoBehaviour
             if (Flipped == false)
             {
                 Horizon = Input.GetAxis("Horizontal");
-                JumpForce = 14;
+                JumpForce = DefaultJumpForce;
 
             }
             else if (Flipped == true)
             {
                 Horizon = -Input.GetAxis("Horizontal");
-                JumpForce = 7;
+                JumpForce = FlippedJumpForce;
             }
 
             Vert = Input.GetAxis("Vertical");
@@ -394,7 +405,7 @@ public class Player : MonoBehaviour
             PlayerMovement.Normalize();
             PlayerAnimator.SetFloat("MovementSpeed", Mathf.Clamp01(PlayerMovement.magnitude));
             //transform.position = transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)));
-            PlayerRigid.velocity = ((PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude)) * (Time.deltaTime * MovementSpeed) + new Vector3(0.0f, PlayerRigid.velocity.y, 0.0f)));
+            PlayerRigid.velocity = ((PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude)) * (Time.deltaTime * MovementSpeed) + new Vector3(FValueNull, PlayerRigid.velocity.y, FValueNull)));
            
             
             

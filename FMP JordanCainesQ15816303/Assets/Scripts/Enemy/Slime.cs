@@ -21,6 +21,9 @@ public class Slime : MonoBehaviour
 
     public Animator SlimeAnimator;
 
+    float SquishScale = 0.02f;
+    int Damage = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +54,7 @@ public class Slime : MonoBehaviour
         if(JumpHitDetection.TakenHit)
         {
             Vector3 SlimeScale = ThisSlime.transform.localScale;
-            SlimeScale.y = 0.02f;
+            SlimeScale.y = SquishScale;
             ThisSlime.transform.localScale = SlimeScale;
             SlimeAnimator.SetBool("IsDead", true);
             //Destroy(ThisSlime);
@@ -86,7 +89,7 @@ public class Slime : MonoBehaviour
                 {
                     if(JumpHitDetection.TakenHit == false) 
                     { 
-                        collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - 1;
+                        collision.gameObject.GetComponent<Player>().Health = collision.gameObject.GetComponent<Player>().Health - Damage;
                         collision.gameObject.GetComponent<Player>().IsHurt = true;
                     }
 

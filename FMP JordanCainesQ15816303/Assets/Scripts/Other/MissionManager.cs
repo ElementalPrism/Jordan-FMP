@@ -35,10 +35,16 @@ public class MissionManager : MonoBehaviour
     public GameObject Diamond2;
     public GameObject Diamond5;
 
+    int Mission1 = 1;
+    int Mission2 = 2;
+    int Mission3 = 3;
+    int Mission4 = 4;
+    int Mission5 = 5;
+
     // Start is called before the first frame update
     void Start()
     {
-        if (Level1Manager.CurrentMission == 1)
+        if (Level1Manager.CurrentMission == Mission1)
         {
             //These are commented as these objects havent been added to the level yet,
             //uncomment them once they have been filled in the inspector.
@@ -74,7 +80,7 @@ public class MissionManager : MonoBehaviour
             Diamond2.SetActive(false);
             Diamond5.SetActive(false);
         }
-        else if (Level1Manager.CurrentMission == 2)
+        else if (Level1Manager.CurrentMission == Mission2)
         {
             BossObject.SetActive(false);
             BossSign.SetActive(false);
@@ -107,7 +113,7 @@ public class MissionManager : MonoBehaviour
             Diamond2.SetActive(true);
             Diamond5.SetActive(false);
         }
-        else if (Level1Manager.CurrentMission == 3)
+        else if (Level1Manager.CurrentMission == Mission3)
         {
             BossObject.SetActive(false);
             BossSign.SetActive(false);
@@ -140,7 +146,7 @@ public class MissionManager : MonoBehaviour
             Diamond2.SetActive(true);
             Diamond5.SetActive(false);
         }
-        else if (Level1Manager.CurrentMission == 4)
+        else if (Level1Manager.CurrentMission == Mission4)
         {
             BossObject.SetActive(false);
             BossSign.SetActive(false);
@@ -173,7 +179,7 @@ public class MissionManager : MonoBehaviour
             Diamond2.SetActive(true);
             Diamond5.SetActive(true);
         }
-        else if (Level1Manager.CurrentMission >= 5)
+        else if (Level1Manager.CurrentMission >= Mission5)
         {
             BossObject.SetActive(false);
             BossSign.SetActive(false);

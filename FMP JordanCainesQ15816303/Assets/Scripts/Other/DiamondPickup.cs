@@ -31,7 +31,10 @@ public class DiamondPickup : MonoBehaviour
     public TreasureManager TreasureM;
     [SerializeField] Player PlayerObject;
 
-
+    int TreasureAmount = 6;
+    int DiamondIncrease = 1;
+    float ValueNull = 0;
+    int CoinReset = 0;
 
 
     // Start is called before the first frame update
@@ -119,7 +122,7 @@ public class DiamondPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, SpinSpeed * Time.unscaledDeltaTime, 0);
+        transform.Rotate(ValueNull, SpinSpeed * Time.unscaledDeltaTime, ValueNull);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -129,7 +132,7 @@ public class DiamondPickup : MonoBehaviour
             if (MissionSelector.Collected1 == false)
             {
                 Collected1 = true;
-                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected1 = true;
             }
 
@@ -139,7 +142,7 @@ public class DiamondPickup : MonoBehaviour
             if (MissionSelector.Collected2 == false)
             {
                 Collected2 = true;
-                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected2 = true;
             }
 
@@ -149,7 +152,7 @@ public class DiamondPickup : MonoBehaviour
             if (MissionSelector.Collected3 == false)
             {
                 Collected3 = true;
-                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected3 = true;
             }
 
@@ -159,7 +162,7 @@ public class DiamondPickup : MonoBehaviour
             if (MissionSelector.Collected4 == false)
             {
                 Collected4 = true;
-                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected4 = true;
             }
 
@@ -169,7 +172,7 @@ public class DiamondPickup : MonoBehaviour
             if (MissionSelector.Collected5 == false)
             {
                 Collected5 = true;
-                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected5 = true;
             }
         }
@@ -178,11 +181,11 @@ public class DiamondPickup : MonoBehaviour
             if (MissionSelector.Collected6 == false)
             {
                 Collected6 = true;
-                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected6 = true;
                 if (TreasureM)
                 {
-                    TreasureM.TreasureNumber = 6;
+                    TreasureM.TreasureNumber = TreasureAmount;
                 }
             }
         }
@@ -191,11 +194,11 @@ public class DiamondPickup : MonoBehaviour
             if (MissionSelector.Collected7 == false)
             {
                 Collected7 = true;
-                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected7 = true;
                 if (TreasureM)
                 {
-                    TreasureM.TreasureNumber = 6;
+                    TreasureM.TreasureNumber = TreasureAmount;
                 }
             }
         }
@@ -204,17 +207,17 @@ public class DiamondPickup : MonoBehaviour
             if (MissionSelector.Collected8 == false)
             {
                 Collected8 = true;
-                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + 1;
+                DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected8 = true;
                 if (TreasureM)
                 {
-                    TreasureM.TreasureNumber = 6;
+                    TreasureM.TreasureNumber = TreasureAmount;
                 }
             }
         }
 
-        CoinCounter.CoinAmount = 0;
-        CoinCounter.CollectedAmount = 0;
+        CoinCounter.CoinAmount = CoinReset;
+        CoinCounter.CollectedAmount = CoinReset;
         PlayerObject.VictoryTime = true;
         //SceneManager.LoadScene(1);
 

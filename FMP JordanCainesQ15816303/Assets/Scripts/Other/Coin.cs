@@ -12,6 +12,13 @@ public class Coin : MonoBehaviour
     public Player PlayerChar;
     [SerializeField] AudioSource CoinCollectSFX;
     //public int CoinCounter;
+
+    int CoinValue = 1;
+    float ValueNull = 0;
+
+    int MaxHealth = 8;
+    int HealthHeal = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,18 +28,18 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, SpinSpeed * Time.deltaTime, 0);
+        transform.Rotate(ValueNull, SpinSpeed * Time.deltaTime, ValueNull);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         CoinCollectSFX.Play();
-        CoinCounter.CoinAmount = CoinCounter.CoinAmount + 1;
-        CoinCounter.CollectedAmount = CoinCounter.CollectedAmount + 1;
+        CoinCounter.CoinAmount = CoinCounter.CoinAmount + CoinValue;
+        CoinCounter.CollectedAmount = CoinCounter.CollectedAmount + CoinValue;
 
-        if((PlayerChar.Health < 8) && (PlayerChar.IsDead == false))
+        if((PlayerChar.Health < MaxHealth) && (PlayerChar.IsDead == false))
         {
-            PlayerChar.Health = PlayerChar.Health + 1;
+            PlayerChar.Health = PlayerChar.Health + HealthHeal;
         }
 
 

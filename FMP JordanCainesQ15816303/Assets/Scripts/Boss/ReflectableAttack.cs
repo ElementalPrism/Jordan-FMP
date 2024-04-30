@@ -14,6 +14,14 @@ public class ReflectableAttack : MonoBehaviour
     float Distance = 12;
     //[SerializeField] Transform PractiseTarget;
 
+    int OrbReset = 0;
+    int Damage = 1;
+    int PhaseCheck = 3;
+    int LayerCheck = 9;
+    int DeathHealth = -1;
+    int PhaseIncrease = 1;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +33,7 @@ public class ReflectableAttack : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, BossTransform.position) > Distance)
         {
-            Boss.ReflectOrbCount = 0;
+            Boss.ReflectOrbCount = OrbReset;
             Destroy(ThisObject);
         }
     }
@@ -45,9 +53,9 @@ public class ReflectableAttack : MonoBehaviour
 
         if (other.gameObject.GetComponent<Player>())
         {
-            other.gameObject.GetComponent<Player>().Health = other.gameObject.GetComponent<Player>().Health - 1;
+            other.gameObject.GetComponent<Player>().Health = other.gameObject.GetComponent<Player>().Health - Damage;
             other.gameObject.GetComponent<Player>().IsHurt = true;
-            Boss.ReflectOrbCount = 0;
+            Boss.ReflectOrbCount = OrbReset;
             CanDamage = false;
             Destroy(ThisObject);
 
@@ -56,12 +64,12 @@ public class ReflectableAttack : MonoBehaviour
 
 
 
-        if (other.gameObject.layer == 9)
+        if (other.gameObject.layer == LayerCheck)
         {
             if (CanDamage == true)
 
             {
-                if (other.gameObject.GetComponent<Boss>().CurrentPhase == 3)
+                if (other.gameObject.GetComponent<Boss>().CurrentPhase == PhaseCheck)
                 {
                    if(other.gameObject.GetComponent<Boss>().Reflected == false)
                    {
@@ -73,24 +81,24 @@ public class ReflectableAttack : MonoBehaviour
 
                    if (other.gameObject.GetComponent<Boss>().Reflected == true)
                    {
-                       other.gameObject.GetComponent<Boss>().Health = other.gameObject.GetComponent<Boss>().Health - 1;
+                       other.gameObject.GetComponent<Boss>().Health = other.gameObject.GetComponent<Boss>().Health - Damage;
                        //other.gameObject.GetComponent<Boss>().IsHurt = true;
                        CanDamage = false;
                        //Destroy(ThisObject);
                     }
                 }
             
-                if(other.gameObject.GetComponent<Boss>().CurrentPhase < 3)
+                if(other.gameObject.GetComponent<Boss>().CurrentPhase < PhaseCheck)
                 {
-                    other.gameObject.GetComponent<Boss>().Health = other.gameObject.GetComponent<Boss>().Health - 1;
+                    other.gameObject.GetComponent<Boss>().Health = other.gameObject.GetComponent<Boss>().Health - Damage;
                     other.gameObject.GetComponent<Boss>().IsHurt = true;
-                    other.gameObject.GetComponent<Boss>().CurrentPhase = other.gameObject.GetComponent<Boss>().CurrentPhase + 1;            
+                    other.gameObject.GetComponent<Boss>().CurrentPhase = other.gameObject.GetComponent<Boss>().CurrentPhase + PhaseIncrease;            
                     //other.gameObject.GetComponent<Boss>().CanFire = true;
                     CanDamage = false;
                     Destroy(ThisObject);
                 }
 
-                if (other.gameObject.GetComponent<Boss>().Health == -1)
+                if (other.gameObject.GetComponent<Boss>().Health == DeathHealth)
                 {
                     CanDamage = false;
                     Destroy(ThisObject);

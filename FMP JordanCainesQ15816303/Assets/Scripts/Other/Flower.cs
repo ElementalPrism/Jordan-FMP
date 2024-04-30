@@ -18,6 +18,10 @@ public class Flower : MonoBehaviour
     [SerializeField] GameObject DiamondCamera;
     [SerializeField] AudioSource DiamondAppearSFX;
     [SerializeField] AudioSource LevelMusic;
+
+    int TimeStop = 0;
+    int TimeStart = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,12 +58,12 @@ public class Flower : MonoBehaviour
 
     IEnumerator DiamondDisableCamera()
     {
-        Time.timeScale = 0;
+        Time.timeScale = TimeStop;
         LevelMusic.Stop();
         DiamondAppearSFX.Play();
         yield return new WaitForSecondsRealtime(DiamondAppearTime);
         DiamondCamera.SetActive(false);
-        Time.timeScale = 1;
+        Time.timeScale = TimeStart;
         LevelMusic.Play();
     }
 }

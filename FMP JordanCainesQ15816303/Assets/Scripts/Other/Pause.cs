@@ -6,6 +6,10 @@ public class Pause : MonoBehaviour
 {
     public static bool IsPaused;
     public GameObject PauseScreen;
+
+    int TimeStop = 0;
+    int TimeStart = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +37,12 @@ public class Pause : MonoBehaviour
 
         if (IsPaused)
         {
-            Time.timeScale = 0;
+            Time.timeScale = TimeStop;
             PauseScreen.SetActive(true);
         }
         else if (!IsPaused)
         {
-            Time.timeScale = 1;
+            Time.timeScale = TimeStart;
             PauseScreen.SetActive(false);
         }
 

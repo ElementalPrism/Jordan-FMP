@@ -11,6 +11,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject MainMenuObjects;
     [SerializeField] GameObject CreditsObjects;
     // Start is called before the first frame update
+
+    int Lobby = 1;
+    int TitleScreen = 0;
+
     void Start()
     {
         UnityEngine.Cursor.visible = true;
@@ -24,12 +28,12 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(Lobby);
     }
 
     public void GameOverReturn()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(TitleScreen);
     }
 
 

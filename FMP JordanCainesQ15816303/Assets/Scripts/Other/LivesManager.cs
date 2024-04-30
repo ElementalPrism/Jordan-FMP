@@ -8,6 +8,12 @@ public class LivesManager : MonoBehaviour
 {
     public GameObject LivesInfo;
     public static int LivesAmount = 4;
+
+    int NoLives = 0;
+    int CoinReset = 0;
+    int DiamondReset = 0;
+    int LivesReset = 4;
+    int GameOver = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +25,11 @@ public class LivesManager : MonoBehaviour
     {
         LivesInfo.GetComponent<Text>().text = "x " + LivesAmount;
 
-        if (LivesAmount <= 0)
+        if (LivesAmount <= NoLives)
         {
-            CoinCounter.CoinAmount = 0;
-            CoinCounter.CollectedAmount = 0;
-            DiamondManager.DiamondAmount = 0;
+            CoinCounter.CoinAmount = CoinReset;
+            CoinCounter.CollectedAmount = CoinReset;
+            DiamondManager.DiamondAmount = DiamondReset;
             MissionSelector.Collected1 = false;
             MissionSelector.Collected2 = false;
             MissionSelector.Collected3 = false;
@@ -32,8 +38,8 @@ public class LivesManager : MonoBehaviour
             MissionSelector.Collected6 = false;
             MissionSelector.Collected7 = false;
             MissionSelector.Collected8 = false;
-            LivesAmount = 4;
-            SceneManager.LoadScene(5);
+            LivesAmount = LivesReset;
+            SceneManager.LoadScene(GameOver);
         }
     }
 }
