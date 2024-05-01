@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerAttackBox : MonoBehaviour
 {
     [SerializeField] Transform BossTarget;
+    [SerializeField] AudioSource ReflectSFX;
 
     int LayerCheck = 9;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,10 @@ public class PlayerAttackBox : MonoBehaviour
             if(BossTarget != null)
             {
                 other.gameObject.GetComponent<ReflectableAttack>().TargetTransform = BossTarget;
+                if (ReflectSFX != null)
+                {
+                    ReflectSFX.Play();
+                }
                 other.gameObject.GetComponent<ReflectableAttack>().CanDamage = true;
             }
             

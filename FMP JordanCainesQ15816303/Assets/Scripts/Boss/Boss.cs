@@ -60,6 +60,8 @@ public class Boss : MonoBehaviour
     int TimeStop = 0;
     int TimeStart = 1;
 
+    public bool IsAggro;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +71,7 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, PlayerTransform.position) < AggroDistance)
+        if (IsAggro)
         {
             if(!IsDead)
             {
@@ -86,21 +88,19 @@ public class Boss : MonoBehaviour
      
 
                 BossAnimator.SetBool("IsInBattle", true);
-                LevelMusic.enabled= false;
-                BossMusic.enabled = true;
+
             }
 
         }
         
-        if (Vector3.Distance(transform.position, PlayerTransform.position) > AggroDistance)
+        if (!IsAggro)
         {
             if (!IsDead)
             {
                 BossAnimator.SetBool("IsInBattle", false);
                 BossAnimator.SetBool("IsAttacking", false);
 
-                LevelMusic.enabled = true;
-                BossMusic.enabled = false;
+
             }
 
             //CanFire = false;
@@ -128,7 +128,7 @@ public class Boss : MonoBehaviour
 
         HealthSystem();
 
-        if ((ReflectOrbCount == ReflectOrbReset) && (Vector3.Distance(transform.position, PlayerTransform.position) < AggroDistance))
+        if ((ReflectOrbCount == ReflectOrbReset) && (IsAggro))
         {
             CanFire = true;
         }
@@ -143,10 +143,10 @@ public class Boss : MonoBehaviour
             }
         }
 
-        if ((IsDead) &&(ReactivateMusic))
-        {
-            LevelMusic.enabled = true;
-        }
+        //if ((IsDead) &&(ReactivateMusic))
+        //{
+        //    LevelMusic.enabled = true;
+        //}
 
 
 

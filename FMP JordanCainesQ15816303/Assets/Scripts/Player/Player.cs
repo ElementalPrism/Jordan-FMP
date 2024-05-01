@@ -381,7 +381,7 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        if ((!IsAttacking) && (IsHurt == false) && (CanMove == true))
+        if ( (IsHurt == false) && (CanMove == true))
         {
             if (Flipped == false)
             {

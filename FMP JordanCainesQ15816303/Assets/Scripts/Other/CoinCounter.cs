@@ -9,6 +9,7 @@ public class CoinCounter : MonoBehaviour
     public GameObject CoinInfo;
     public static int CoinAmount;
     public static int CollectedAmount;
+    [SerializeField] AudioSource OneUpSFX;
 
     int AmountForLife = 50;
     int LifeIncrease = 1;
@@ -29,6 +30,7 @@ public class CoinCounter : MonoBehaviour
         {
             LivesManager.LivesAmount = LivesManager.LivesAmount + LifeIncrease;
             CollectedAmount = CoinReset;
+            OneUpSFX.Play();
         }
     }
 }

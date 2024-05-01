@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class DeathPlane : MonoBehaviour
 {
     public Player PlayerChar;
+    [SerializeField] GameObject PlayerObject;
+    [SerializeField] Transform RespawnLocation;
     bool Triggered;
+    int Damage = 1;
 
     int LobbyScene = 1;
     // Start is called before the first frame update
@@ -23,12 +26,14 @@ public class DeathPlane : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (Triggered == false)
+        if(Triggered == false)
         {
-         PlayerChar.RemoveLife();
-         SceneManager.LoadScene(LobbyScene);
-         Triggered = true;
+           Triggered = true;
+           PlayerChar.Health = PlayerChar.Health - Damage;
+           PlayerObject.transform.position = RespawnLocation.position;
+           Triggered = false;
         }
+
 
     }
 }
