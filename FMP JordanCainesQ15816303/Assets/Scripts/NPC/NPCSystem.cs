@@ -181,6 +181,18 @@ public class NPCSystem : MonoBehaviour
 
 
 
+
+
+        if ((Vector3.Distance(transform.position, PlayerTransform.position) > TalkDistance) && (IsTalking == true))
+        {
+            IsTalking = false;
+            InteractIcon.SetActive(true);
+            TargetPlayer.CanMove = true;
+            TextBackground.SetActive(false);
+            NPCText.SetActive(false);
+        }
+
+
         if (IsTorch)
         {
             TorchDiamondNumber = TorchDiamondRequirement - DiamondManager.DiamondAmount;
