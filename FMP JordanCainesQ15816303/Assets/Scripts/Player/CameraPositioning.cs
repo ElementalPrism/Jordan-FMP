@@ -22,7 +22,7 @@ public class CameraPositioning : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //keeps the camera at a certain point around the player and provides the information of which direction the camera is facing
     {
 
         SightDirection = PlayerTransform.position - new Vector3(transform.position.x, PlayerTransform.position.y, transform.position.z);

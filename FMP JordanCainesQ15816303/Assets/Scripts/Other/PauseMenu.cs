@@ -31,7 +31,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Makes sure the camera sensitivity values and music and sfx values are kept to match the ones in the menu.
     {
         SettingsManager.NewXSpeed= CameraXSlider.value;
         SettingsManager.NewYSpeed= CameraYSlider.value;
@@ -39,13 +39,13 @@ public class PauseMenu : MonoBehaviour
         SettingsManager.NewSFXVolume = SFXVolumeSlider.value;
     }
 
-    public void UnPause()
+    public void UnPause() //Unpauses the game and closes the menu
     {
         Pause.IsPaused = false;
         UnityEngine.Cursor.visible = false;
     }
 
-    public void ReturnToLobby()
+    public void ReturnToLobby() //player returns to lobby, resetting the coin count
     {
         Pause.IsPaused = false;
         CoinCounter.CoinAmount = CoinReset;
@@ -54,7 +54,7 @@ public class PauseMenu : MonoBehaviour
 
     }
 
-    public void QuitToMainMenu()
+    public void QuitToMainMenu() //Player quits to main menu
     {
         Pause.IsPaused = false;
         CoinCounter.CoinAmount = CoinReset;
@@ -63,19 +63,19 @@ public class PauseMenu : MonoBehaviour
     }
 
 
-    public void OpenSettings()
+    public void OpenSettings() //these close the pause buttons and opens the settings content
     {
         PauseButtons.SetActive(false);
         SettingsButtons.SetActive(true);
     }
 
-    public void CloseSettings()
+    public void CloseSettings() //Closes the settings and re-opens the pause buttons
     {
         SettingsButtons.SetActive(false);
         PauseButtons.SetActive(true);
     }
 
-    public void ReturnToDefault()
+    public void ReturnToDefault() //Reset all setting values to default
     {   
         SettingsManager.NewXSpeed = DefaultXSlider;
         SettingsManager.NewYSpeed = DefaultYSlider;

@@ -43,11 +43,10 @@ public class MissionManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { //Checks to see what mission has currently been selected, then loads/unloads what is necessary
         if (Level1Manager.CurrentMission == Mission1)
         {
-            //These are commented as these objects havent been added to the level yet,
-            //uncomment them once they have been filled in the inspector.
+
             BossObject.SetActive(true);
             BossSign.SetActive(true);
             WindmillObject.SetActive(false);

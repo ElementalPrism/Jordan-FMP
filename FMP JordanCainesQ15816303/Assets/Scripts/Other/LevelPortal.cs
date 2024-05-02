@@ -17,12 +17,12 @@ public class LevelPortal : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Level portal constantly rotates
     {
         transform.Rotate(ValueNull, SpinSpeed * Time.deltaTime, ValueNull);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Loads the mission select screen scene
     {
         SceneManager.LoadScene(MissionScreen);
     }

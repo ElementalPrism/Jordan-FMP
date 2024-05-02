@@ -21,12 +21,12 @@ public class BucketPickUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((Vector3.Distance(transform.position, PlayerTransform.position) < TriggerDistance) && (IsHolding == false))
+        if((Vector3.Distance(transform.position, PlayerTransform.position) < TriggerDistance) && (IsHolding == false)) //Checks to see if the player is nearby and empty handed
         {
             InteractIcon.SetActive(true);
-           // IsHolding = true;
 
-            if(Input.GetKeyDown(KeyCode.F))
+
+            if(Input.GetKeyDown(KeyCode.F)) //Player picks up bucket
             {
                 IsHolding = true;
                 ThisCollider.enabled = false;
@@ -40,7 +40,7 @@ public class BucketPickUp : MonoBehaviour
 
 
 
-        if (IsHolding == true)
+        if (IsHolding == true) //Moves bucket position to the players head
         {
             ThisGameObject.transform.position = CarryLocation.transform.position;
         }

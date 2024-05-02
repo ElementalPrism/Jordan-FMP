@@ -31,40 +31,13 @@ public class SpawnOrbs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(BossScript.CurrentPhase == 1)
-        //{
-        //    ReflectAttack = Instantiate(ReflectOrb, AttackSpawnLocation);
-        //    ReflectAttack.GetComponent<ReflectableAttack>().TargetTransform = BossScript.HomingTargetTransform;
-        //    BossScript.CanFire = false;
-        //}
-
-        //if(BossScript.CurrentPhase >= 2)
-        //{
-        //    if(BossScript.ShotCounter < 3)
-        //    {
-        //        NormalAttack = Instantiate(NormalOrb, AttackSpawnLocation);
-        //        NormalAttack.GetComponent<OrbAttack>().PlayerTarget = BossScript.StandardTargetTransform;
-        //        BossScript.ShotCounter = BossScript.ShotCounter + 1;
-        //    }
-
-        //    if(BossScript.ShotCounter == 3)
-        //    {
-        //        ReflectAttack = Instantiate(ReflectOrb, AttackSpawnLocation);
-        //        ReflectAttack.GetComponent<ReflectableAttack>().TargetTransform = BossScript.HomingTargetTransform;
-        //        BossScript.ShotCounter = 0;
-        //        BossScript.CanFire = false;
-        //    }
-
-        //}
-
-
 
 
     }
 
     public void OrbFire()
     {
-        if (BossScript.CurrentPhase == Phase1)
+        if (BossScript.CurrentPhase == Phase1) //Boss fires only the green reflect orb
         {
             ReflectAttack = Instantiate(ReflectOrb, AttackSpawnLocation);
             ReflectAttack.GetComponent<ReflectableAttack>().TargetTransform = BossScript.HomingTargetTransform;
@@ -73,9 +46,9 @@ public class SpawnOrbs : MonoBehaviour
             BossScript.CanFire = false;
         }
 
-        if (BossScript.CurrentPhase >= Phase2)
+        if (BossScript.CurrentPhase >= Phase2) 
         {
-            if (BossScript.ShotCounter < Phase3)
+            if (BossScript.ShotCounter < Phase3) //Boss fires 3 red damage orbs 
             {
                 NormalAttack = Instantiate(NormalOrb, AttackSpawnLocation);
                 NormalAttack.GetComponent<OrbAttack>().PlayerTarget = BossScript.StandardTargetTransform;
@@ -83,7 +56,7 @@ public class SpawnOrbs : MonoBehaviour
                 BossScript.ShotCounter = BossScript.ShotCounter + ShotIncrease;
             }
 
-            if (BossScript.ShotCounter == Phase3)
+            if (BossScript.ShotCounter == Phase3) //Boss fires green reflect orb after 3 red damage orbs
             {
                 ReflectAttack = Instantiate(ReflectOrb, AttackSpawnLocation);
                 ReflectAttack.GetComponent<ReflectableAttack>().TargetTransform = BossScript.HomingTargetTransform;

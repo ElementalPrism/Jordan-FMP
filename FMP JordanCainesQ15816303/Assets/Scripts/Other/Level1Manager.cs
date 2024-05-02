@@ -15,7 +15,7 @@ public class Level1Manager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Stores the number of what the current mission number is
     {
         VisibleMission = CurrentMission;
     }

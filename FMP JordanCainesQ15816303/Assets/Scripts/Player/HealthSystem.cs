@@ -34,7 +34,7 @@ public class HealthSystem : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Updates the Health UI to match how much health the player has left
     {
         if (PlayerChar.Health >= HealthValue8)
         {
@@ -83,18 +83,12 @@ public class HealthSystem : MonoBehaviour
         }
 
 
-        if (PlayerChar.Health <= HealthValue0)
+        if (PlayerChar.Health <= HealthValue0) //Kills the player upon having the health reach 0
         {
             HealthUI.sprite = Health0;
             PlayerChar.IsDead = true;
         }
 
-        //for(int i = 0; i < 8; i++)
-        //{
-        //    if(PlayerChar.Health == i)
-        //    {
 
-        //    }
-        //}
     }
 }

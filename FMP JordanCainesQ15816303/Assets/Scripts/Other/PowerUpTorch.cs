@@ -15,7 +15,7 @@ public class PowerUpTorch : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Triggers the particle effect on the torch if the potion is unlocked
     {        
         if (!IsActivated)
         {

@@ -18,7 +18,7 @@ public class BossDeath : MonoBehaviour
         
     }
 
-    public void Death()
+    public void Death()  //Re-enabled the level music when the boss gets defeated
     {
         if (BossObject != null)
         {

@@ -17,6 +17,8 @@ public class StopVictory : MonoBehaviour
         
     }
 
+    //This function are called from the victory animation to stop the victoty animation and to allow the player to move again
+
     public void StopCheer()
     {
         PlayerChar.StopVictory();

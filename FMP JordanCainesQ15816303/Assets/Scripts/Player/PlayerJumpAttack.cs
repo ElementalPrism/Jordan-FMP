@@ -16,7 +16,7 @@ public class PlayerJumpAttack : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //This sees if the other object has the jump killable script, and if it does, then deals damage to the object
     {
         if (other.gameObject.GetComponent<JumpKillable>())
         {

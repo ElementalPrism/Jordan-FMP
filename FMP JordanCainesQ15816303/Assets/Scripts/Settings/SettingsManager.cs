@@ -30,8 +30,8 @@ public class SettingsManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() 
+    {//Sets the volume for everything in each list to it's corresponding setting volume
         foreach (AudioSource source in Music)
         {
             source.volume = NewMusicVolume;
@@ -43,7 +43,7 @@ public class SettingsManager : MonoBehaviour
             source.volume = NewSFXVolume;
         }
 
-        if(ThisCamera != null)
+        if(ThisCamera != null) //Sets the values of camera sensitivity to the ones within the settings menu
         {
             ThisCamera.m_XAxis.m_MaxSpeed = NewXSpeed;
             ThisCamera.m_YAxis.m_MaxSpeed = NewYSpeed;

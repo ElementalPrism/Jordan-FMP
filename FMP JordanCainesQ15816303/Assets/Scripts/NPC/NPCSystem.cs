@@ -60,11 +60,11 @@ public class NPCSystem : MonoBehaviour
     void Update()
     {
 
-        if (Vector3.Distance(transform.position, PlayerTransform.position) < TalkDistance)
+        if (Vector3.Distance(transform.position, PlayerTransform.position) < TalkDistance) //Checks to see if the player is within distance
         {
             InteractIcon.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.F) && (IsTalking == false))
+            if (Input.GetKeyDown(KeyCode.F) && (IsTalking == false)) //Activates the text box
             {
                 IsTalking = true;
                 InteractIcon.SetActive(false);
@@ -116,7 +116,7 @@ public class NPCSystem : MonoBehaviour
 
 
 
-                if (IsPowerUpSign)
+                if (IsPowerUpSign) 
                 {
                     if (PowerUpManager.GravityPotionUnlocked == false)
                     {
@@ -142,7 +142,7 @@ public class NPCSystem : MonoBehaviour
 
 
 
-                if (IsTorch)
+                if (IsTorch) //Checks to see if the NPC is a torch, then checks to see if the player has enough diamonds to activate the torch
                 {
                     if ((TorchDiamondNumber <= GotDiamonds) && (!GravityTorchActivated))
                     {
@@ -164,7 +164,7 @@ public class NPCSystem : MonoBehaviour
                 
 
             }
-            else if  ((Input.anyKeyDown) && (IsTalking = true))
+            else if  ((Input.anyKeyDown) && (IsTalking = true)) //Player can stop talking by inputting any movement
             {
                 IsTalking = false;
                 InteractIcon.SetActive(true);
@@ -183,7 +183,7 @@ public class NPCSystem : MonoBehaviour
 
 
 
-        if ((Vector3.Distance(transform.position, PlayerTransform.position) > TalkDistance) && (IsTalking == true))
+        if ((Vector3.Distance(transform.position, PlayerTransform.position) > TalkDistance) && (IsTalking == true)) //Stops the player from getting stuck in the textbox, if they somehow move out of range whilst talking
         {
             IsTalking = false;
             InteractIcon.SetActive(true);
@@ -198,7 +198,7 @@ public class NPCSystem : MonoBehaviour
             TorchDiamondNumber = TorchDiamondRequirement - DiamondManager.DiamondAmount;
         }
 
-        if (WeedCounter <= NoWeeds)
+        if (WeedCounter <= NoWeeds) //NPC spawns in diamond if all weeds are destroyed
         {
             if ((!IsPowerUpSign) && (!IsSign) && (!DiamondSpawned))
             {
@@ -211,7 +211,7 @@ public class NPCSystem : MonoBehaviour
 
     }
 
-    IEnumerator DiamondDisableCamera()
+    IEnumerator DiamondDisableCamera() //Activates the camera to look at the diamond that got spawned in
     {
         LevelMusic.enabled = false;
         Time.timeScale = TimeStop;

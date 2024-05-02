@@ -17,22 +17,17 @@ public class WindmillPlatformMagnet : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Attaches the player to the platform for smooth movement
     {
         PlayerSize = other.transform.localScale;
         other.transform.parent = transform;
-        //other.transform.localScale = PlayerSize;
-        //other.transform.position.Set(transform.position.x, transform.position.y, transform.position.z);
+
     }
 
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    other.transform.localScale = PlayerSize;
-    //}
 
 
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) //Unattaches the player from the platform
     {
         other.transform.SetParent(null);
         other.transform.localScale = PlayerSize;

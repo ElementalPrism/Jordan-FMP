@@ -6,6 +6,8 @@ public class JumpKillable : MonoBehaviour
 {
     public bool TakenHit;
 
+    //Stores the value if the enemies have taken a hit from being jumped on
+
     // Start is called before the first frame update
     void Start()
     {

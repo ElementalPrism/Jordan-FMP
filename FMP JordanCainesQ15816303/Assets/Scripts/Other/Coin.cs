@@ -11,7 +11,7 @@ public class Coin : MonoBehaviour
 
     public Player PlayerChar;
     [SerializeField] AudioSource CoinCollectSFX;
-    //public int CoinCounter;
+
 
     int CoinValue = 1;
     float ValueNull = 0;
@@ -26,12 +26,12 @@ public class Coin : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Constantly rotates coin
     {
         transform.Rotate(ValueNull, SpinSpeed * Time.deltaTime, ValueNull);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Plays SFX upon player collecting it, adds its value to the counter, heals health if necessary, then disappears.
     {
         CoinCollectSFX.Play();
         CoinCounter.CoinAmount = CoinCounter.CoinAmount + CoinValue;

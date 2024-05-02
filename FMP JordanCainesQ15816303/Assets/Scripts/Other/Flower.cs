@@ -31,11 +31,11 @@ public class Flower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Vector3.Distance(PlantPot.transform.position, PlayerTransform.position) < TriggerDistance) && (BucketCheck.IsHolding == true))
+        if ((Vector3.Distance(PlantPot.transform.position, PlayerTransform.position) < TriggerDistance) && (BucketCheck.IsHolding == true)) //Checks if the player is nearby with the bucket
         {
             InteractIcon.SetActive(true);
 
-            if(Input.GetKeyDown(KeyCode.F))
+            if(Input.GetKeyDown(KeyCode.F)) //Gets rid of the bucket and grows the flower, spawning the diamond
             {
                 BucketCheck.IsHolding = false;
                 Bucket.SetActive(false);
@@ -56,7 +56,7 @@ public class Flower : MonoBehaviour
     }
 
 
-    IEnumerator DiamondDisableCamera()
+    IEnumerator DiamondDisableCamera() //Causes camera to look at the diamond for a small time
     {
         Time.timeScale = TimeStop;
         LevelMusic.Stop();

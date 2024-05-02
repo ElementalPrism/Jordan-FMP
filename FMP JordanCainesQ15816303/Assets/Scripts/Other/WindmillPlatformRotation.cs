@@ -15,7 +15,7 @@ public class WindmillPlatformRotation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void FixedUpdate() //Constantly rotates platform to make sure they stay up right
     {
         transform.eulerAngles = new Vector3(RotationX, RotationY, RotationZ);
     }

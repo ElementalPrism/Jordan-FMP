@@ -20,6 +20,8 @@ public class BossSFX : MonoBehaviour
         
     }
 
+    //Various SFX functions called by the boss' animations
+
     public void PlaySpawnAttack()
     {
         SpawnAttackSFX.Play();

@@ -27,7 +27,7 @@ public class TreasureManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((TreasureNumber <= NoTreasure) && (!DiamondSpawned))
+        if ((TreasureNumber <= NoTreasure) && (!DiamondSpawned))  //Spawns in the diamond after all the treasure has been collected
         {
             DiamondSpawned = true;
             Diamond7.SetActive(true);
@@ -35,7 +35,7 @@ public class TreasureManager : MonoBehaviour
         }
     }
 
-    IEnumerator DiamondDisableCamera()
+    IEnumerator DiamondDisableCamera() //causes the camera to look at the diamond for a few seconds, whilst activating a sfx
     {
         Time.timeScale = TimeStop;
         LevelMusic.Stop();

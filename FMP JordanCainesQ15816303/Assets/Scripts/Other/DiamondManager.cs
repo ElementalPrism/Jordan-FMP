@@ -14,7 +14,7 @@ public class DiamondManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Updates Diamond UI text
     {
         DiamondInfo.GetComponent<Text>().text = "x " + DiamondAmount;
     }

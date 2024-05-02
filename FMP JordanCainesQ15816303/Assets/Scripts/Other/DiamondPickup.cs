@@ -38,8 +38,8 @@ public class DiamondPickup : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() //Checks to see if any of the diamonds have been collected and changes their material if they have
+    { 
         if (Diamond1)
         {
             if (MissionSelector.Collected1 == true)
@@ -120,12 +120,12 @@ public class DiamondPickup : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Constantly rotates the diamond
     {
         transform.Rotate(ValueNull, SpinSpeed * Time.unscaledDeltaTime, ValueNull);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Checks to see if the player hasnt collected the diamond already, then adds 1 to the diamond counter
     {
         if (Diamond1)
         {
@@ -183,7 +183,7 @@ public class DiamondPickup : MonoBehaviour
                 Collected6 = true;
                 DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected6 = true;
-                if (TreasureM)
+                if (TreasureM) //Resets treasure amount
                 {
                     TreasureM.TreasureNumber = TreasureAmount;
                 }
@@ -196,7 +196,7 @@ public class DiamondPickup : MonoBehaviour
                 Collected7 = true;
                 DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected7 = true;
-                if (TreasureM)
+                if (TreasureM) //Resets treasure amount
                 {
                     TreasureM.TreasureNumber = TreasureAmount;
                 }
@@ -209,17 +209,18 @@ public class DiamondPickup : MonoBehaviour
                 Collected8 = true;
                 DiamondManager.DiamondAmount = DiamondManager.DiamondAmount + DiamondIncrease;
                 MissionSelector.Collected8 = true;
-                if (TreasureM)
+                if (TreasureM) //Resets treasure amount
                 {
                     TreasureM.TreasureNumber = TreasureAmount;
                 }
             }
         }
 
+        //Resets coin counter and causes the player character to victory dance
         CoinCounter.CoinAmount = CoinReset;
         CoinCounter.CollectedAmount = CoinReset;
         PlayerObject.VictoryTime = true;
-        //SceneManager.LoadScene(1);
+
 
     }
 

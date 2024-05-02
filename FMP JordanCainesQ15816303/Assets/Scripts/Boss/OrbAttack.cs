@@ -19,16 +19,15 @@ public class OrbAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       TargetPosition = PlayerTarget.position;
+       TargetPosition = PlayerTarget.position; //Gets a target from the player
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
 
-        //TargetPosition.position = PlayerTarget.position;
 
-        if (Vector3.Distance(transform.position, TargetPosition) < TargetDistance)
+        if (Vector3.Distance(transform.position, TargetPosition) < TargetDistance)  //If the orb gets close to the target, it will delete itself
         {
             Destroy(ThisObject);
         }
@@ -37,12 +36,12 @@ public class OrbAttack : MonoBehaviour
         Movement();
     }
 
-    void Movement()
+    void Movement() //This moves orb towards the target spot
     {
         transform.position = Vector3.MoveTowards(transform.position, TargetPosition, (Speed * Time.deltaTime));
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //The orb deals damage to player and deletes itself if it hits the player
     {
         if (other.gameObject.GetComponent<Player>())
         {

@@ -18,6 +18,7 @@ public class BossMusicTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Gets rid of the boss music trigger
         if (BossScript.IsDead)
         {
             ThisGameObject.SetActive(false);
@@ -25,7 +26,7 @@ public class BossMusicTrigger : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Activates boss music and allows the boss to attack the player when the player gets within the trigger
     {
         LevelMusic.enabled = false;
         BossMusic.enabled = true;
@@ -33,7 +34,7 @@ public class BossMusicTrigger : MonoBehaviour
 
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) //Stops the boss music and makes the boss stop attacking the player because the player is out of the boss' range
     {
         BossScript.IsAggro = false;
         BossMusic.enabled = false;

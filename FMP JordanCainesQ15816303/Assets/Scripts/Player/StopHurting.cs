@@ -20,6 +20,8 @@ public class StopHurting : MonoBehaviour
         
     }
 
+    //These functions are called from animations to stop certain animations and to allow the object to take damage again
+
     public void StopPain()
     {
         PlayerChar.StopHurt();

@@ -17,7 +17,7 @@ public class ActivateDeath : MonoBehaviour
         
     }
 
-    public void Death()
+    public void Death() //Removes a life from the player (is called from the player death animation)
     {
         PlayerChar.RemoveLife();
     }

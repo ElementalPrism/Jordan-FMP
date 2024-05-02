@@ -19,7 +19,7 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) //Turns the pause menu on and off from clicking the esc key
         {
             if (!IsPaused)
             {
@@ -33,7 +33,7 @@ public class Pause : MonoBehaviour
             }
         }
 
-
+        //Stops time whilst the game is paused, then restarts time after closing the pause menu
 
         if (IsPaused)
         {

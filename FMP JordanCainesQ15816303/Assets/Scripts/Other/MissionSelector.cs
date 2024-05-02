@@ -59,14 +59,14 @@ public class MissionSelector : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Changes the button colour on the mission select screen if the player has collected the corresponding diamond, allows the player to select the next mission, if available
     {
         if (Collected1)
         {
             Button1.color = new Color(RColour, GColour, BColour);
             Mission2Button.SetActive(true);
         }
-        else if (!Collected1)
+        else if (!Collected1) //Resets everything back if the player recieves a game over
         {
             Button1.color = new Color(ColourReset, ColourReset, ColourReset);
             Button2.color = new Color(ColourReset, ColourReset, ColourReset);
@@ -141,6 +141,8 @@ public class MissionSelector : MonoBehaviour
 
 
     }
+
+    //Each of these functions stores the current mission number and then loads the main level
 
     public void Mission1()
     {

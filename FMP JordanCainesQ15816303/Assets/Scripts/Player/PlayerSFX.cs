@@ -29,6 +29,8 @@ public class PlayerSFX : MonoBehaviour
         
     }
 
+    //Various SFX functions that are called from animations
+
     public void PlayJump()
     {
         PlayerJumpSFX.Play();
@@ -53,7 +55,7 @@ public class PlayerSFX : MonoBehaviour
         PlayerHurtSFX.Play();
     }
 
-    public void PlayVictory()
+    public void PlayVictory() //This stops all music then plays the victory theme
     {
         LevelMusic.Stop();
         if (PowerUpMusic)
@@ -63,8 +65,5 @@ public class PlayerSFX : MonoBehaviour
         PlayerVictorySFX.Play();
     }
 
-    //public void PlayDeath()
-    //{
-    //    PlayerDeathSFX.Play();
-    //}
+
 }

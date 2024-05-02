@@ -29,7 +29,7 @@ public class TreasurePickUp : MonoBehaviour
         StartCoroutine(PlaySound());
     }
 
-    IEnumerator PlaySound()
+    IEnumerator PlaySound() //Plays the sfx for collecting the treause but makes sure it only plays once
     {
         if (!IsCollected)
         {
@@ -38,7 +38,7 @@ public class TreasurePickUp : MonoBehaviour
         }
         
         yield return new WaitForSeconds(Wait1);
-        TreasureM.TreasureNumber = TreasureM.TreasureNumber - TreasureDeduction;
+        TreasureM.TreasureNumber = TreasureM.TreasureNumber - TreasureDeduction;  //deducts this treasure from the amount of treasure still left before the game object disappears
         ThisObject.SetActive(false);
     }
 }

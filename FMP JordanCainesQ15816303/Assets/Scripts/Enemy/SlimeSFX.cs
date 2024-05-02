@@ -19,6 +19,8 @@ public class SlimeSFX : MonoBehaviour
         
     }
 
+    //Various SFX functions that are called from the animations
+
     public void PlayMovement()
     {
         SlimeMovement.Play();

@@ -33,11 +33,11 @@ public class Slime : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if ((Vector3.Distance(transform.position, PlayerTransform.position) < ChaseDistance) && (TargetPlayer.IsHurt == false))
+        if ((Vector3.Distance(transform.position, PlayerTransform.position) < ChaseDistance) && (TargetPlayer.IsHurt == false)) //Slime chases the player if they are nearby
         {
             if (!IsDead)
             {
-                 if(JumpHitDetection.TakenHit == false)
+                 if(JumpHitDetection.TakenHit == false) //Cannot chase if they are squished
                  {
                      Movement();
                      StartCoroutine(ChaseTimer());
@@ -51,13 +51,13 @@ public class Slime : MonoBehaviour
             SlimeAnimator.SetBool("IsMoving", false);
         }
 
-        if(JumpHitDetection.TakenHit)
+        if(JumpHitDetection.TakenHit) //Small squish animation for the slimes
         {
             Vector3 SlimeScale = ThisSlime.transform.localScale;
             SlimeScale.y = SquishScale;
             ThisSlime.transform.localScale = SlimeScale;
             SlimeAnimator.SetBool("IsDead", true);
-            //Destroy(ThisSlime);
+
         }
 
         if (IsDead == true)
@@ -69,17 +69,17 @@ public class Slime : MonoBehaviour
     }
 
 
-    void Movement()
+    void Movement()  //Slime Movement towards player
     {
         SlimeAgent.isStopped = false;
         TargetPosition = PlayerTransform.position;
         TargetPosition.y = transform.position.y;
         SlimeAgent.SetDestination (TargetPosition);
 
-        //SlimeAnimator.SetBool("IsMoving", true);
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) //Deals damage to player if the player touches the slime
     {
         if (collision.gameObject.GetComponent<Player>())
         {
@@ -104,7 +104,7 @@ public class Slime : MonoBehaviour
         }
     }
 
-    IEnumerator ChaseTimer()
+    IEnumerator ChaseTimer() //Used to have the slime stop chasing for a little bit after a certain time, or after hitting the player
     {
         yield return new WaitForSeconds(ChaseTime);
         SlimeAgent.isStopped = true;

@@ -26,12 +26,12 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void StartGame()
+    public void StartGame() //Loads the lobby scene
     {
         SceneManager.LoadScene(Lobby);
     }
 
-    public void GameOverReturn()
+    public void GameOverReturn() //Loads the main menu screen
     {
         SceneManager.LoadScene(TitleScreen);
     }
@@ -39,20 +39,20 @@ public class MainMenu : MonoBehaviour
 
     public void ExitGame()
     {
-        Application.Quit();
+        Application.Quit(); //closes the game
 
-        #if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
-        #endif
+        #if UNITY_EDITOR  //This is here to prevent the editor from crashing after clicking application exit
+        EditorApplication.ExitPlaymode(); //This bit of code was added from my following a tutorial ([(Taylor, V. (2021)] -> referenced in my code references in my FMP documentation), I can't really change it since its purpose is to stop unity from crashing.
+#endif
     }
 
-    public void OpenCredits()
+    public void OpenCredits() //Closes main menu buttons and opens the credits
     {
         MainMenuObjects.SetActive(false);
         CreditsObjects.SetActive(true);
     }
 
-    public void CloseCredits()
+    public void CloseCredits() //Closes the credits and makes the main menu buttons reappear
     {
         MainMenuObjects.SetActive(true);
         CreditsObjects.SetActive(false);

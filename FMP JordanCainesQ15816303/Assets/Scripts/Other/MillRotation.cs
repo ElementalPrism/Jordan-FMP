@@ -15,7 +15,7 @@ public class MillRotation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void FixedUpdate() //Mill Constantly rotates
     {
         transform.Rotate(ValueNull, ValueNull, SpinSpeed * Time.deltaTime);
     }

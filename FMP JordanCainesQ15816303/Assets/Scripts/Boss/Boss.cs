@@ -71,10 +71,11 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsAggro)
+        if (IsAggro)  //This checks if the player is within range of the boss
         {
-            if(!IsDead)
+            if(!IsDead) //This checks if the boss is still alive
             {
+                //These two if statements are used to activate the boss attack animation
                 if (CanFire == true)
                 {
                     BossAnimator.SetBool("IsAttacking", true); 
@@ -93,7 +94,7 @@ public class Boss : MonoBehaviour
 
         }
         
-        if (!IsAggro)
+        if (!IsAggro) // This segment makes the boss return to its' normal idle animation if the player is not currently fighting it
         {
             if (!IsDead)
             {
@@ -103,9 +104,9 @@ public class Boss : MonoBehaviour
 
             }
 
-            //CanFire = false;
         }
 
+        //These 3 if statements are animation triggers
         if (IsHurt == true)
         {
             BossAnimator.SetBool("IsHurt", true);
@@ -113,9 +114,6 @@ public class Boss : MonoBehaviour
 
         if (IsDead == true)
         {
-            
-            //LevelMusic.enabled = false;
-            //BossMusic.enabled = false;
             BossAnimator.SetBool("IsDead", true);
         }
 
@@ -127,6 +125,8 @@ public class Boss : MonoBehaviour
 
 
         HealthSystem();
+
+        //These control when the boss can fire a green reflectable attack
 
         if ((ReflectOrbCount == ReflectOrbReset) && (IsAggro))
         {
@@ -143,16 +143,9 @@ public class Boss : MonoBehaviour
             }
         }
 
-        //if ((IsDead) &&(ReactivateMusic))
-        //{
-        //    LevelMusic.enabled = true;
-        //}
-
-
-
     }
 
-    void HealthSystem()
+    void HealthSystem() //Used to monitor the boss phases and as well as spawn the diamond upon defeat
     {
         if (Health >= Phase1Health)
         {
@@ -171,38 +164,34 @@ public class Boss : MonoBehaviour
 
         if (Health == HealthCatch)
         {
-            //BossAnimator.SetBool("IsDead", true);
+
             DiamondDrop.SetActive(true);
             StartCoroutine(DiamondCameraDisable());
             IsDead = true;
             Destroy(ShotSpawner);
-
-
-            
-            //Destroy(ThisObject);
         }
     }
 
-    public void StopHurt()
+    public void StopHurt() //Stops the Hurt effect and allows the boss to fire again(is called within the hurt animation to stop hurting)
     {
         IsHurt = false;
         BossAnimator.SetBool("IsHurt", false);
         CanFire = true;
     }
 
-    public void StopBlock()
+    public void StopBlock() //Stops the block effect (is called within the block animation to stop blocking)
     {
         IsBlocking = false;
         BossAnimator.SetBool("Reflect", false);
     }
 
-    IEnumerator StartWait()
+    IEnumerator StartWait() //Waiting time between fired shots
     {
         yield return new WaitForSeconds(TimeBetweenShots);
         Waiting = false;
     }
 
-    IEnumerator DiamondCameraDisable()
+    IEnumerator DiamondCameraDisable() //Stops the music and spawns the camera to look at the diamond
     {
         BossMusic.enabled = false;
         Time.timeScale = TimeStop;

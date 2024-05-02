@@ -24,7 +24,7 @@ public class PlayerAttackBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<ReflectableAttack>())
+        if (other.gameObject.GetComponent<ReflectableAttack>()) //if the attack box collides with a reflectable orb, it will reflect the orb back
         {
             if(BossTarget != null)
             {
@@ -37,13 +37,13 @@ public class PlayerAttackBox : MonoBehaviour
             }
             
         }
-        else if (other.gameObject.GetComponent<Weed>())
+        else if (other.gameObject.GetComponent<Weed>()) //if the object being hit is a weed, then that weed disappears
         {
                 other.gameObject.GetComponent<Weed>().WeedDestruction();
         }
         else
         {
-            if(other.gameObject.layer != LayerCheck)
+            if(other.gameObject.layer != LayerCheck) //If it collides with any enemy, the enemy will play their death animation and disappear
             {
                 other.gameObject.GetComponent<Animator>().SetBool("IsDead", true);
             }

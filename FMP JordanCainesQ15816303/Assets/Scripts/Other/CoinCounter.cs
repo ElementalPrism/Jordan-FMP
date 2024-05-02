@@ -24,9 +24,9 @@ public class CoinCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CoinInfo.GetComponent<Text>().text = "x " + CoinAmount;
+        CoinInfo.GetComponent<Text>().text = "x " + CoinAmount; //Updates Coin Text
 
-        if (CollectedAmount == AmountForLife)
+        if (CollectedAmount == AmountForLife) //Gives the player an extra life upon collecting 50 coins
         {
             LivesManager.LivesAmount = LivesManager.LivesAmount + LifeIncrease;
             CollectedAmount = CoinReset;

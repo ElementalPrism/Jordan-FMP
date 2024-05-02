@@ -20,14 +20,16 @@ public class SkeletonSFX : MonoBehaviour
         
     }
 
-    public void PlayCharge()
+    //Various SFX functions to be called by the animations
+
+    public void PlayCharge() 
     {
         if (StartedCharge == false)
         {
             SkeletonCharge.Play();
             StartedCharge = true;
         }
-        //SkeletonCharge.Play();
+
     }
 
     public void PlayDeath()

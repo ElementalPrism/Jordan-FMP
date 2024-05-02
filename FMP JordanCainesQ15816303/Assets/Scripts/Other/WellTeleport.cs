@@ -20,7 +20,7 @@ public class WellTeleport : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Loads the well area upon entering the trigger
     {
         SceneManager.LoadScene(WellArea);
     }

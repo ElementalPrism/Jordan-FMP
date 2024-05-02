@@ -21,11 +21,11 @@ public class LivesManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() //Updates Lives UI Text
     {
         LivesInfo.GetComponent<Text>().text = "x " + LivesAmount;
 
-        if (LivesAmount <= NoLives)
+        if (LivesAmount <= NoLives) //Resets everything and loads the game over screen when the player runs out of lives
         {
             CoinCounter.CoinAmount = CoinReset;
             CoinCounter.CollectedAmount = CoinReset;

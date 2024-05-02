@@ -24,7 +24,7 @@ public class DeathPlane : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //Deals damage to the player then teleports them to safety
     {
         if(Triggered == false)
         {

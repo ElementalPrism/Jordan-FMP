@@ -20,7 +20,7 @@ public class EnemyDeath : MonoBehaviour
         
     }
 
-    public void Death()
+    public void Death() //Activates Death for the responding enemy
     {
         if(SlimeObject != null) 
         {

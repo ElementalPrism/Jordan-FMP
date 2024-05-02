@@ -31,11 +31,10 @@ public class Skeleton : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if ((Vector3.Distance(transform.position, PlayerTransform.position) <= TriggerDistance) && Waiting == false) 
+        if ((Vector3.Distance(transform.position, PlayerTransform.position) <= TriggerDistance) && Waiting == false) //Checks to see if the player is nearby and the skeleton is not on cooldown
         { 
-            if(!Charging)
+            if(!Charging) //Causes the skeleton to charge at the player if they are not on cooldown
             {
-                // SkeletonAnimator.SetBool("IsMoving", true);
                 SkeletonAgent.isStopped = false;
                 TargetPosition = PlayerTransform.position;
                 TargetPosition.y = transform.position.y;
@@ -44,17 +43,17 @@ public class Skeleton : MonoBehaviour
                 Charging = true;
             }
 
-            SkeletonAnimator.SetBool("IsInCombat", true);
+            SkeletonAnimator.SetBool("IsInCombat", true); //Activates skeleton battle stance
             
         }
         
-        if(Vector3.Distance(transform.position, PlayerTransform.position) > TriggerDistance)
+        if(Vector3.Distance(transform.position, PlayerTransform.position) > TriggerDistance) //Deactivates skeleton battle stance
         {
             SkeletonAnimator.SetBool("IsInCombat", false);
         }
 
 
-        if ((Vector3.Distance(transform.position, TargetPosition) < TargetDistance) && Charging)
+        if ((Vector3.Distance(transform.position, TargetPosition) < TargetDistance) && Charging) //After the skeleton chases a target position for a while, it will cause the skeleton to go on cooldown and not move
         {
             SkeletonAnimator.SetBool("IsMoving", false);
             Charging = false;
@@ -63,12 +62,8 @@ public class Skeleton : MonoBehaviour
             
         }
 
-        //if (JumpHitDetection.TakenHit)
-        //{
-        //    ThisSkeleton.SetActive(false);
-        //}
 
-        if (IsDead == true)
+        if (IsDead == true) //Gets rid of the skeleton after death animation
         {
             Destroy(ThisSkeleton);
         }
@@ -78,7 +73,7 @@ public class Skeleton : MonoBehaviour
         
     }
 
-    void Movement()
+    void Movement() //Skeleton Movement
     {
         if(Charging)
         {
@@ -88,13 +83,13 @@ public class Skeleton : MonoBehaviour
         }
     }
 
-    IEnumerator StartWait()
+    IEnumerator StartWait() //Activates timer for the skeleton to wait before charging again
     {
         yield return new WaitForSeconds(WaitTime);
         Waiting = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) //Hurts the player if the player gets hit by the skeleton
     {
         if (collision.gameObject.GetComponent<Player>())
         {
@@ -115,7 +110,7 @@ public class Skeleton : MonoBehaviour
         }
     }
 
-    IEnumerator ChaseTimer()
+    IEnumerator ChaseTimer() //Activates how long the skeleton chases, if they don't reach their target in time, they will stop charging
     {
         yield return new WaitForSeconds(ChaseTime);
         SkeletonAgent.isStopped = true;
@@ -124,15 +119,5 @@ public class Skeleton : MonoBehaviour
         Waiting = true;
         StartCoroutine(StartWait());
 
-
-
-
-        //if ((SkeletonAnimator.GetBool("IsMoving")) && (!SkeletonAgent.hasPath) && (SkeletonAgent.pathStatus != NavMeshPathStatus.PathComplete))
-        //{
-        //    Debug.Log("Stuck");
-        //    SkeletonAgent.enabled = false;
-        //    SkeletonAgent.enabled = true;
-        //}
-        //SkeletonAgent.isStopped = true;
     }
 }

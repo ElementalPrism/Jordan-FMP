@@ -12,7 +12,6 @@ public class ReflectableAttack : MonoBehaviour
     public bool CanDamage;
     public Transform BossTransform;
     float Distance = 12;
-    //[SerializeField] Transform PractiseTarget;
 
     int OrbReset = 0;
     int Damage = 1;
@@ -31,7 +30,7 @@ public class ReflectableAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, BossTransform.position) > Distance)
+        if (Vector3.Distance(transform.position, BossTransform.position) > Distance) //If the reflect orb travels too far away from the boss, the orb will delete itself and allow the boss the shoot another reflect orb
         {
             Boss.ReflectOrbCount = OrbReset;
             Destroy(ThisObject);
@@ -43,12 +42,12 @@ public class ReflectableAttack : MonoBehaviour
         Movement();
     }
 
-    void Movement()
+    void Movement() //reflect orb movement towards target
     {
         transform.position = Vector3.MoveTowards(transform.position, TargetTransform.position, (Speed * Time.deltaTime));
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //If the reflect orb collides with the player, they take damage, reflect orb is destroyed and boss can fire another reflect orb
     {
 
         if (other.gameObject.GetComponent<Player>())
@@ -64,14 +63,14 @@ public class ReflectableAttack : MonoBehaviour
 
 
 
-        if (other.gameObject.layer == LayerCheck)
+        if (other.gameObject.layer == LayerCheck) //This checks to see if the object it has collided with's layer is the same as the boss' layer
         {
             if (CanDamage == true)
 
             {
-                if (other.gameObject.GetComponent<Boss>().CurrentPhase == PhaseCheck)
+                if (other.gameObject.GetComponent<Boss>().CurrentPhase == PhaseCheck) //Checks to see which boss phase it is 
                 {
-                   if(other.gameObject.GetComponent<Boss>().Reflected == false)
+                   if(other.gameObject.GetComponent<Boss>().Reflected == false) //This only occurs on the final phase where the boss will reflect the player's reflected attack back
                    {
                        TargetTransform = other.gameObject.GetComponent<Boss>().HomingTargetTransform;
                        other.gameObject.GetComponent<Boss>().IsBlocking = true;
@@ -82,23 +81,20 @@ public class ReflectableAttack : MonoBehaviour
                    if (other.gameObject.GetComponent<Boss>().Reflected == true)
                    {
                        other.gameObject.GetComponent<Boss>().Health = other.gameObject.GetComponent<Boss>().Health - Damage;
-                       //other.gameObject.GetComponent<Boss>().IsHurt = true;
                        CanDamage = false;
-                       //Destroy(ThisObject);
                     }
                 }
             
-                if(other.gameObject.GetComponent<Boss>().CurrentPhase < PhaseCheck)
+                if(other.gameObject.GetComponent<Boss>().CurrentPhase < PhaseCheck) //Deals damage to boss and deletes reflect orb
                 {
                     other.gameObject.GetComponent<Boss>().Health = other.gameObject.GetComponent<Boss>().Health - Damage;
                     other.gameObject.GetComponent<Boss>().IsHurt = true;
                     other.gameObject.GetComponent<Boss>().CurrentPhase = other.gameObject.GetComponent<Boss>().CurrentPhase + PhaseIncrease;            
-                    //other.gameObject.GetComponent<Boss>().CanFire = true;
                     CanDamage = false;
                     Destroy(ThisObject);
                 }
 
-                if (other.gameObject.GetComponent<Boss>().Health == DeathHealth)
+                if (other.gameObject.GetComponent<Boss>().Health == DeathHealth) //Gets rid of any reflect orbs when the boss dies
                 {
                     CanDamage = false;
                     Destroy(ThisObject);

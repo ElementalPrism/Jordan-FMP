@@ -26,7 +26,9 @@ public class Weed : MonoBehaviour
         //}
     }
 
-    public void WeedDestruction()
+
+
+    public void WeedDestruction() //Counts the amount of weeds down when one is destroyed
     {
         NPCChecker.WeedCounter = NPCChecker.WeedCounter - WeedDeduction;
         Destroy(ThisObject);

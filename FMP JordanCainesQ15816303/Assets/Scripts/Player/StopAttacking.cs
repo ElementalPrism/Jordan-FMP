@@ -20,6 +20,8 @@ public class StopAttacking : MonoBehaviour
         
     }
 
+    //These functions are called from animations to stop certain animations
+
     public void Stop()
     {
         PlayerChar.StopAttack();

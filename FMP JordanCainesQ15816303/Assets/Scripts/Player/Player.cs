@@ -70,8 +70,10 @@ public class Player : MonoBehaviour
     int DefaultJumpForce = 14;
     int FlippedJumpForce = 7;
 
+    [SerializeField] PlatformCheck CheckPlatform;
+
     // Start is called before the first frame update
-    void Start()
+    void Start() //The game hides the cursor in normal gameplay, keeps cursor locked inside of the game window
     {
         UnityEngine.Cursor.lockState = CursorLockMode.Confined;
         UnityEngine.Cursor.visible = false;
@@ -80,8 +82,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(transform.position, Vector3.down * RaySize, Color.blue);
-        if (Physics.Raycast(transform.position, Vector3.down, RaySize, Layer))
+        Debug.DrawRay(transform.position, Vector3.down * RaySize, Color.blue); //Shoots a raycast down to see if the player is on the ground
+        if (Physics.Raycast(transform.position, Vector3.down, RaySize, Layer)) //If the raycast is a success
         {
             IsGrounded = true;
             PlayerAnimator.SetBool("IsGrounded", true);
@@ -94,10 +96,10 @@ public class Player : MonoBehaviour
             PlayerAnimator.SetBool("IsGrounded", false);
         }
 
-        Debug.DrawRay(transform.position, Vector3.up * RaySizeRed, Color.red);
-        if (Physics.Raycast(transform.position, Vector3.up, RaySizeRed, Layer))
+        Debug.DrawRay(transform.position, Vector3.up * RaySizeRed, Color.red); //Shoots a raycast up to see if the player is on the ground, when they are flipped over via power up
+        if (Physics.Raycast(transform.position, Vector3.up, RaySizeRed, Layer)) //if the raycast is a success
         {
-            if (PowerUp == true)
+            if (PowerUp == true) //if the power up is active
             {
                  IsGrounded = true;
                  PlayerAnimator.SetBool("IsGrounded", true);
@@ -110,7 +112,7 @@ public class Player : MonoBehaviour
 
 
 
-        if (IsGrounded)
+        if (IsGrounded) //Stops force from being added from power up usage
         {
             ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(FValueNull, FValueNull, FValueNull);
         }
@@ -123,21 +125,21 @@ public class Player : MonoBehaviour
             {
                 if (!VictoryTime)
                 {
-                    if (IsGrounded) 
+                    if (IsGrounded) //Checks if the player can move, if the space bar has been pressed and if the player is grounded for the player to jump
                     { 
                         Jump();
                     }
                     else if (!IsGrounded)
                     {
 
-                        if ((PowerUp == true))
+                        if ((PowerUp == true)) //Checks if power up is currently being used
                         {
                             if (GravityFlipped == false)
                             {
-                                if(FlippedOnce == false)
+                                if(FlippedOnce == false) //Allows the player to flip upside down once if they havent
                                 {
                                     ThisPlayer.GetComponent<Rigidbody>().useGravity = false;
-                                    //ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
+                                    
                                     Flipped = true;
                                     FlippedOnce = true;
                                     CameraFree.m_Lens.Dutch = FlipValue;
@@ -148,7 +150,7 @@ public class Player : MonoBehaviour
                             }
                             else if (GravityFlipped == true)
                             {
-                                if (FlippedOnce == false) 
+                                if (FlippedOnce == false) //Allows the player to flip the correct way once if they havent
                                 {
                                     ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
                                     ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(FValueNull, MGravityValue, FValueNull);
@@ -177,7 +179,7 @@ public class Player : MonoBehaviour
             {
               if (IsGrounded) 
               {
-                if(!VictoryTime)
+                if(!VictoryTime) //Checks to see if the player can attack and if the mouse has been left clicked
                 {
                    Attack();
                 }
@@ -188,7 +190,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Flipped == true)
+        if (Flipped == true) //Checks to see if the player wants to flip gravity then adds force to the player to gravitate them to the ceiling
         {
             var PlayerRotation = ThisPlayer.transform.eulerAngles;
             ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(FValueNull, GravityValue, FValueNull);
@@ -198,19 +200,21 @@ public class Player : MonoBehaviour
 
 
 
-        //if (Input.GetKeyDown(KeyCode.Mouse1))
-        //{
-        //    ThisPlayer.GetComponent<Rigidbody>().useGravity = false;
-        //    ThisPlayer.GetComponent<ConstantForce>().force = new Vector3(0f, 5f, 0f);
+        //These 2 functions are used to activate the fall animation if the player is falling and not on the edge of a platform
+        if (!CheckPlatform.StopYVelocity)
+        {
+            PlayerY = PlayerRigid.velocity.y;
+            PlayerAnimator.SetFloat("AirSpeed", PlayerY);
+        }
 
-        //}
+        if(CheckPlatform.StopYVelocity)
+        {
+            PlayerAnimator.SetBool("IsGrounded", true);
+        }
 
 
-        PlayerY = PlayerRigid.velocity.y;
-        PlayerAnimator.SetFloat("AirSpeed", PlayerY);
 
-
-        if (IsHurt == true)
+        if (IsHurt == true) //Checks to see if the player gets hurt and stops the player attack from occuring if the player is hurt
         {
             PlayerAnimator.SetBool("IsHurt", true);
 
@@ -220,31 +224,30 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (IsDead == true)
+        if (IsDead == true) //Activates the death animation
         {
             PlayerAnimator.SetBool("IsDead", true);
         }
 
-        if (PowerUp)
+        if (PowerUp) //Checks to see if the power up is in affect
         {
             
-           // Debug.Log("Power Up Active");
-            if (CanMove == true)
+           
+            if (CanMove == true) //if the game isnt paused, the power up particles will appear, the level music will stop, allowing the power up music to play and the power up timer will start ticking down
             {
                 PowerUpSparkles.SetActive(true);
-               // Debug.Log("Can Move");
-               // Debug.Log("Disable Level Music");
+
                    LevelMusic.enabled = false;
-                //Debug.Log("Enable Power Up Music");
+                
                 PowerUpMusic.enabled = true;
 
-                //Debug.Log("Start Coroutine");
+                
                 StartCoroutine(PowerUpTimer());
             }
-            //DO NOT REMOVE THE DEBUG LOGS. IDK why this stops the player from dying when switching music but it fixes the issue.
+            
         }
 
-        if(CanMove == false)
+        if(CanMove == false) //sets player speed in the animator to 0 if the player cannot move
         {
             PlayerAnimator.SetFloat("MovementSpeed", ValueNull);
         }
@@ -254,7 +257,7 @@ public class Player : MonoBehaviour
 
 
 
-        if (VictoryTime)
+        if (VictoryTime) //Activates the player victory dance whilst everything else freezes in place
         {
             PlayerAnimator.updateMode = AnimatorUpdateMode.UnscaledTime;
             PlayerAnimator.SetBool("Victory", true);
@@ -262,6 +265,7 @@ public class Player : MonoBehaviour
         }
 
 
+        //Changes the way the camera is updated as when the player is upside down with fixed update, the player to will constantly spin when they move in a direction
 
         if (!Flipped)
         {
@@ -280,15 +284,15 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //PlayerRigid.velocity = PlayerRigid.transform.TransformVector(PlayerRigid.velocity);
-        if (!VictoryTime)
+        
+        if (!VictoryTime) //checks to see if the player can move
         {
-            Movement();
+            Movement(); //Player Movement
         }
 
     }
 
-    void Attack()
+    void Attack() //Players attack, causes the animation to play and the hitbox to appear
     {
         if (!IsAttacking)
         {
@@ -299,30 +303,30 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void StopVictory()
+    public void StopVictory() //Stops the player victory dance and resets everything back to normal before loading the lobby
     {
         Time.timeScale = TimeStart;
         PlayerAnimator.SetBool("Victory", false);
         VictoryTime = false;
         Pause.IsPaused = false;
         PlayerAnimator.updateMode = AnimatorUpdateMode.Normal;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(Lobby);
     }
 
-    public void StopAttack()
+    public void StopAttack() //Stops the attack animation and deactivates the attack hitbox (called from animation)
     {
         PlayerAnimator.SetBool("Attack", false);
         PlayerAttackBox.SetActive(false);
         IsAttacking= false;
     }
 
-    public void StopHurt()
+    public void StopHurt() //stops the hurt animation (called from animation)
     {
         PlayerAnimator.SetBool("IsHurt", false);
         IsHurt = false;
     }
 
-    public void RemoveLife()
+    public void RemoveLife() //Removes a life from the player and reloads them at the lobby area
     {
         LivesManager.LivesAmount = LivesManager.LivesAmount - LivesDeduction;
 
@@ -333,7 +337,7 @@ public class Player : MonoBehaviour
     }
 
 
-    void Jump()
+    void Jump() //Player Jump Function, checks to see which direction the jump is going due to the force having to go down when the player is upside down
     {
         if (GravityFlipped == false)
         {
@@ -343,17 +347,17 @@ public class Player : MonoBehaviour
         {
            PlayerRigid.AddForce(Vector3.down * JumpForce, ForceMode.Impulse);
         }
-        //PlayerRigid.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
+        
 
 
 
     }
 
-    IEnumerator PowerUpTimer()
+    IEnumerator PowerUpTimer() //This times the power up and causes the player to revert back to normal gravity when the timer is up, also stops the power up music and re-enabled the level music
     {
-        //Debug.Log("Timer Active");
+        
         yield return new WaitForSeconds(PowerUpTime);
-        //Debug.Log("Timer Ran Out");
+        
         PowerUp = false;
         PowerUpSparkles.SetActive(false);
         ThisPlayer.GetComponent<Rigidbody>().useGravity = true;
@@ -367,9 +371,9 @@ public class Player : MonoBehaviour
         }
 
 
-        //Debug.Log("Disable Power Up Music");
+        
         PowerUpMusic.enabled = false;
-        //Debug.Log("Enable Level Music");
+        
         LevelMusic.enabled = true;
 
         CameraFree.m_Lens.Dutch = ValueNull;
@@ -381,15 +385,15 @@ public class Player : MonoBehaviour
 
     void Movement()
     {
-        if ( (IsHurt == false) && (CanMove == true))
+        if ( (IsHurt == false) && (CanMove == true)) //Checks to see if the player can move
         {
-            if (Flipped == false)
+            if (Flipped == false) //Player's normal movement input
             {
                 Horizon = Input.GetAxis("Horizontal");
                 JumpForce = DefaultJumpForce;
 
             }
-            else if (Flipped == true)
+            else if (Flipped == true) //makes the movement axis be the same when the player is upside down, turns down jump force due to it being to high when upside down
             {
                 Horizon = -Input.GetAxis("Horizontal");
                 JumpForce = FlippedJumpForce;
@@ -397,31 +401,21 @@ public class Player : MonoBehaviour
 
             Vert = Input.GetAxis("Vertical");
 
-            //PlayerMovement = new Vector3(Horizon, 0, Vert);
-            //PlayerMovement.Normalize();
-
+           
+            //The following grabs the camera orientation and then moves the player to correspond with where the camera is facing 
             PlayerOrient = Camera.PlayerOrientation;
             PlayerMovement = (PlayerOrient.forward * Vert) + (PlayerOrient.right * Horizon);
             PlayerMovement.Normalize();
-            PlayerAnimator.SetFloat("MovementSpeed", Mathf.Clamp01(PlayerMovement.magnitude));
-            //transform.position = transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)));
+            PlayerAnimator.SetFloat("MovementSpeed", Mathf.Clamp01(PlayerMovement.magnitude)); //Clamp is used so that the player doesnt gain more speed by going diagonally
+            
             PlayerRigid.velocity = ((PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude)) * (Time.deltaTime * MovementSpeed) + new Vector3(FValueNull, PlayerRigid.velocity.y, FValueNull)));
            
             
             
-            //PlayerRigid.AddForce((PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)) - PlayerRigid.velocity), ForceMode.VelocityChange);
-
-            //transform.Translate(PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed)),Space.World);
 
 
-            //PlayerOrient = Camera.PlayerOrientation;
-            //PlayerMovement = (PlayerOrient.forward * Vert) + (PlayerOrient.right * Horizon);
-            //PlayerMovement.Normalize();
-            //PlayerAnimator.SetFloat("MovementSpeed", Mathf.Clamp01(PlayerMovement.magnitude));
-            //PlayerRigid.MovePosition(transform.position + (PlayerMovement * (Mathf.Clamp01(PlayerMovement.magnitude) * (Time.deltaTime * MovementSpeed))));
 
-
-            if (PlayerMovement != Vector3.zero)
+            if (PlayerMovement != Vector3.zero) //Changes the player's forward location to match where it is on the camera
             {
                 transform.forward = PlayerMovement;
             }
