@@ -15,8 +15,8 @@ public class SettingsManager : MonoBehaviour
     public static float NewYSpeed;
     public static float NewXSpeed;
 
-    public static float NewMusicVolume;
-    public static float NewSFXVolume;
+    public static float NewMusicVolume = 1f;
+    public static float NewSFXVolume = 1f;
 
     public List<AudioSource> Music;
     public List<AudioSource> SFX;
@@ -26,7 +26,7 @@ public class SettingsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame

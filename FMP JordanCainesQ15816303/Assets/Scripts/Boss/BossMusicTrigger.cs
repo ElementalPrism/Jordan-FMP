@@ -34,6 +34,7 @@ public class BossMusicTrigger : MonoBehaviour
 
     }
 
+
     private void OnTriggerExit(Collider other) //Stops the boss music and makes the boss stop attacking the player because the player is out of the boss' range
     {
         BossScript.IsAggro = false;
